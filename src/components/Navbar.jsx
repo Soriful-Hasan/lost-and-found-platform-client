@@ -5,8 +5,6 @@ import UserContext from "../provider/AuthContext";
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
   const userEmail = user?.email;
-  console.log(userEmail);
-
   const handleSignOut = () => {
     userSignOut()
       .then((res) => alert("user sign out"))
@@ -18,10 +16,13 @@ const Navbar = () => {
         <NavLink to={"/"}>DashBoard</NavLink>
       </li>
       <li>
-        <NavLink to={"/page"}>Page</NavLink>
+        <NavLink to={"/allPosts"}>All Post</NavLink>
       </li>
       <li>
-        <NavLink to={"/"}>Page 2</NavLink>
+        <NavLink to={"/addItem"}>Add Post</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/myPost"}>My Post</NavLink>
       </li>
     </div>,
   ];

@@ -3,8 +3,11 @@ import RootLayout from "../layout/RootLayout";
 import Home from "../layout/Home";
 import SignUp from "../authentication/SignUp";
 import SignIn from "../authentication/SignIn";
-import Page from "../page/Page";
 import PrivateRoute from "../private/PrivateRoute";
+import AddItem from "../page/addPost/AddItem";
+import ItemDetails from "../page/items/Itemdetails";
+import MyPost from "../page/myPost/MyPost";
+import AllPosts from "../page/allItems/AllItems";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -24,12 +27,32 @@ export const router = createBrowserRouter([
         Component: SignIn,
       },
       {
-        path: "/page",
+        path: "/addItem",
         element: (
           <PrivateRoute>
-            <Page></Page>
+            <AddItem></AddItem>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/itemDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ItemDetails></ItemDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myPost",
+        element: (
+          <PrivateRoute>
+            <MyPost></MyPost>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allPosts",
+        Component: AllPosts,
       },
     ],
   },
