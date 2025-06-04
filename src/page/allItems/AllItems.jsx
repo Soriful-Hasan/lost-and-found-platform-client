@@ -5,7 +5,6 @@ import AllItemsCard from "./AllItemsCard";
 
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
-  console.log(allPosts);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_apiUrl}/allPosts`)

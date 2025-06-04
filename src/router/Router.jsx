@@ -8,6 +8,7 @@ import AddItem from "../page/addPost/AddItem";
 import ItemDetails from "../page/items/Itemdetails";
 import MyPost from "../page/myPost/MyPost";
 import AllPosts from "../page/allItems/AllItems";
+import EditPost from "../page/myPost/EditPost";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyPost></MyPost>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/editPost/:id",
+        element: (
+          <PrivateRoute>
+            <EditPost></EditPost>
           </PrivateRoute>
         ),
       },
