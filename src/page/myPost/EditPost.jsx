@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import useUserContext from "../../hook/ContextHook";
 import { useParams } from "react-router";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const EditPost = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [item, setItem] = useState({});
   const { id } = useParams();
   useEffect(() => {
@@ -92,12 +95,12 @@ const EditPost = () => {
           placeholder="location"
           className="input w-full"
         />
-        <input
-          type="date"
+        <DatePicker
           name="date"
-          value={date}
-          placeholder="date"
           className="input w-full"
+          defaultValue={date}
+          selected={selectedDate}
+          onChange={(date) => setSelectedDate(date)}
         />
 
         <input

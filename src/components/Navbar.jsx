@@ -63,11 +63,19 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex  ">
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
-        <div className="navbar-end">
+
+        <div className="navbar-end ">
           {user ? (
-            <Link onClick={handleSignOut} className="btn">
-              SignOut
-            </Link>
+            <div className="flex gap-4 ">
+              <div className="avatar cursor-pointer">
+                <div className="w-12 rounded-full">
+                  <img src={`${user?.photoURL}`} />
+                </div>
+              </div>
+              <Link onClick={handleSignOut} className="btn">
+                SignOut
+              </Link>
+            </div>
           ) : (
             <Link to={"/signUp"} className="btn">
               Sign In

@@ -18,8 +18,8 @@ const Home = () => {
   return (
     <div>
       <div className="grid gap-4 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-        {items?.map((item) => (
-          <ItemCards item={item}></ItemCards>
+        {items?.map((item,index) => (
+          <ItemCards key={index} item={item}></ItemCards>
         ))}
       </div>
     </div>
