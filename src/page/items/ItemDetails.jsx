@@ -31,8 +31,12 @@ const ItemDetails = () => {
 
     // update itemsCollection status recovered
 
+    const statusData = {
+      id: _id,
+      status: "recovered",
+    };
     axios
-      .post(`${import.meta.env.VITE_apiUrl}/updateStatus`)
+      .post(`${import.meta.env.VITE_apiUrl}/updateStatus`, statusData)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   };
@@ -59,6 +63,7 @@ const ItemDetails = () => {
     date,
     postType,
     _id,
+    status,
   } = item;
 
   return (
@@ -84,78 +89,154 @@ const ItemDetails = () => {
             <p>{email}</p>
             <p>{name}</p>
           </div>
-          <div className=" flex gap-4 mt-4">
-            {postType == "Lost" && <button className="btn">Found This!</button>}
-            {postType == "Found" && (
-              <>
-                <button
-                  className="btn"
-                  onClick={() =>
-                    document.getElementById("my_modal_1").showModal()
-                  }
-                >
-                  This Is Mine
-                </button>
-                <dialog id="my_modal_1" className="modal">
-                  <div className="modal-box">
-                    <div className="">
-                      <div className="flex justify-between">
-                        <h1 className="mb-4 font-bold ">
-                          Mining Parson information
-                        </h1>
-                        <button
-                          onClick={() => {
-                            document.getElementById("my_modal_1").close();
-                          }}
-                          className="btn"
-                        >
-                          x
-                        </button>
-                      </div>
-                      <div className="avatar">
-                        <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-                          <img src={user?.photoURL} />
-                        </div>
-                      </div>
-                      <p>{user?.displayName}</p>
-                      <p>{user?.email}</p>
-                    </div>
-
-                    <div className="modal-action">
-                      <form
-                        onSubmit={(e) =>
-                          handleDataSubmitModal(e, _id, userName, userEmail)
-                        }
-                        method="dialog"
-                        className="w-full "
-                      >
-                        <div className="flex flex-col gap-4">
-                          <input
-                            type="text"
-                            name="location"
-                            className="input w-full"
-                            placeholder="location"
-                          ></input>
-                          <input
-                            type="date"
-                            name="date"
-                            className="input w-full"
-                            placeholder="date"
-                          ></input>
-                        </div>
-                        {/* if there is a button in form, it will close the modal */}
-                        <div className="flex justify-end mt-10">
-                          <button type="submit" className="btn ">
-                            Submit recover
+          {status === "recovered" ? (
+            <>
+              <button className="btn disabled disabled:bg-gray-500 cursor-not-allowed">
+                Item Recovered
+              </button>
+            </>
+          ) : (
+            <div className=" flex gap-4 mt-4">
+              {postType == "Lost" && (
+                <>
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      document.getElementById("my_modal_1").showModal()
+                    }
+                  >
+                    Found This
+                  </button>
+                  <dialog id="my_modal_1" className="modal">
+                    <div className="modal-box">
+                      <div className="">
+                        <div className="flex justify-between">
+                          <h1 className="mb-4 font-bold ">
+                            Mining Parson information
+                          </h1>
+                          <button
+                            onClick={() => {
+                              document.getElementById("my_modal_1").close();
+                            }}
+                            className="btn"
+                          >
+                            x
                           </button>
                         </div>
-                      </form>
+                        <div className="avatar">
+                          <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                            <img src={user?.photoURL} />
+                          </div>
+                        </div>
+                        <p>{user?.displayName}</p>
+                        <p>{user?.email}</p>
+                      </div>
+
+                      <div className="modal-action">
+                        <form
+                          onSubmit={(e) =>
+                            handleDataSubmitModal(e, _id, userName, userEmail)
+                          }
+                          method="dialog"
+                          className="w-full "
+                        >
+                          <div className="flex flex-col gap-4">
+                            <input
+                              type="text"
+                              name="location"
+                              className="input w-full"
+                              placeholder="location"
+                            ></input>
+                            <input
+                              type="date"
+                              name="date"
+                              className="input w-full"
+                              placeholder="date"
+                            ></input>
+                          </div>
+                          {/* if there is a button in form, it will close the modal */}
+                          <div className="flex justify-end mt-10">
+                            <button type="submit" className="btn ">
+                              Submit recover
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-                  </div>
-                </dialog>
-              </>
-            )}
-          </div>
+                  </dialog>
+                </>
+              )}
+              {postType == "Found" && (
+                <>
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      document.getElementById("my_modal_1").showModal()
+                    }
+                  >
+                    This Is Mine
+                  </button>
+                  <dialog id="my_modal_1" className="modal">
+                    <div className="modal-box">
+                      <div className="">
+                        <div className="flex justify-between">
+                          <h1 className="mb-4 font-bold ">
+                            Mining Parson information
+                          </h1>
+                          <button
+                            onClick={() => {
+                              document.getElementById("my_modal_1").close();
+                            }}
+                            className="btn"
+                          >
+                            x
+                          </button>
+                        </div>
+                        <div className="avatar">
+                          <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                            <img src={user?.photoURL} />
+                          </div>
+                        </div>
+                        <p>{user?.displayName}</p>
+                        <p>{user?.email}</p>
+                      </div>
+
+                      <div className="modal-action">
+                        <form
+                          onSubmit={(e) =>
+                            handleDataSubmitModal(e, _id, userName, userEmail)
+                          }
+                          method="dialog"
+                          className="w-full "
+                        >
+                          <div className="flex flex-col gap-4">
+                            <input
+                              type="text"
+                              name="location"
+                              className="input w-full"
+                              placeholder="location"
+                            ></input>
+                            <input
+                              type="date"
+                              name="date"
+                              className="input w-full"
+                              placeholder="date"
+                            ></input>
+                          </div>
+                          {/* if there is a button in form, it will close the modal */}
+                          <div className="flex justify-end mt-10">
+                            <button type="submit" className="btn ">
+                              Submit recover
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

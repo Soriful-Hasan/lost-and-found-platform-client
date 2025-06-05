@@ -22,7 +22,7 @@ const Navbar = () => {
         <NavLink to={"/addItem"}>Add Post</NavLink>
       </li>
       <li>
-        <NavLink to={"/myPost"}>Recover Items</NavLink>
+        <NavLink to={"/recoveredItems"}>Recovered Items</NavLink>
       </li>
       <li>
         <NavLink to={"/myPost"}>My Posts</NavLink>

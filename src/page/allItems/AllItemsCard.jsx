@@ -25,6 +25,7 @@ const AllItemsCard = ({ post }) => {
         </div>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
+          <h2 className="font-semibold">Location- {location}</h2>
           <p>{description}</p>
           <div className="card-actions justify-end">
             <Link to={`/itemDetails/${_id}`} className="btn btn-primary">

@@ -9,6 +9,7 @@ import ItemDetails from "../page/items/Itemdetails";
 import MyPost from "../page/myPost/MyPost";
 import AllPosts from "../page/allItems/AllItems";
 import EditPost from "../page/myPost/EditPost";
+import RecoveredItems from "../page/recoverdItem/RecoveredItems";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <EditPost></EditPost>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/recoveredItems",
+        element: (
+          <PrivateRoute>
+            <RecoveredItems></RecoveredItems>
           </PrivateRoute>
         ),
       },
