@@ -16,12 +16,8 @@ const AllItemsCard = ({ post }) => {
   return (
     <div>
       <div className="card  bg-base-100 w-full shadow-sm">
-        <div className="w-full h-70 ">
-          <img
-            className="w-full h-full object-cover"
-            src={thumbnail}
-            alt="image"
-          />
+        <div className="  ">
+          <img className="" src={thumbnail} alt="image" />
         </div>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>

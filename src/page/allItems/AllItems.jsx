@@ -5,16 +5,18 @@ import AllItemsCard from "./AllItemsCard";
 
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [search, setSearch] = useState("");
+  console.log(search);
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_apiUrl}/allPosts`)
+      .get(`${import.meta.env.VITE_apiUrl}/allPosts?search=${search}`)
       .then((res) => {
         setAllPosts(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [search]);
   return (
     <div className="">
       <div className="flex justify-center mt-10 ">
@@ -35,7 +37,12 @@ const AllItems = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" required placeholder="Search" />
+          <input
+            type="search"
+            onChange={(e) => setSearch(e.target.value)}
+            required
+            placeholder="Search"
+          />
         </label>
       </div>
       <div className="grid gap-4 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
