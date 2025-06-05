@@ -41,7 +41,11 @@ const MyPost = () => {
           </thead>
           <tbody>
             {myPosts?.map((post) => (
-              <MyPostCard post={post} />
+              <MyPostCard
+                myPosts={myPosts}
+                setMyPosts={setMyPosts}
+                post={post}
+              />
             ))}
           </tbody>
         </table>

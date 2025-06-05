@@ -73,13 +73,13 @@ const AddItem = () => {
         <input
           type="text"
           name="name"
-          defaultValue={user?.displayName}
+          value={user?.displayName}
           className="input w-full"
         />
         <input
           type="text"
           name="email"
-          defaultValue={user?.email}
+          value={user?.email}
           className="input w-full"
         />
         <button type="submit" className="btn">
