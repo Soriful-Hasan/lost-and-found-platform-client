@@ -1,9 +1,10 @@
-import React, { use, useContext } from "react";
+import React, { use, useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import UserContext from "../provider/AuthContext";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
+  const [dropDown, setDropDown] = useState(false);
   const userEmail = user?.email;
   const handleSignOut = () => {
     userSignOut()
@@ -31,7 +32,7 @@ const Navbar = () => {
   ];
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar  bg-white shadow-sm fixed top-0 z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,11 +66,31 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end ">
+          <div className="relative">
+            {dropDown && (
+              <ul className=" mt-2 cursor-pointer hover rounded-xl bg-white  w-52 p-2 shadow-sm absolute">
+                <li className="hover:bg-gray-100 p-2 bg-rounded ">
+                  <a>Item 1</a>
+                </li>
+                <li className="hover:bg-gray-100 p-2 ">
+                  <a>Item 2</a>
+                </li>
+              </ul>
+            )}
+          </div>
           {user ? (
             <div className="flex gap-4 ">
-              <div className="avatar cursor-pointer">
-                <div className="w-12 rounded-full">
-                  <img src={`${user?.photoURL}`} />
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={`${user?.displayName}`}
+              >
+                <div
+                  className="avatar cursor-pointer"
+                  onClick={() => setDropDown(!dropDown)}
+                >
+                  <div className="w-12 rounded-full">
+                    <img src={`${user?.photoURL}`} />
+                  </div>
                 </div>
               </div>
               <Link onClick={handleSignOut} className="btn">

@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const MyPostCard = ({ post, myPosts, setMyPosts }) => {
-  const { title, _id, postType } = post;
+  const { title, _id, postType,date } = post;
 
   const handleDeletePost = (id) => {
     Swal.fire({
