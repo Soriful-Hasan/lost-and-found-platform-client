@@ -8,8 +8,8 @@ const Navbar = () => {
   const userEmail = user?.email;
   const handleSignOut = () => {
     userSignOut()
-      .then((res) => alert("user sign out"))
-      .cath((error) => console.log("error"));
+      .then((res) => alert("user sign out from navbar"))
+      .catch((error) => console.log("error"));
   };
   const link = [
     <div className="flex">

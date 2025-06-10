@@ -1,29 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import UserContext from "../../provider/AuthContext";
 import axios from "axios";
 import useUserContext from "../../hook/ContextHook";
 import NoDataFound from "../../components/NoDataFound";
 import MyPostCard from "./MyPostCard";
 import Loader from "../../components/Loader";
+import useApplicationApi from "../../api/useApplicationApi";
 
 const MyPost = () => {
   const user = useUserContext();
-  const [loading, setLoading] = useState(true);
+  const email = user?.email;
+  const [dataLoading, setDataLoading] = useState(true);
+  console.log(dataLoading);
   const [myPosts, setMyPosts] = useState([]);
+  const { myPostPromise } = useApplicationApi();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_apiUrl}/myPosts/${user?.email}`)
-      .then((res) => {
-        setMyPosts(res.data);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  }, [user?.email]);
-  if (loading) {
+    const fetchPosts = async () => {
+      const data = await myPostPromise(email);
+      setMyPosts(data);
+      setDataLoading(false);
+    };
+    fetchPosts();
+  }, [email, myPostPromise, setDataLoading]);
+
+  if (setDataLoading) {
     return <Loader />;
   }
-  if (myPosts.length < 1) {
+  if (myPosts?.length < 1) {
     return <NoDataFound />;
   }
   return (

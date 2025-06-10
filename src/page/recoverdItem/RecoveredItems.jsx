@@ -10,7 +10,6 @@ const RecoveredItems = () => {
   const [tableFormat, setTableFormat] = useState(false);
   localStorage.setItem("toggle", tableFormat);
   const toggleValue = localStorage.getItem("toggle");
-  console.log(toggleValue);
   const user = useUserContext();
   const email = user?.email;
   useEffect(() => {
