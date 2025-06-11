@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
 
   axiosInstance.interceptors.request.use((config) => {
     if (token) {
-      // config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   });
@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
     },
     (error) => {
       console.log("error in interceptors response", error.status);
-      if (error.status === 401) {
+      if (error.response?.status === 401 || error.response?.status === 403) {
         userSignOut()
           .then((res) => {
             alert("user sign out from axios secure");

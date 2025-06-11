@@ -24,7 +24,7 @@ const MyPost = () => {
     fetchPosts();
   }, [email, myPostPromise, setDataLoading]);
 
-  if (setDataLoading) {
+  if (dataLoading) {
     return <Loader />;
   }
   if (myPosts?.length < 1) {
