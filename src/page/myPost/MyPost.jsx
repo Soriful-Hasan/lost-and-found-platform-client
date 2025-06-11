@@ -31,19 +31,19 @@ const MyPost = () => {
     return <NoDataFound />;
   }
   return (
-    <div>
+    <div className="">
       <div className="overflow-x-auto mt-10 rounded-box border border-base-content/5 bg-base-100">
         <table className="table">
-          <thead>
+          <thead className="bg-blue-500 text-white">
             <tr>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Post type</th>
+              <th>Category</th>
+              <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-[#F6F6F6]">
             {myPosts?.map((post) => (
               <MyPostCard
                 myPosts={myPosts}

@@ -2,10 +2,11 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
 
 const MyPostCard = ({ post, myPosts, setMyPosts }) => {
-  
-  const { title, _id, postType,date } = post;
+  const { title, _id, postType, date, location, status, category } = post;
 
   const handleDeletePost = (id) => {
     Swal.fire({
@@ -39,20 +40,22 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
   return (
     <tr>
       <td>{title}</td>
-      <td>Quality Control Specialist</td>
+      <td>{location}</td>
       <td>{postType}</td>
-      <td>
-        <Link to={`/editPost/${_id}`} className="btn">
-          Edit
+      <td>{category}</td>
+      <td className="flex gap-4">
+        <Link
+          to={`/editPost/${_id}`}
+          className="bg-gray-200 p-4 cursor-pointer  rounded-full hover:bg-gray-300"
+        >
+          <FaEdit />
         </Link>
-      </td>
-      <td>
         <button
           onClick={() => handleDeletePost(_id)}
           to="/editPost"
-          className="btn"
+          className="bg-gray-200 p-4 cursor-pointer  rounded-full hover:bg-gray-300"
         >
-          delete
+          <FaTrash color="red" />
         </button>
       </td>
     </tr>

@@ -24,7 +24,7 @@ const AddItem = () => {
       });
   };
   return (
-    <div className="shadow-xl bg-[#F6F6F6] rounded-sm p-8 lg:w-8/12 mx-auto">
+    <div className="shadow-sm mb-4  bg-[#F6F6F6] rounded-sm p-8 lg:w-8/12 mx-auto">
       <div className="">
         <div className="flex items-center gap-2">
           <span className="bg-blue-500 w-4 h-10 rounded-r-sm"></span>

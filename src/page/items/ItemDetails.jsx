@@ -67,28 +67,52 @@ const ItemDetails = () => {
   } = item;
 
   return (
-    <div>
-      <div className="flex gap-8 justify-center mt-10">
-        <div className="w-xl  p-4">
-          <img className="w-full rounded-xl " src={thumbnail} alt="" />
-        </div>
+    <div className="w-8/12 mx-auto">
+      <div className="p-4">
+        <h1 className="text-2xl ">Lost and Found Item Details</h1>
+        <h1>{title}</h1>
+      </div>
+      <div className=" gap-8 justify-center ">
+        <img className="rounded-xl w-2xl p-4" src={thumbnail} alt="" />
+
         <div className="p-4">
-          <p className="font-bold">Post Title</p>
-          <h1>{title}</h1>
-          <h1>{name}</h1>
-          <div className="mt-10 space-y-2">
-            <p className="font-bold">Post details</p>
+          <div className="">
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Item {postType}</h2>
+              <h1 className="text-gray-600">{title}</h1>
+            </div>
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Category</h2>
+              <p>{category}</p>
+            </div>
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Post Type</h2>
+              <p>{postType}</p>
+            </div>
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Date</h2>
+              <p>{date}</p>
+            </div>
+          </div>
+          <div className="mt-10">
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Email</h2>
+              <p >{email}</p>
+            </div>
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Name</h2>
+              <p>{name}</p>
+            </div>
+            <div className="border p-4 space-y-2 border-gray-100">
+              <h2 className="text-xl">Location</h2>
+              <p>{location}</p>
+            </div>
+          </div>
+
+          <div className="mt-10 space-y-2  mb-4 p-4 rounded bg-gray-100">
             <p>{description}</p>
-            <p>{category}</p>
-            <p>{location}</p>
-            <p>{date}</p>
-            <p>{postType}</p>
           </div>
-          <div className="mt-4 space-y-2">
-            <p className="font-bold">User Information</p>
-            <p>{email}</p>
-            <p>{name}</p>
-          </div>
+        
           {status === "recovered" ? (
             <>
               <button className="btn disabled disabled:bg-gray-500 cursor-not-allowed">

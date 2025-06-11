@@ -16,9 +16,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div className="grid gap-4 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-        {items?.map((item,index) => (
+    <div className="">
+      <div className="grid gap-8 mb-8 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+        {items?.map((item, index) => (
           <ItemCards key={index} item={item}></ItemCards>
         ))}
       </div>
