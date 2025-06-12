@@ -19,7 +19,7 @@ const AllItemsCard = ({ post }) => {
   return (
     <div>
       <div className="card rounded-t-sm bg-[#F6F6F6] w-full shadow-sm">
-        <div className="w-full h-70 ">
+        <div className="w-full h-50 ">
           <img
             className="w-full h-full object-cover"
             src={thumbnail}

@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { BiSolidCalendarCheck } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ItemCards = ({ item }) => {
   const {
@@ -13,6 +14,7 @@ const ItemCards = ({ item }) => {
     description,
     category,
     location,
+    status,
     date,
     _id,
   } = item;
@@ -26,7 +28,7 @@ const ItemCards = ({ item }) => {
       }}
     >
       <div className="card bg-[#F6F6F6] w-full shadow-sm">
-        <div className="w-full h-70 ">
+        <div className="w-full h-50 ">
           <img
             className="w-full h-full object-cover"
             src={thumbnail}

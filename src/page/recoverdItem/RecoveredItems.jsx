@@ -23,6 +23,7 @@ const RecoveredItems = () => {
   //   console.log(tableFormat);
   return (
     <div className="">
+      <h1></h1>
       <input
         type="checkbox"
         onClick={() => setTableFormat(!tableFormat)}
@@ -30,7 +31,7 @@ const RecoveredItems = () => {
       />
       {tableFormat ? (
         <>
-          <div className="mt-4 overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+          <div className="w-10/12 mx-auto mt-4 overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
             <table className="table ">
               {/* head */}
               <thead className="bg-blue-500 text-white ">

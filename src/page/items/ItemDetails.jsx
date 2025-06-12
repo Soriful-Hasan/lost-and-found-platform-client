@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useUserContext from "../../hook/ContextHook";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ItemDetails = () => {
   const [item, setItem] = useState({});
@@ -68,63 +69,101 @@ const ItemDetails = () => {
 
   return (
     <div className="w-8/12 mx-auto">
-      <div className="p-4">
-        <h1 className="text-2xl ">Lost and Found Item Details</h1>
-        <h1>{title}</h1>
+      <div className="p-4 space-y-2">
+        <h1 className="text-2xl font-semibold">Lost and Found Item Details</h1>
+        {status == "recovered" && (
+          <p className="flex items-center gap-2">
+            <FaCheckCircle color="green" />
+            Recovered
+          </p>
+        )}
+        <div className="border-b border-gray-100 mt-2"></div>
+      </div>
+      <div className=" p-4">
+        <img
+          width={300}
+          height={200}
+          className=" rounded-xl"
+          src={thumbnail}
+          alt=""
+        />
       </div>
       <div className=" gap-8 justify-center ">
-        <img className="rounded-xl w-2xl p-4" src={thumbnail} alt="" />
-
         <div className="p-4">
-          <div className="">
-            <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Item {postType}</h2>
-              <h1 className="text-gray-600">{title}</h1>
+          <div className="border-t-8 border-blue-500">
+            <div className="border p-4 space-y-2  border-gray-100">
+              <div className="ml-4">
+                <h2 className="text-xl ">Item {postType}</h2>
+                <h1 className="text-gray-600">{title}</h1>
+              </div>
+            </div>
+            <div className="border p-4  border-gray-100">
+              <div className="ml-4 space-y-2">
+                <h2 className="text-xl">Category</h2>
+                <p>{category}</p>
+              </div>
+            </div>
+            <div className="border p-4  border-gray-100">
+              <div className="ml-4 space-y-2">
+                <h2 className="text-xl">Post Type</h2>
+                <p>{postType}</p>
+              </div>
             </div>
             <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Category</h2>
-              <p>{category}</p>
-            </div>
-            <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Post Type</h2>
-              <p>{postType}</p>
-            </div>
-            <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Date</h2>
-              <p>{date}</p>
+              <div className="ml-4">
+                <h2 className="text-xl">Date</h2>
+                <p>{date}</p>
+              </div>
             </div>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 border-t-8 border-blue-500">
             <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Email</h2>
-              <p >{email}</p>
+              <div className="ml-4">
+                <h2 className="text-xl">Email</h2>
+                <p>{email}</p>
+              </div>
             </div>
             <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Name</h2>
-              <p>{name}</p>
+              <div className="ml-4">
+                <h2 className="text-xl">Name</h2>
+                <p>{name}</p>
+              </div>
             </div>
             <div className="border p-4 space-y-2 border-gray-100">
-              <h2 className="text-xl">Location</h2>
-              <p>{location}</p>
+              <div className="ml-4">
+                <h2 className="text-xl font-semibold">Location</h2>
+                <p>{location}</p>
+              </div>
             </div>
           </div>
 
-          <div className="mt-10 space-y-2  mb-4 p-4 rounded bg-gray-100">
-            <p>{description}</p>
+          <div className="mt-10 space-y-2  mb-4 p-6 rounded bg-gray-100">
+            <h2 className="text-xl">Item Details</h2>
+            <p className="text-gray-600 ">
+              {description}Product details, also known as product descriptions,
+              are the specific pieces of information that describe a product,
+              including its name, size, color, materials, features, and price.
+              These details help customers understand the product and whether it
+              meets their needs. Product detail pages (PDPs) on e-commerce sites
+              provide a comprehensive overview of
+            </p>
           </div>
-        
+
           {status === "recovered" ? (
-            <>
-              <button className="btn disabled disabled:bg-gray-500 cursor-not-allowed">
-                Item Recovered
+            <div className="flex gap-4 mt-10 mb-10">
+              <button className="btn disabled rounded-4xl bg-blue-300 text-gray-600 disabled:bg-gray-500 cursor-not-allowed">
+                Already Recovered
               </button>
-            </>
+              <button className="btn disabled rounded-4xl bg-blue-400 text-white">
+                Back to All Items
+              </button>
+            </div>
           ) : (
             <div className=" flex gap-4 mt-4">
               {postType == "Lost" && (
                 <>
                   <button
-                    className="btn"
+                    className="btn rounded-4xl bg-blue-500 text-white"
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
@@ -193,7 +232,7 @@ const ItemDetails = () => {
               {postType == "Found" && (
                 <>
                   <button
-                    className="btn"
+                    className="btn rounded-4xl bg-blue-500 text-white"
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
