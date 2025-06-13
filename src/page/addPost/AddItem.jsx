@@ -24,7 +24,7 @@ const AddItem = () => {
       });
   };
   return (
-    <div className="shadow-sm mb-4  bg-[#EEEEF2] rounded-sm p-8 lg:w-8/12 mx-auto">
+    <div className="shadow-sm mb-4  bg-gray-100 rounded-sm p-8 lg:w-8/12 mx-auto">
       <div className="">
         <div className="flex items-center gap-2">
           <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
@@ -44,6 +44,12 @@ const AddItem = () => {
             <div className="item-start mb-4 w-full ">
               <h2 className="font-semibold text-xl">Item Details</h2>
             </div>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+            />
             <select
               name="postType"
               className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
@@ -54,14 +60,6 @@ const AddItem = () => {
               <option value="Lost">Lost</option>
               <option value="Found">Found</option>
             </select>
-            <div className="w-full ">
-              <DatePicker
-                name="date"
-                className="appearance-none w-full block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-              />
-            </div>
           </div>
 
           <div className="">
@@ -74,11 +72,11 @@ const AddItem = () => {
                 className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
                 id="grid-first-name w-full"
               />
-              <input
-                type="text"
-                name="title"
-                placeholder="Title"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+              <DatePicker
+                name="date"
+                className="w-full appearance-none block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
               />
               <select
                 name="category"

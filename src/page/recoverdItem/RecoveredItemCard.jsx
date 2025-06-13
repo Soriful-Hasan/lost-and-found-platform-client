@@ -7,7 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 const RecoveredItemCard = ({ item }) => {
   return (
     <div>
-      <div className="card  bg-[#F6F6F6]  w-full shadow-sm">
+      <div className="card  bg-white  w-full shadow-sm">
         <div className="card-body">
           <h2 className="font-semibold flex items-center gap-2">
             <FaUserCircle color="#443dff" />

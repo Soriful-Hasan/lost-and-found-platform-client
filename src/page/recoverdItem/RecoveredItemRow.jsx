@@ -1,7 +1,7 @@
 import React from "react";
 
 const RecoveredItemRow = ({ item }) => {
-  console.log(item);
+  
   const { recoverUserEmail, recoverUserName, recoverDate, recoverLocation } =
     item;
   return (

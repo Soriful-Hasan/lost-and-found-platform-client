@@ -27,13 +27,15 @@ const ItemCards = ({ item }) => {
         scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
       }}
     >
-      <div className="card border-gray-200 bg-white w-full shadow-sm">
-        <div className="w-full h-50 ">
-          <img
-            className="w-full h-full object-cover"
-            src={thumbnail}
-            alt="image"
-          />
+      <div className="card border-gray-200 rounded bg-white w-full border ">
+        <div className="p-2">
+          <div className="w-full h-60 bg-gray-100  rounded-md">
+            <img
+              className="w-full rounded-sm h-full object-cover"
+              src={thumbnail}
+              alt="image"
+            />
+          </div>
         </div>
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>

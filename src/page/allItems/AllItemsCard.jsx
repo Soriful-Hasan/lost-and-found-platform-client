@@ -18,14 +18,17 @@ const AllItemsCard = ({ post }) => {
   } = post;
   return (
     <div>
-      <div className="card rounded-t-sm border border-gray-200 bg-white w-full shadow-sm">
-        <div className="w-full h-50 ">
-          <img
-            className="w-full h-full object-cover"
-            src={thumbnail}
-            alt="image"
-          />
+      <div className="card border-gray-200 rounded bg-white w-full border ">
+        <div className="p-2">
+          <div className="w-full h-60 bg-gray-100  rounded-md ">
+            <img
+              className="w-full rounded-sm h-full object-cover"
+              src={thumbnail}
+              alt="image"
+            />
+          </div>
         </div>
+
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
           <p className="text-gray-700 text-sm line-clamp-2">

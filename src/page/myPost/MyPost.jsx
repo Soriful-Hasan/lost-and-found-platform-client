@@ -32,6 +32,9 @@ const MyPost = () => {
   }
   return (
     <div className="w-10/12 mx-auto">
+      <div className="flex justify-center">
+        <h1 className="text-2xl font-bold w-4xl text-center rounded-xl border p-4 border-gray-100 bg-white">My Post</h1>
+      </div>
       <div className="overflow-x-auto mt-10 rounded-box border border-base-content/5 bg-base-100">
         <table className="table">
           <thead className="bg-[#443dff] text-white">
@@ -43,7 +46,7 @@ const MyPost = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className="bg-[#F6F6F6]">
+          <tbody className="bg-white">
             {myPosts?.map((post) => (
               <MyPostCard
                 myPosts={myPosts}

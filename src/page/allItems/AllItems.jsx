@@ -19,8 +19,8 @@ const AllItems = () => {
   }, [search]);
   return (
     <div className="">
-      <div className="flex justify-center ">
-        <label className="input">
+      <div className="flex justify-center mt-4 w-8/12 mx-auto">
+        <label className="input w-xl rounded-2xl focus-none  ring-0">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +41,8 @@ const AllItems = () => {
             type="search"
             onChange={(e) => setSearch(e.target.value)}
             required
-            placeholder="Search"
-            className=""
+            placeholder="Search by title or location"
+            className="w-full outline-none"
           />
         </label>
       </div>

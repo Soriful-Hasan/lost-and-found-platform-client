@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useUserContext from "../../hook/ContextHook";
 import { FaCheckCircle } from "react-icons/fa";
+import { HiExclamationCircle } from "react-icons/hi";
+import { RxCross2 } from "react-icons/rx";
+import { IoMdContact } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
 
 const ItemDetails = () => {
   const [item, setItem] = useState({});
@@ -68,9 +72,11 @@ const ItemDetails = () => {
   } = item;
 
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="xl:w-8/12  lg:w-10/12 mx-auto  flex flex-col">
       <div className="p-4 space-y-2">
-        <h1 className="text-2xl font-semibold">Lost and Found Item Details</h1>
+        <h1 className="lg:text-2xl text-xl font-semibold">
+          Lost and Found Item Details
+        </h1>
         {status == "recovered" && (
           <p className="flex items-center gap-2">
             <FaCheckCircle color="green" />
@@ -79,227 +85,222 @@ const ItemDetails = () => {
         )}
         <div className="border-b border-gray-100 mt-2"></div>
       </div>
-      <div className=" p-4">
-        <img
-          width={300}
-          height={200}
-          className=" rounded-xl"
-          src={thumbnail}
-          alt=""
-        />
-      </div>
-      <div className=" gap-8 justify-center ">
-        <div className="p-4">
-          <div className="border-t-8 border-blue-500">
-            <div className="border p-4 space-y-2  border-gray-100">
-              <div className="ml-4">
-                <h2 className="text-xl ">Item {postType}</h2>
-                <h1 className="text-gray-600">{title}</h1>
-              </div>
-            </div>
-            <div className="border p-4  border-gray-100">
-              <div className="ml-4 space-y-2">
-                <h2 className="text-xl">Category</h2>
-                <p>{category}</p>
-              </div>
-            </div>
-            <div className="border p-4  border-gray-100">
-              <div className="ml-4 space-y-2">
-                <h2 className="text-xl">Post Type</h2>
-                <p>{postType}</p>
-              </div>
-            </div>
-            <div className="border p-4 space-y-2 border-gray-100">
-              <div className="ml-4">
-                <h2 className="text-xl">Date</h2>
-                <p>{date}</p>
-              </div>
-            </div>
+
+      <div className="flex flex-col lg:flex-row gap-4">
+        <div className="bg-gray-100 lg:h-150 p-10 rounded">
+          <div className=" p-4 flex-1 ">
+            <img
+              width={300}
+              height={200}
+              className=" rounded-xl"
+              src={thumbnail}
+              alt=""
+            />
           </div>
-          <div className="mt-10 border-t-8 border-blue-500">
-            <div className="border p-4 space-y-2 border-gray-100">
-              <div className="ml-4">
-                <h2 className="text-xl">Email</h2>
-                <p>{email}</p>
-              </div>
+        </div>
+        <div className="flex-1 p-4">
+          <div className="space-y-4">
+            <h1 className="text-2xl font-bold">{title}</h1>
+            <p className="font-semibold text-gray-600">Item {postType}</p>
+            <div className="border-b border-gray-200"></div>
+          </div>
+          <div className="">
+            <p className="mt-4 font-semibold text-gray-600">{category}</p>
+            <div className="border-b mt-4 border-gray-200"></div>
+          </div>
+          <div className="mt-4 text-gray-600">
+            <p className="text-sm">
+              <span className="font-semibold text-black">Description:</span>{" "}
+              {description}
+            </p>
+            <div className="border-b mt-4 border-gray-200"></div>
+          </div>
+          <div className="mt-4 space-y-4 text-sm">
+            <div className="flex gap-6">
+              <p className="text-gray-600"> {postType} Date:</p>
+              <p className="font-semibold">{date}</p>
             </div>
-            <div className="border p-4 space-y-2 border-gray-100">
-              <div className="ml-4">
-                <h2 className="text-xl">Name</h2>
-                <p>{name}</p>
-              </div>
-            </div>
-            <div className="border p-4 space-y-2 border-gray-100">
-              <div className="ml-4">
-                <h2 className="text-xl font-semibold">Location</h2>
-                <p>{location}</p>
-              </div>
+            <div className="flex gap-6 ">
+              <p className="text-gray-600">{postType} Location:</p>
+              <p className="font-semibold">{location}</p>
             </div>
           </div>
 
-          <div className="mt-10 space-y-2  mb-4 p-6 rounded bg-gray-100">
-            <h2 className="text-xl">Item Details</h2>
-            <p className="text-gray-600 ">
-              {description}Product details, also known as product descriptions,
-              are the specific pieces of information that describe a product,
-              including its name, size, color, materials, features, and price.
-              These details help customers understand the product and whether it
-              meets their needs. Product detail pages (PDPs) on e-commerce sites
-              provide a comprehensive overview of
+          <div className="bg-gray-100 mt-8 p-4 space-y-2 rounded">
+            <h3 className="font-semibold text-gray-950">Contact Info</h3>
+            <p className="flex gap-2 items-center">
+              <IoMdContact />
+              {name}
+            </p>
+            <p className="flex gap-2 items-center">
+              <MdEmail />
+              {email}
             </p>
           </div>
 
-          {status === "recovered" ? (
-            <div className="flex gap-4 mt-10 mb-10">
-              <button className="btn disabled rounded-4xl bg-blue-300 text-gray-600 disabled:bg-gray-500 cursor-not-allowed">
-                Already Recovered
-              </button>
-              <button className="btn disabled rounded-4xl bg-blue-400 text-white">
-                Back to All Items
-              </button>
-            </div>
-          ) : (
-            <div className=" flex gap-4 mt-4">
-              {postType == "Lost" && (
-                <>
-                  <button
-                    className="btn rounded-4xl bg-[#443dff] text-white"
-                    onClick={() =>
-                      document.getElementById("my_modal_1").showModal()
-                    }
-                  >
-                    Found This
-                  </button>
-                  <dialog id="my_modal_1" className="modal">
-                    <div className="modal-box">
-                      <div className="">
-                        <div className="flex justify-between">
-                          <h1 className="mb-4 font-bold ">
-                            Mining Parson information
-                          </h1>
-                          <button
-                            onClick={() => {
-                              document.getElementById("my_modal_1").close();
-                            }}
-                            className="btn"
-                          >
-                            x
-                          </button>
-                        </div>
-                        <div className="avatar">
-                          <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-                            <img src={user?.photoURL} />
+          <div className="">
+            {status === "recovered" ? (
+              <div className=" gap-4 mt-6 mb-10 space-y-2">
+                <p className="bg-gray-100 p-2 rounded flex items-center gap-2">
+                  <HiExclamationCircle color="red" /> This item already
+                  recovered
+                </p>
+                <button className="btn mt-4 disabled bg-[#443dff] text-white">
+                  Back to All Items
+                </button>
+              </div>
+            ) : (
+              <div className=" flex gap-4 mt-4">
+                {postType == "Lost" && (
+                  <>
+                    <button
+                      className="btn hover:bg-blue-500 mt-4 bg-[#443dff] text-white"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").showModal()
+                      }
+                    >
+                      Found This
+                    </button>
+                    <dialog id="my_modal_1" className="modal">
+                      <div className="modal-box">
+                        <div className="">
+                          <div className="">
+                            <div className="flex items-center justify-between">
+                              <h1 className=" font-bold ">Item Recover</h1>
+                              <button
+                                onClick={() => {
+                                  document.getElementById("my_modal_1").close();
+                                }}
+                                className="cursor-pointer hover:bg-gray-200 btn-ghost bg-gray-100 p-2 rounded-full"
+                              >
+                                <RxCross2 />
+                              </button>
+                            </div>
+                            <div className="border-b border-gray-200 mt-2 mb-2"></div>
                           </div>
-                        </div>
-                        <p>{user?.displayName}</p>
-                        <p>{user?.email}</p>
-                      </div>
 
-                      <div className="modal-action">
-                        <form
-                          onSubmit={(e) =>
-                            handleDataSubmitModal(e, _id, userName, userEmail)
-                          }
-                          method="dialog"
-                          className="w-full "
-                        >
-                          <div className="flex flex-col gap-4">
-                            <input
-                              type="text"
-                              name="location"
-                              className="input w-full"
-                              placeholder="location"
-                            ></input>
-                            <input
-                              type="date"
-                              name="date"
-                              className="input w-full"
-                              placeholder="date"
-                            ></input>
+                          <div className=" space-y-3">
+                            <div className="avatar">
+                              <div className="ring-primary mt-4 ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                                <img src={user?.photoURL} />
+                              </div>
+                            </div>
+                            <p>{user?.displayName}</p>
+                            <p>{user?.email}</p>
                           </div>
-                          {/* if there is a button in form, it will close the modal */}
-                          <div className="flex justify-end mt-10">
-                            <button type="submit" className="btn ">
-                              Submit recover
+                        </div>
+
+                        <div className="modal-action">
+                          <form
+                            onSubmit={(e) =>
+                              handleDataSubmitModal(e, _id, userName, userEmail)
+                            }
+                            method="dialog"
+                            className="w-full "
+                          >
+                            <div className="flex flex-col gap-4">
+                              <input
+                                required
+                                type="text"
+                                name="location"
+                                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                placeholder="location"
+                              ></input>
+                              <input
+                                required
+                                type="date"
+                                name="date"
+                                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                placeholder="date"
+                              ></input>
+                            </div>
+                            {/* if there is a button in form, it will close the modal */}
+                            <div className="flex justify-end mt-10">
+                              <button
+                                type="submit"
+                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                              >
+                                Submit recover
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                  </>
+                )}
+                {postType == "Found" && (
+                  <>
+                    <button
+                      className="btn rounded-4xl bg-[#443dff] text-white"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").showModal()
+                      }
+                    >
+                      This Is Mine
+                    </button>
+                    <dialog id="my_modal_1" className="modal">
+                      <div className="modal-box">
+                        <div className="">
+                          <div className="flex justify-between">
+                            <h1 className="mb-4 font-bold ">
+                              Mining Parson information
+                            </h1>
+                            <button
+                              onClick={() => {
+                                document.getElementById("my_modal_1").close();
+                              }}
+                              className="btn"
+                            >
+                              x
                             </button>
                           </div>
-                        </form>
-                      </div>
-                    </div>
-                  </dialog>
-                </>
-              )}
-              {postType == "Found" && (
-                <>
-                  <button
-                    className="btn rounded-4xl bg-[#443dff] text-white"
-                    onClick={() =>
-                      document.getElementById("my_modal_1").showModal()
-                    }
-                  >
-                    This Is Mine
-                  </button>
-                  <dialog id="my_modal_1" className="modal">
-                    <div className="modal-box">
-                      <div className="">
-                        <div className="flex justify-between">
-                          <h1 className="mb-4 font-bold ">
-                            Mining Parson information
-                          </h1>
-                          <button
-                            onClick={() => {
-                              document.getElementById("my_modal_1").close();
-                            }}
-                            className="btn"
-                          >
-                            x
-                          </button>
-                        </div>
-                        <div className="avatar">
-                          <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-                            <img src={user?.photoURL} />
+                          <div className="avatar">
+                            <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                              <img src={user?.photoURL} />
+                            </div>
                           </div>
+                          <p>{user?.displayName}</p>
+                          <p>{user?.email}</p>
                         </div>
-                        <p>{user?.displayName}</p>
-                        <p>{user?.email}</p>
-                      </div>
 
-                      <div className="modal-action">
-                        <form
-                          onSubmit={(e) =>
-                            handleDataSubmitModal(e, _id, userName, userEmail)
-                          }
-                          method="dialog"
-                          className="w-full "
-                        >
-                          <div className="flex flex-col gap-4">
-                            <input
-                              type="text"
-                              name="location"
-                              className="input w-full"
-                              placeholder="location"
-                            ></input>
-                            <input
-                              type="date"
-                              name="date"
-                              className="input w-full"
-                              placeholder="date"
-                            ></input>
-                          </div>
-                          {/* if there is a button in form, it will close the modal */}
-                          <div className="flex justify-end mt-10">
-                            <button type="submit" className="btn ">
-                              Submit recover
-                            </button>
-                          </div>
-                        </form>
+                        <div className="modal-action ">
+                          <form
+                            onSubmit={(e) =>
+                              handleDataSubmitModal(e, _id, userName, userEmail)
+                            }
+                            method="dialog"
+                            className="w-full"
+                          >
+                            <div className="flex flex-col gap-4">
+                              <input
+                                type="text"
+                                name="location"
+                                className="input w-full"
+                                placeholder="location"
+                              ></input>
+                              <input
+                                type="date"
+                                name="date"
+                                className="input w-full"
+                                placeholder="date"
+                              ></input>
+                            </div>
+                            {/* if there is a button in form, it will close the modal */}
+                            <div className="flex justify-end mt-10">
+                              <button type="submit" className="btn ">
+                                Submit recover
+                              </button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
-                    </div>
-                  </dialog>
-                </>
-              )}
-            </div>
-          )}
+                    </dialog>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

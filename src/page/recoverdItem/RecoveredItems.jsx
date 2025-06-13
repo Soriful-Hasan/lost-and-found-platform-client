@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import useUserContext from "../../hook/ContextHook";
 import RecoveredItemRow from "./RecoveredItemRow";
 import RecoveredItemCard from "./RecoveredItemCard";
+import { ImTable2 } from "react-icons/im";
+import { PiCardsThreeFill } from "react-icons/pi";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 
 const RecoveredItems = () => {
   const [recoveredItems, setRecoveredItems] = useState([]);
@@ -20,15 +23,28 @@ const RecoveredItems = () => {
         console.log(error);
       });
   }, [email]);
-  //   console.log(tableFormat);
+
   return (
     <div className="">
-      <h1></h1>
-      <input
-        type="checkbox"
-        onClick={() => setTableFormat(!tableFormat)}
-        className="toggle"
-      />
+      <div className="  flex justify-center">
+        <div className="dropdown dropdown-start">
+          <div tabIndex={0} role="button" className="btn m-1">
+            Change layout format <MdKeyboardDoubleArrowDown />
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a onClick={() => setTableFormat(true)}>Table</a>
+            </li>
+            <li>
+              <a onClick={() => setTableFormat(false)}>Card</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       {tableFormat ? (
         <>
           <div className="w-10/12 mx-auto mt-4 overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
@@ -51,7 +67,7 @@ const RecoveredItems = () => {
           </div>
         </>
       ) : (
-        <div className="w-10/12 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="w-10/12 mt-4 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {recoveredItems?.map((item, index) => (
             // <div>{item.recoverUserEmail}</div>
             <RecoveredItemCard key={index} item={item}></RecoveredItemCard>

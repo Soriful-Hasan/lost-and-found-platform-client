@@ -1,6 +1,7 @@
 import React, { use, useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import UserContext from "../provider/AuthContext";
+import { RxExit } from "react-icons/rx";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
@@ -14,10 +15,10 @@ const Navbar = () => {
   const link = [
     <div className="flex flex-col gap-4 lg:flex-row">
       <li>
-        <NavLink to={"/"}>DashBoard</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/allPosts"}>All Post</NavLink>
+        <NavLink to={"/allPosts"}> Lost & Found Items</NavLink>
       </li>
     </div>,
   ];
@@ -117,9 +118,9 @@ const Navbar = () => {
 
               <Link
                 onClick={handleSignOut}
-                className="btn rounded-sm bg-[#443dff] text-white mt-1"
+                className="flex items-center btn rounded-sm bg-[#443dff] text-white mt-1"
               >
-                Sign out
+                Sign out <RxExit />
               </Link>
             </div>
           ) : (
