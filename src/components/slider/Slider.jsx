@@ -2,33 +2,30 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { GoArrowUpRight } from "react-icons/go";
 
 import { Pagination, Autoplay } from "swiper/modules";
+import { Link } from "react-router";
 
 const Slider = () => {
   return (
-    <div className="flex p-20 gap-4  mx-auto bg-[#F6F6F6] ">
-      <div className="flex-1 items-center flex flex-col gap-4 p-2 ">
-        <h1 className="font-bold text-2xl">
-          Here is it is best lost and found item platform
+    <div className="flex flex-col flex-col-reverse xl:flex-row p-5  md:p-20 gap-4  mx-auto bg-white ">
+      <div className=" flex-1 items-start flex flex-col gap-4 p-2 ">
+        <h1 className="text-black text-3xl md:text-5xl">
+          Here is it is best lost and found <br /> item platform
         </h1>
-        <p
-          className="text-gray-600
-        
-        "
-        >
+        <p className="text-gray-600 text-sm">
           Welcome to our Lost and Found platform — your trusted place to reunite
-          people with their lost belongings. Whether you've misplaced something
-          or found an item, our site makes it easy to report and search. We
-          connect honest finders with those who have lost valuable possessions.
-          Our mission is to reduce the stress and time spent on locating lost
-          items. Users can upload item photos, descriptions, and contact
-          details. We use location-based search to make finding easier. All
-          listings are verified to prevent misuse. With a user-friendly
-          interface, reporting or claiming is quick and secure. We value
-          integrity, safety, and community support. Join us in building a
-          helpful network of responsible individuals.
+          people <br /> with their lost belongings. Whether you've misplaced
+          something or found an item, <br /> our site makes it easy to report
+          and search.
         </p>
+        <Link
+          to={"/allPosts"}
+          className="btn rounded-xl  bg-[#443dff] text-white"
+        >
+          Explore Now <GoArrowUpRight />
+        </Link>
       </div>
 
       <Swiper
@@ -43,16 +40,32 @@ const Slider = () => {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="mySwiper flex-1"
+        className=" mySwiper flex-1 w-full lg:mx-w-[700px] xl:mx-w-[800px] lg:h-[250px] rounded-lg overflow-hidden  border border-gray-300"
+        style={{
+          borderRadius: "10px",
+          overflow: "hidden",
+        }}
       >
         <SwiperSlide>
-          <img src="/slider2.jpg" alt="" />
+          <img
+            src="/slider2.png"
+            className=" w-full h-full object-cover"
+            alt=""
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/slider2.jpg" alt="" />
+          <img
+            src="/slider2.png"
+            className=" w-full h-full object-cover"
+            alt=""
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/slider2.jpg" alt="" />
+          <img
+            src="/slider2.png"
+            className=" w-full h-full object-cover"
+            alt=""
+          />
         </SwiperSlide>
       </Swiper>
     </div>

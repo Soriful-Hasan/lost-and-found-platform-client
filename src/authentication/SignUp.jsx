@@ -63,7 +63,7 @@ const SignUp = () => {
 
   return (
     <div className="hero">
-      <div className="  rounded-xl bg-[#F6F6F6]   shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
+      <div className="  rounded-xl bg-[#EEEEF2]  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
         <div className="">
           <div className="space-y-2 place-items-center text-center">
             <img
@@ -127,7 +127,7 @@ const SignUp = () => {
 
               <button
                 type="submit"
-                className="p-3 font-bold cursor-pointer  bg-blue-400 text-white border-none btn-neutral mt-4 rounded-xl"
+                className="p-3 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
               >
                 Sign up
               </button>

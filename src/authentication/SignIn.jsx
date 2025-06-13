@@ -38,7 +38,7 @@ const SignIn = () => {
 
   return (
     <div className="flex justify-center items-center  min-h-screen">
-      <div className="p-8 shadow-md md:w-8/12 xl:w-4/12 bg-[#F6F6F6]  lg:w-6/12 mx-auto justify-center">
+      <div className="p-8 shadow-md md:w-8/12 xl:w-4/12 bg-[#EEEEF2]  lg:w-6/12 mx-auto justify-center">
         <div className="text-center p-4 space-y-4">
           <h1 className="text-2xl font-bold">Login your account</h1>
           <div className="border-b border-gray-300"></div>
@@ -70,7 +70,7 @@ const SignIn = () => {
 
             <button
               type="submit"
-              className="p-3 font-bold cursor-pointer  bg-blue-400 text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
+              className="p-3 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
             >
               LogIn
             </button>

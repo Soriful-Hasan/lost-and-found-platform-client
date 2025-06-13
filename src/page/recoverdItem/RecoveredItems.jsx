@@ -34,7 +34,7 @@ const RecoveredItems = () => {
           <div className="w-10/12 mx-auto mt-4 overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
             <table className="table ">
               {/* head */}
-              <thead className="bg-blue-500 text-white ">
+              <thead className="bg-[#443dff] text-white ">
                 <tr>
                   <th>Email</th>
                   <th>Recovered By</th>
@@ -51,7 +51,7 @@ const RecoveredItems = () => {
           </div>
         </>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="w-10/12 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {recoveredItems?.map((item, index) => (
             // <div>{item.recoverUserEmail}</div>
             <RecoveredItemCard key={index} item={item}></RecoveredItemCard>

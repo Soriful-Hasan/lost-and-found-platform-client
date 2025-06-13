@@ -31,10 +31,10 @@ const MyPost = () => {
     return <NoDataFound />;
   }
   return (
-    <div className="">
+    <div className="w-10/12 mx-auto">
       <div className="overflow-x-auto mt-10 rounded-box border border-base-content/5 bg-base-100">
         <table className="table">
-          <thead className="bg-blue-500 text-white">
+          <thead className="bg-[#443dff] text-white">
             <tr>
               <th>Title</th>
               <th>Location</th>

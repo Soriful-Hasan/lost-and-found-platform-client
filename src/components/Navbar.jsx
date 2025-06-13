@@ -39,7 +39,7 @@ const Navbar = () => {
     <div className="">
       <div
         className="navbar 
-       fixed bg-[#F6F6F6] top-0 z-50 "
+       fixed bg-[#EEEEF2] top-0 z-50 "
       >
         <div className="navbar-start ">
           <div className="dropdown">
@@ -117,7 +117,7 @@ const Navbar = () => {
 
               <Link
                 onClick={handleSignOut}
-                className="btn rounded-sm bg-blue-500 text-white mt-1"
+                className="btn rounded-sm bg-[#443dff] text-white mt-1"
               >
                 Sign out
               </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/signUp"}
-              className="btn rounded-sm bg-blue-500 text-white mt-1"
+              className="btn rounded-sm bg-[#443dff] text-white mt-1"
             >
               Sign In
             </Link>

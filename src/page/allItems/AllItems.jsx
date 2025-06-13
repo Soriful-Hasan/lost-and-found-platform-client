@@ -19,7 +19,7 @@ const AllItems = () => {
   }, [search]);
   return (
     <div className="">
-      <div className="flex justify-center mt-10 ">
+      <div className="flex justify-center ">
         <label className="input">
           <svg
             className="h-[1em] opacity-50"
@@ -42,10 +42,11 @@ const AllItems = () => {
             onChange={(e) => setSearch(e.target.value)}
             required
             placeholder="Search"
+            className=""
           />
         </label>
       </div>
-      <div className="w-8/12 mx-auto grid gap-6 mb-8 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-10">
+      <div className="w-10/12 mx-auto grid gap-6 mb-8 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-10">
         {allPosts?.map((post) => (
           <AllItemsCard post={post}></AllItemsCard>
         ))}

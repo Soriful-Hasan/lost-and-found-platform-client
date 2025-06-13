@@ -18,7 +18,7 @@ const AllItemsCard = ({ post }) => {
   } = post;
   return (
     <div>
-      <div className="card rounded-t-sm bg-[#F6F6F6] w-full shadow-sm">
+      <div className="card rounded-t-sm border border-gray-200 bg-white w-full shadow-sm">
         <div className="w-full h-50 ">
           <img
             className="w-full h-full object-cover"
@@ -33,17 +33,17 @@ const AllItemsCard = ({ post }) => {
             this is my name best obption and this{description}
           </p>
           <p className="flex items-center gap-2 ">
-            <BiSolidCalendarCheck color="#3b82f6" />
+            <BiSolidCalendarCheck color="#443dff" />
             {date}
           </p>
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#3b82f6" />
+            <IoLocationSharp color="#443dff" />
             {location}
           </p>
           <div className="card-actions justify-end">
             <Link
               to={`/itemDetails/${_id}`}
-              className="btn bg-[#3b82f6] flex gap-2  text-white border-none btn-primary"
+              className="btn bg-[#443dff] flex gap-2  text-white border-none btn-primary"
             >
               see item <HiOutlineArrowLongRight />
             </Link>

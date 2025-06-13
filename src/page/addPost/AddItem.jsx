@@ -24,10 +24,10 @@ const AddItem = () => {
       });
   };
   return (
-    <div className="shadow-sm mb-4  bg-[#F6F6F6] rounded-sm p-8 lg:w-8/12 mx-auto">
+    <div className="shadow-sm mb-4  bg-[#EEEEF2] rounded-sm p-8 lg:w-8/12 mx-auto">
       <div className="">
         <div className="flex items-center gap-2">
-          <span className="bg-blue-500 w-4 h-10 rounded-r-sm"></span>
+          <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
           <h1 className="text-xl font-bold">Add Lost & Found Item</h1>
         </div>
         <div className="border-b border-1 border-gray-200 mt-2"></div>
@@ -136,7 +136,7 @@ const AddItem = () => {
           <div className="">
             <button
               type="submit"
-              className="btn bg-blue-500 text-white w-full lg:w-2/12 "
+              className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
             >
               Submit Post
             </button>

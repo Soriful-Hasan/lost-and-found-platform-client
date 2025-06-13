@@ -27,7 +27,6 @@ const useAxiosSecure = () => {
       if (error.response?.status === 401 || error.response?.status === 403) {
         userSignOut()
           .then((res) => {
-            alert("user sign out from axios secure");
             setLoading(false);
           })
           .catch((error) => console.log("error"));

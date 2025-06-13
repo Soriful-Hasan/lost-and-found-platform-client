@@ -27,7 +27,7 @@ const ItemCards = ({ item }) => {
         scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
       }}
     >
-      <div className="card bg-[#F6F6F6] w-full shadow-sm">
+      <div className="card border-gray-200 bg-white w-full shadow-sm">
         <div className="w-full h-50 ">
           <img
             className="w-full h-full object-cover"
@@ -37,22 +37,22 @@ const ItemCards = ({ item }) => {
         </div>
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
-          <p className="text-gray-700 text-sm line-clamp-2">
+          <p className="text-gray-800 text-sm line-clamp-2">
             hello i am soriful hasana this product i found in our gardern and
             this is my name best obption and this{description}
           </p>
           <p className="flex items-center gap-2 ">
-            <BiSolidCalendarCheck color="#3b82f6" />
+            <BiSolidCalendarCheck color="#443dff" />
             {date}
           </p>
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#3b82f6" />
+            <IoLocationSharp color="#443dff" />
             {location}
           </p>
           <div className="card-actions justify-end">
             <Link
               to={`itemDetails/${_id}`}
-              className="btn bg-[#3b82f6] flex gap-2  text-white border-none btn-primary"
+              className="btn bg-[#443dff] flex gap-2  text-white border-none btn-primary"
             >
               see item <HiOutlineArrowLongRight />
             </Link>

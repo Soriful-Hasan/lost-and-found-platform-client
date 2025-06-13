@@ -30,11 +30,9 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
   const userSignOut = () => {
-    setLoading(true);
     return signOut(auth);
   };
   const updateUserProfile = (currentUser, userData) => {
-    setLoading(true);
     return updateProfile(auth.currentUser, userData);
   };
   useEffect(() => {
@@ -48,6 +46,7 @@ const AuthProvider = ({ children }) => {
     });
     return () => unSubscribe();
   }, [auth]);
+  console.log(loading);
   const authInfo = {
     signUpUser,
     signInUser,

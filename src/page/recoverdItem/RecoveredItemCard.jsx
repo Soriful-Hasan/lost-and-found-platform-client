@@ -10,20 +10,20 @@ const RecoveredItemCard = ({ item }) => {
       <div className="card  bg-[#F6F6F6]  w-full shadow-sm">
         <div className="card-body">
           <h2 className="font-semibold flex items-center gap-2">
-            <FaUserCircle color="#3b82f6" />
+            <FaUserCircle color="#443dff" />
             Recovered by {item.recoverUserName}
           </h2>
           <h2 className="font-semibold flex items-center gap-2">
-            <MdEmail color="#3b82f6" />
+            <MdEmail color="#443dff" />
             {item.recoverUserEmail}
           </h2>
           <p className="flex items-center gap-2 ">
-            <BiSolidCalendarCheck color="#3b82f6" />
+            <BiSolidCalendarCheck color="#443dff" />
             {item.recoverDate}
           </p>
 
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#3b82f6" />
+            <IoLocationSharp color="#443dff" />
             {item.recoverLocation}
           </p>
         </div>

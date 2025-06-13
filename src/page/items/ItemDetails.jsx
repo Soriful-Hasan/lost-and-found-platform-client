@@ -163,7 +163,7 @@ const ItemDetails = () => {
               {postType == "Lost" && (
                 <>
                   <button
-                    className="btn rounded-4xl bg-blue-500 text-white"
+                    className="btn rounded-4xl bg-[#443dff] text-white"
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
@@ -232,7 +232,7 @@ const ItemDetails = () => {
               {postType == "Found" && (
                 <>
                   <button
-                    className="btn rounded-4xl bg-blue-500 text-white"
+                    className="btn rounded-4xl bg-[#443dff] text-white"
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
