@@ -18,7 +18,7 @@ const AllItemsCard = ({ post }) => {
   } = post;
   return (
     <div>
-      <div className="card border-gray-200 rounded bg-white w-full border ">
+      <div className="card border-gray-200  bg-white w-full border ">
         <div className="p-2">
           <div className="w-full h-60 bg-gray-100  rounded-md ">
             <img
@@ -46,7 +46,7 @@ const AllItemsCard = ({ post }) => {
           <div className="card-actions justify-end">
             <Link
               to={`/itemDetails/${_id}`}
-              className="btn bg-[#443dff] flex gap-2  text-white border-none btn-primary"
+              className="btn shadow-sm hover:bg-blue-500 bg-[#443dff] flex gap-2  text-white border-none btn-primary"
             >
               see item <HiOutlineArrowLongRight />
             </Link>

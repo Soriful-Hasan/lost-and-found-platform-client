@@ -3,10 +3,12 @@ import UserContext from "../../provider/AuthContext";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import useApplicationApi from "../../api/useApplicationApi";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 const AddItem = () => {
   const { user } = useContext(UserContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure();
   console.log(selectedDate);
   const handlePostSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +16,8 @@ const AddItem = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
-    axios
+
+    axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/addItem`, data)
       .then((res) => {
         console.log(res.data);

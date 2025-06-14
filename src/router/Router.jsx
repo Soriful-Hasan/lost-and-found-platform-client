@@ -36,6 +36,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      //verify done jwt token
       {
         path: "/itemDetails/:id",
         element: (
@@ -44,6 +45,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      //verify done jwt token
       {
         path: "/myPost",
         element: (
@@ -60,6 +62,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      //verify done jwt token
       {
         path: "/recoveredItems",
         element: (

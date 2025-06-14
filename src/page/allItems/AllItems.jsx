@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import AllPostCard from "./AllItemsCard";
 import AllItemsCard from "./AllItemsCard";
 
+
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [search, setSearch] = useState("");
-  console.log(search);
+
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_apiUrl}/allPosts?search=${search}`)
@@ -20,7 +22,7 @@ const AllItems = () => {
   return (
     <div className="">
       <div className="flex justify-center mt-4 w-8/12 mx-auto">
-        <label className="input w-xl rounded-2xl focus-none  ring-0">
+        <label className="input w-xl rounded-2xl focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -38,11 +40,11 @@ const AllItems = () => {
             </g>
           </svg>
           <input
-            type="search"
+            type="search "
             onChange={(e) => setSearch(e.target.value)}
             required
             placeholder="Search by title or location"
-            className="w-full outline-none"
+            className="w-full focus:outline-none  focus:ring-0"
           />
         </label>
       </div>

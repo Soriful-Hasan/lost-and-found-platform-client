@@ -55,7 +55,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="/slider2.png"
+            src="/slider3.png"
             className=" w-full h-full object-cover"
             alt=""
           />
@@ -63,6 +63,13 @@ const Slider = () => {
         <SwiperSlide>
           <img
             src="/slider2.png"
+            className=" w-full h-full object-cover"
+            alt=""
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="/slider4.png"
             className=" w-full h-full object-cover"
             alt=""
           />

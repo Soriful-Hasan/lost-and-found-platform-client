@@ -8,11 +8,15 @@ import { HiExclamationCircle } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdContact } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import useApplicationApi from "../../api/useApplicationApi";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const ItemDetails = () => {
+  const axiosSecure = useAxiosSecure();
   const [item, setItem] = useState({});
   const { id } = useParams();
   const user = useUserContext();
+  const { postDetailsPromise } = useApplicationApi();
   const userName = user?.displayName;
   const userEmail = user?.email;
 
@@ -29,7 +33,7 @@ const ItemDetails = () => {
       recoverUserEmail: userEmail,
     };
     // post recover item data on recoverItemCollection
-    axios
+    axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/recoverItem`, recoverData)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
@@ -40,22 +44,19 @@ const ItemDetails = () => {
       id: _id,
       status: "recovered",
     };
-    axios
+    axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/updateStatus`, statusData)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_apiUrl}/getItem/${id}`)
-      .then((res) => {
-        setItem(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+    const postDetailsData = async () => {
+      const data = await postDetailsPromise(id);
+      setItem(data);
+    };
+    postDetailsData();
+  }, [id, postDetailsPromise]);
 
   const {
     title,
@@ -242,26 +243,28 @@ const ItemDetails = () => {
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <div className="">
-                          <div className="flex justify-between">
-                            <h1 className="mb-4 font-bold ">
-                              Mining Parson information
-                            </h1>
+                          <div className="flex items-center justify-between">
+                            <h1 className=" font-bold ">Item Recover</h1>
                             <button
                               onClick={() => {
                                 document.getElementById("my_modal_1").close();
                               }}
-                              className="btn"
+                              className="cursor-pointer hover:bg-gray-200 btn-ghost bg-gray-100 p-2 rounded-full"
                             >
-                              x
+                              <RxCross2 />
                             </button>
                           </div>
-                          <div className="avatar">
-                            <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-                              <img src={user?.photoURL} />
+                          <div className="border-b border-gray-200 mt-2 mb-2"></div>
+
+                          <div className=" space-y-3">
+                            <div className="avatar">
+                              <div className="ring-primary mt-4 ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                                <img src={user?.photoURL} />
+                              </div>
                             </div>
+                            <p>{user?.displayName}</p>
+                            <p>{user?.email}</p>
                           </div>
-                          <p>{user?.displayName}</p>
-                          <p>{user?.email}</p>
                         </div>
 
                         <div className="modal-action ">
@@ -276,19 +279,22 @@ const ItemDetails = () => {
                               <input
                                 type="text"
                                 name="location"
-                                className="input w-full"
+                                className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                 placeholder="location"
                               ></input>
                               <input
                                 type="date"
                                 name="date"
-                                className="input w-full"
+                                className="appearance-none block  w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                 placeholder="date"
                               ></input>
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
-                              <button type="submit" className="btn ">
+                              <button
+                                type="submit"
+                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                              >
                                 Submit recover
                               </button>
                             </div>

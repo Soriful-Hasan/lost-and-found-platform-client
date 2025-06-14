@@ -2,6 +2,11 @@ import React, { use, useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import UserContext from "../provider/AuthContext";
 import { RxExit } from "react-icons/rx";
+import { GoHomeFill } from "react-icons/go";
+import { MdSelectAll } from "react-icons/md";
+import { RiStickyNoteAddFill } from "react-icons/ri";
+import { RiDeviceRecoverFill } from "react-icons/ri";
+import { BsPersonFill } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
@@ -15,10 +20,34 @@ const Navbar = () => {
   const link = [
     <div className="flex flex-col gap-4 lg:flex-row">
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${
+            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
+          }`
+          }
+        >
+          <GoHomeFill />
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/allPosts"}> Lost & Found Items</NavLink>
+        <NavLink
+          to={"/allPosts"}
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${
+            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
+          }`
+          }
+        >
+          {" "}
+          <MdSelectAll /> Lost & Found Items
+        </NavLink>
       </li>
     </div>,
   ];
@@ -26,13 +55,49 @@ const Navbar = () => {
   const dropDownLink = [
     <div className="">
       <li>
-        <NavLink to={"/addItem"}>Add Post</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${
+            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
+          }`
+          }
+          to={"/addItem"}
+        >
+          <RiStickyNoteAddFill />
+          Add Post
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/recoveredItems"}>Recovered Items</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${
+            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
+          }`
+          }
+          to={"/recoveredItems"}
+        >
+          <RiDeviceRecoverFill />
+          Recovered Items
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/myPost"}>My Posts</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${
+            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
+          }`
+          }
+          to={"/myPost"}
+        >
+          <BsPersonFill />
+          My Posts
+        </NavLink>
       </li>
     </div>,
   ];
@@ -118,7 +183,7 @@ const Navbar = () => {
 
               <Link
                 onClick={handleSignOut}
-                className="flex items-center btn rounded-sm bg-[#443dff] text-white mt-1"
+                className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
               >
                 Sign out <RxExit />
               </Link>
@@ -126,7 +191,7 @@ const Navbar = () => {
           ) : (
             <Link
               to={"/signUp"}
-              className="btn rounded-sm bg-[#443dff] text-white mt-1"
+              className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
             >
               Sign In
             </Link>

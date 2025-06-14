@@ -54,7 +54,7 @@ const ItemCards = ({ item }) => {
           <div className="card-actions justify-end">
             <Link
               to={`itemDetails/${_id}`}
-              className="btn bg-[#443dff] flex gap-2  text-white border-none btn-primary"
+              className="btn hover:bg-blue-500 shadow-sm bg-[#443dff] flex gap-2  text-white border-none btn-primary"
             >
               see item <HiOutlineArrowLongRight />
             </Link>

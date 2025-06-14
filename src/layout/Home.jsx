@@ -36,7 +36,7 @@ const Home = () => {
       <div className=" flex justify-center mt-16">
         <Link
           to={"/allPosts"}
-          className="btn  flex items-center bg-[#443dff] text-white"
+          className="btn hover:bg-blue-500 shadow-sm flex items-center bg-[#443dff] text-white"
         >
           View All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>

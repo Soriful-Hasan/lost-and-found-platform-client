@@ -7,22 +7,24 @@ import RecoveredItemCard from "./RecoveredItemCard";
 import { ImTable2 } from "react-icons/im";
 import { PiCardsThreeFill } from "react-icons/pi";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import useApplicationApi from "../../api/useApplicationApi";
 
 const RecoveredItems = () => {
   const [recoveredItems, setRecoveredItems] = useState([]);
   const [tableFormat, setTableFormat] = useState(false);
   localStorage.setItem("toggle", tableFormat);
+  const { recoverItemsPromise } = useApplicationApi();
   const toggleValue = localStorage.getItem("toggle");
   const user = useUserContext();
   const email = user?.email;
+
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_apiUrl}/recoveredItems/${email}`)
-      .then((res) => setRecoveredItems(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [email]);
+    const recoverItemsData = async () => {
+      const data = await recoverItemsPromise(email);
+      setRecoveredItems(data);
+    };
+    recoverItemsData();
+  }, [email, recoverItemsPromise]);
 
   return (
     <div className="">

@@ -3,7 +3,8 @@ import UserContext from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 const SignIn = () => {
-  const { signInUser, user, signInWithGoogle } = useContext(UserContext);
+  const { signInUser, user, setUser, signInWithGoogle } =
+    useContext(UserContext);
   const location = useLocation();
   const navigate = useNavigate();
   const goState = location.state?.pathname || "/";
@@ -20,6 +21,7 @@ const SignIn = () => {
     signInUser(email, password)
       .then((res) => {
         alert("user Login Successfully");
+        setUser({ ...user, accessToken: res?.user?.accessToken });
         navigate(goState);
       })
       .catch((error) => console.log("email or password not valid"));
@@ -29,6 +31,8 @@ const SignIn = () => {
     signInWithGoogle()
       .then((res) => {
         console.log("Google Login SuccessFully");
+        console.log(res.user.accessToken);
+        setUser({ ...user, accessToken: res?.user?.accessToken });
         navigate(goState);
       })
       .catch((error) => {

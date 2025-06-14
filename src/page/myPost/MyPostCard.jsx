@@ -4,9 +4,11 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const MyPostCard = ({ post, myPosts, setMyPosts }) => {
   const { title, _id, postType, date, location, status, category } = post;
+  const axiosSecure = useAxiosSecure();
 
   const handleDeletePost = (id) => {
     Swal.fire({
@@ -19,7 +21,7 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
+        axiosSecure
           .delete(`${import.meta.env.VITE_apiUrl}/deleteItem/${id}`)
           .then((res) => {
             if (res.data.deletedCount === 1) {

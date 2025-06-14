@@ -4,21 +4,23 @@ import { useParams } from "react-router";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../../hook/useAxiosSecure";
+import useApplicationApi from "../../api/useApplicationApi";
 
 const EditPost = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const axiosSecure = useAxiosSecure();
   const [item, setItem] = useState({});
   const { id } = useParams();
+  const { updateDataPromise } = useApplicationApi();
+
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_apiUrl}/getItem/${id}`)
-      .then((res) => {
-        setItem(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+    const updateGetData = async () => {
+      const data = await updateDataPromise(id);
+      setItem(data);
+    };
+    updateGetData();
+  }, [id, updateDataPromise]);
 
   const handleEditPost = (e) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ const EditPost = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
-    axios
+    axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/updatePost/${_id}`, data)
       .then((res) => {
         if (res.data.modifiedCount === 1) {
