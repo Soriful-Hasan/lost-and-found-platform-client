@@ -26,7 +26,6 @@ const SignIn = () => {
           icon: "success",
           draggable: true,
         });
-        setUser({ ...user, accessToken: res?.user?.accessToken });
         navigate(goState);
       })
       .catch((error) =>
@@ -47,7 +46,6 @@ const SignIn = () => {
           draggable: true,
         });
         console.log(res.user.accessToken);
-        setUser({ ...user, accessToken: res?.user?.accessToken });
         navigate(goState);
       })
       .catch((error) => {
@@ -60,8 +58,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center items-center  min-h-screen">
-      <div className="p-8 shadow-md md:w-8/12 xl:w-4/12 bg-white  lg:w-6/12 mx-auto justify-center">
+    <div className="flex justify-center items-center m-4">
+      <div className="p-8 shadow-md md:w-8/12 xl:w-4/12  lg:w-6/12  bg-white w-full  mx-auto justify-center">
         <div className="text-center p-4 space-y-4">
           <h1 className="text-2xl font-bold">Login your account</h1>
           <div className="border-b border-gray-300"></div>
@@ -108,7 +106,11 @@ const SignIn = () => {
         </div>
         <div className="justify-center gap-2 flex items-center">
           <p className="text-sm text-gray-700">have a account?</p>
-          <Link to={"/signUp"} className="link font-semibold link-hover">
+          <Link
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            to={"/signUp"}
+            className="link font-semibold link-hover"
+          >
             Sign up
           </Link>
         </div>

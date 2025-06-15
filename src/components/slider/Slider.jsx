@@ -21,6 +21,7 @@ const Slider = () => {
           and search.
         </p>
         <Link
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/allPosts"}
           className="btn rounded-xl  bg-[#443dff] text-white"
         >

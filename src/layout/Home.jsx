@@ -6,6 +6,7 @@ import Slider from "../components/slider/Slider";
 import About from "../section/About";
 import { Link } from "react-router";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { LiaGripfire } from "react-icons/lia";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -24,9 +25,9 @@ const Home = () => {
       <div className="">
         <Slider></Slider>
       </div>
-      <div className="w-10/12 mx-auto mt-20 ">
-        <h1 className="text-2xl font-bold">Recent Post</h1>
-        <div className="border-b mt-2 border-gray-200"></div>
+      <div className="w-10/12 mx-auto mt-20 flex items-center gap-2">
+        <LiaGripfire size={30} color="#ff9a00" />
+        <h1 className="text-2xl font-semibold">Recent Post</h1>
       </div>
       <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
         {items?.map((item, index) => (
@@ -35,13 +36,14 @@ const Home = () => {
       </div>
       <div className=" flex justify-center mt-16">
         <Link
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/allPosts"}
           className="btn hover:bg-blue-500 shadow-sm flex items-center bg-[#443dff] text-white"
         >
           View All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>
       </div>
-      <div className="w-8/12 mx-auto mt-20">
+      <div className="w-10/12 mx-auto mt-20">
         <About></About>
       </div>
     </div>

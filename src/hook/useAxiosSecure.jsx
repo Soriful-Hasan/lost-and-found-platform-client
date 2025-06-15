@@ -7,9 +7,7 @@ const axiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_apiUrl}`,
 });
 const useAxiosSecure = () => {
-  const { user, userSignOut, setLoading } = useContext(UserContext);
-
-  const token = user?.accessToken;
+  const { user, userSignOut, setLoading, token } = useContext(UserContext);
 
   axiosInstance.interceptors.request.use((config) => {
     if (token) {

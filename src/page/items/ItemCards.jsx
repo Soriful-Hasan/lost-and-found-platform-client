@@ -53,6 +53,7 @@ const ItemCards = ({ item }) => {
           </p>
           <div className="card-actions justify-end">
             <Link
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               to={`itemDetails/${_id}`}
               className="btn hover:bg-blue-500 shadow-sm bg-[#443dff] flex gap-2  text-white border-none btn-primary"
             >

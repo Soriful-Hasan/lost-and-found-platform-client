@@ -1,7 +1,7 @@
 import { useStatStyles } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useUserContext from "../../hook/ContextHook";
 import { FaCheckCircle } from "react-icons/fa";
 import { HiExclamationCircle } from "react-icons/hi";
@@ -10,10 +10,13 @@ import { IoMdContact } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import useApplicationApi from "../../api/useApplicationApi";
 import useAxiosSecure from "../../hook/useAxiosSecure";
+import DatePicker from "react-datepicker";
+import Swal from "sweetalert2";
 
 const ItemDetails = () => {
   const axiosSecure = useAxiosSecure();
   const [item, setItem] = useState({});
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const { id } = useParams();
   const user = useUserContext();
   const { postDetailsPromise } = useApplicationApi();
@@ -35,8 +38,8 @@ const ItemDetails = () => {
     // post recover item data on recoverItemCollection
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/recoverItem`, recoverData)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+      .then((res) => {})
+      .catch((error) => {});
 
     // update itemsCollection status recovered
 
@@ -46,7 +49,15 @@ const ItemDetails = () => {
     };
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/updateStatus`, statusData)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if (res.data.modifiedCount === 1) {
+          Swal.fire({
+            title: "item recover successfully",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
       .catch((error) => console.log(error));
   };
 
@@ -146,9 +157,15 @@ const ItemDetails = () => {
                   <HiExclamationCircle color="red" /> This item already
                   recovered
                 </p>
-                <button className="btn mt-4 disabled bg-[#443dff] text-white">
+                <Link
+                  to={"/allPosts"}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                  className="btn mt-4 disabled bg-[#443dff] text-white"
+                >
                   Back to All Items
-                </button>
+                </Link>
               </div>
             ) : (
               <div className=" flex gap-4 mt-4">
@@ -167,7 +184,7 @@ const ItemDetails = () => {
                         <div className="">
                           <div className="">
                             <div className="flex items-center justify-between">
-                              <h1 className=" font-bold ">Item Recover</h1>
+                              <h1 className=" font-bold ">Lost Item Recover</h1>
                               <button
                                 onClick={() => {
                                   document.getElementById("my_modal_1").close();
@@ -200,24 +217,42 @@ const ItemDetails = () => {
                             className="w-full "
                           >
                             <div className="flex flex-col gap-4">
-                              <input
-                                required
-                                type="text"
-                                name="location"
-                                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                                placeholder="location"
-                              ></input>
-                              <input
-                                required
-                                type="date"
-                                name="date"
-                                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                                placeholder="date"
-                              ></input>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Recover location
+                                </label>
+                                <input
+                                  type="text"
+                                  name="location"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  placeholder="location"
+                                ></input>
+                              </div>
+
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Recover Date
+                                </label>
+                                <DatePicker
+                                  name="date"
+                                  className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  selected={selectedDate}
+                                  onChange={(date) => setSelectedDate(date)}
+                                />
+                              </div>
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
                               <button
+                                onClick={() => {
+                                  document.getElementById("my_modal_1").close();
+                                }}
                                 type="submit"
                                 className="btn hover:bg-blue-500 bg-[#443dff] text-white"
                               >
@@ -233,7 +268,7 @@ const ItemDetails = () => {
                 {postType == "Found" && (
                   <>
                     <button
-                      className="btn rounded-4xl bg-[#443dff] text-white"
+                      className="btn hover:bg-blue-500  bg-[#443dff] text-white"
                       onClick={() =>
                         document.getElementById("my_modal_1").showModal()
                       }
@@ -244,7 +279,7 @@ const ItemDetails = () => {
                       <div className="modal-box">
                         <div className="">
                           <div className="flex items-center justify-between">
-                            <h1 className=" font-bold ">Item Recover</h1>
+                            <h1 className=" font-bold ">Found Item Recover</h1>
                             <button
                               onClick={() => {
                                 document.getElementById("my_modal_1").close();
@@ -276,22 +311,42 @@ const ItemDetails = () => {
                             className="w-full"
                           >
                             <div className="flex flex-col gap-4">
-                              <input
-                                type="text"
-                                name="location"
-                                className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                                placeholder="location"
-                              ></input>
-                              <input
-                                type="date"
-                                name="date"
-                                className="appearance-none block  w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                                placeholder="date"
-                              ></input>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Recover location
+                                </label>
+                                <input
+                                  type="text"
+                                  name="location"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  placeholder="location"
+                                ></input>
+                              </div>
+
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Recover Date
+                                </label>
+                                <DatePicker
+                                  name="date"
+                                  className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  selected={selectedDate}
+                                  onChange={(date) => setSelectedDate(date)}
+                                />
+                              </div>
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
                               <button
+                                onClick={() => {
+                                  document.getElementById("my_modal_1").close();
+                                }}
                                 type="submit"
                                 className="btn hover:bg-blue-500 bg-[#443dff] text-white"
                               >

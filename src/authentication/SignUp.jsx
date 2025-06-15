@@ -93,7 +93,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="hero">
+    <div className="hero mb-4 ">
       <div className="  rounded-xl bg-white  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
         <div className="">
           <div className="space-y-2 mt-5 place-items-center text-center">
@@ -178,7 +178,11 @@ const SignUp = () => {
               <span className=" text-sm text-gray-600">
                 Already have an account?
               </span>
-              <Link to={"/signIn"} className="font-semibold link link-hover">
+              <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={"/signIn"}
+                className="font-semibold link link-hover"
+              >
                 Log in
               </Link>
             </div>

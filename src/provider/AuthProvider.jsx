@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(loading);
+  const [token, setToken] = useState(null);
 
   const signUpUser = (email, password) => {
     setLoading(true);
@@ -38,6 +38,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        user.getIdToken(true).then((token) => {
+          setToken(token);
+        });
+      } else {
+        setToken(null);
+      }
+      if (user) {
         setUser(user);
       } else {
         setUser(null);
@@ -56,6 +63,7 @@ const AuthProvider = ({ children }) => {
     loading,
     signInWithGoogle,
     setUser,
+    token,
   };
   return (
     <UserContext.Provider value={authInfo}>{children}</UserContext.Provider>

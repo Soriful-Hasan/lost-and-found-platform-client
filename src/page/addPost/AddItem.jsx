@@ -10,13 +10,13 @@ const AddItem = () => {
   const { user } = useContext(UserContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const axiosSecure = useAxiosSecure();
-  console.log(selectedDate);
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    
 
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/addItem`, data)
@@ -58,59 +58,108 @@ const AddItem = () => {
             <div className="item-start mb-2 w-full ">
               <h2 className="font-semibold text-xl">Item Details</h2>
             </div>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-            />
-            <select
-              name="postType"
-              className=" appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
-            >
-              <option value="" disabled selected>
+
+            <div className="">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="username"
+              >
+                Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+              />
+            </div>
+            <div className="">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="username"
+              >
                 Post type
-              </option>
-              <option value="Lost">Lost</option>
-              <option value="Found">Found</option>
-            </select>
+              </label>
+              <select
+                name="postType"
+                className=" appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
+              >
+                <option value="" disabled selected>
+                  Post type
+                </option>
+                <option value="Lost">Lost</option>
+                <option value="Found">Found</option>
+              </select>
+            </div>
           </div>
 
           <div className="">
             <h1 className="mb-2 font-semibold text-xl">Item Information </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="thumbnail"
-                placeholder="Item Photo URL"
-                className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-                id="grid-first-name w-full"
-              />
-              <input
-                type="text"
-                name="location"
-                placeholder="location"
-                className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              />
-              <select
-                name="category"
-                className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              >
-                <option value="" disabled selected>
+              <div className="Item image">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Item Image
+                </label>
+                <input
+                  type="text"
+                  name="thumbnail"
+                  placeholder="Item Photo URL"
+                  className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+                  id="grid-first-name w-full"
+                />
+              </div>
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="location"
+                  className="appearance-none block w-full focus:-border-blue-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                />
+              </div>
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
                   Category
-                </option>
-                <option value="pets">pets</option>
-                <option value="gadgets">gadgets</option>
-                <option value="documents">documents</option>
-                <option value="other">others</option>
-              </select>
+                </label>
+                <select
+                  name="category"
+                  className="appearance-none block w-full focus:-border-blue-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                >
+                  <option value="" disabled selected>
+                    Category
+                  </option>
+                  <option value="pets">pets</option>
+                  <option value="gadgets">gadgets</option>
+                  <option value="documents">documents</option>
+                  <option value="other">others</option>
+                </select>
+              </div>
 
-              <DatePicker
-                name="date"
-                className="w-full  appearance-none block  focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-              />
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Date
+                </label>
+                <DatePicker
+                  name="date"
+                  className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                />
+              </div>
             </div>
           </div>
 
@@ -121,13 +170,13 @@ const AddItem = () => {
                 type="text"
                 name="name"
                 value={user?.displayName}
-                className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
               />
               <input
                 type="text"
                 name="email"
                 value={user?.email}
-                className="appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
               />
             </div>
           </div>
@@ -142,7 +191,7 @@ const AddItem = () => {
             <textarea
               type="text"
               name="description"
-              className=" text-start h-40 appearance-none block w-full focus:-border-blue-500 bg-gray-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+              className=" text-start h-40 appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
             />
           </div>
 

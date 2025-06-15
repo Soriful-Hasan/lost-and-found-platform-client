@@ -31,7 +31,7 @@ const About = () => {
           necessary for an effective and efficient online lost and found."
         </p>
       </div>
-      <div className="">
+      <section className="">
         <h1 className="text-2xl font-bold mt-30">Step-By-Step Process</h1>
         <div className="border-b mt-2 border-gray-200"></div>
         <div className="mt-10 space-y-4 text-gray-600 mb-10">
@@ -60,7 +60,7 @@ const About = () => {
             on your entry.
           </p>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

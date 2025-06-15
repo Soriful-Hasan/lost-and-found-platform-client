@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
   const [dropDown, setDropDown] = useState(false);
-  const userEmail = user?.email;
+  
   const handleSignOut = () => {
     userSignOut()
       .then((res) =>
@@ -210,6 +210,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               to={"/signIn"}
               className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
             >
