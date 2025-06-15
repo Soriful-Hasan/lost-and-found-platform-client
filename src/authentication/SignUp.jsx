@@ -3,6 +3,7 @@ import UserContext from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
+import ButtonAnimation from "../components/animation/ButtonAnimation";
 
 const SignUp = () => {
   const { signUpUser, updateUserProfile, user, signInWithGoogle } =
@@ -160,12 +161,14 @@ const SignUp = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="p-3 font-bold cursor-pointer hover:bg-blue-500  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
-              >
-                Sign up
-              </button>
+              <ButtonAnimation>
+                <button
+                  type="submit"
+                  className="p-3 font-bold cursor-pointer hover:bg-blue-500  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
+                >
+                  Sign up
+                </button>
+              </ButtonAnimation>
               <div className="divider">OR</div>
             </form>
             <button

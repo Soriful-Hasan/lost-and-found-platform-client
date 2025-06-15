@@ -8,11 +8,12 @@ import { RiStickyNoteAddFill } from "react-icons/ri";
 import { RiDeviceRecoverFill } from "react-icons/ri";
 import { BsPersonFill } from "react-icons/bs";
 import Swal from "sweetalert2";
+import ButtonAnimation from "./animation/ButtonAnimation";
 
 const Navbar = () => {
-  const { user, userSignOut } = useContext(UserContext);
+  const { user, userSignOut, loading } = useContext(UserContext);
   const [dropDown, setDropDown] = useState(false);
-  
+
   const handleSignOut = () => {
     userSignOut()
       .then((res) =>
@@ -153,12 +154,7 @@ const Navbar = () => {
           </div>
           <div className="hidden lg:block">
             <div className="flex items-center font-bold gap-2 ">
-              <img
-                width="30"
-                height="30"
-                src="/logo.png"
-                alt="smartthings-find"
-              />
+              <img width="30" height="30" src="/logo.png" alt="logo" />
               <h1 className="">
                 <span className="text-blue-800 text-xl">FindIt</span>
               </h1>
@@ -186,27 +182,40 @@ const Navbar = () => {
             </ul>
           </div>
           {user ? (
-            <div className="flex gap-4 ">
-              <div className="avatar cursor-pointer">
-                <div className="w-12 rounded-full">
-                  <button
-                    className="cursor-pointer"
-                    popoverTarget="popover-1"
-                    style={
-                      { anchorName: "--anchor-1" } /* as React.CSSProperties */
-                    }
+            <div>
+              {loading ? (
+                <span className="loading loading-ring loading-lg"></span>
+              ) : (
+                <div className="flex gap-4 ">
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip={user?.displayName}
                   >
-                    <img src={`${user?.photoURL}`} />
-                  </button>
-                </div>
-              </div>
+                    <div className="avatar cursor-pointer">
+                      <div className="w-12 rounded-full">
+                        <button
+                          className="cursor-pointer"
+                          popoverTarget="popover-1"
+                          style={
+                            {
+                              anchorName: "--anchor-1",
+                            } /* as React.CSSProperties */
+                          }
+                        >
+                          <img src={`${user?.photoURL}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-              <Link
-                onClick={handleSignOut}
-                className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
-              >
-                Sign out <RxExit />
-              </Link>
+                  <Link
+                    onClick={handleSignOut}
+                    className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
+                  >
+                    Sign out <RxExit />
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <Link

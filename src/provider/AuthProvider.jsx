@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(null);
+  console.log(token);
 
   const signUpUser = (email, password) => {
     setLoading(true);
@@ -53,7 +54,7 @@ const AuthProvider = ({ children }) => {
     });
     return () => unSubscribe();
   }, [auth]);
-  console.log(loading);
+
   const authInfo = {
     signUpUser,
     signInUser,

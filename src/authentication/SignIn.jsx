@@ -3,6 +3,7 @@ import UserContext from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
+import ButtonAnimation from "../components/animation/ButtonAnimation";
 const SignIn = () => {
   const { signInUser, user, setUser, signInWithGoogle } =
     useContext(UserContext);
@@ -45,7 +46,7 @@ const SignIn = () => {
           icon: "success",
           draggable: true,
         });
-        console.log(res.user.accessToken);
+
         navigate(goState);
       })
       .catch((error) => {
@@ -89,12 +90,14 @@ const SignIn = () => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="p-3 hover:bg-blue-500 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
-            >
-              Sign in
-            </button>
+           
+              <button
+                type="submit"
+                className="p-3 hover:bg-blue-500 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
+              >
+                Sign in
+              </button>
+            
           </form>
           <div className="divider">OR</div>
           <button

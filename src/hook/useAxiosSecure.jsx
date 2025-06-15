@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
           .then((res) => {
             setLoading(false);
           })
-          .catch((error) => console.log("error"));
+          .catch((error) => {});
       }
       return Promise.reject(error);
     }

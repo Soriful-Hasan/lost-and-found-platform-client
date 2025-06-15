@@ -5,9 +5,12 @@ import useUserContext from "../../hook/ContextHook";
 import RecoveredItemRow from "./RecoveredItemRow";
 import RecoveredItemCard from "./RecoveredItemCard";
 import { ImTable2 } from "react-icons/im";
-import { PiCardsThreeFill } from "react-icons/pi";
+import { PiCardsFill, PiCardsThreeFill } from "react-icons/pi";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import useApplicationApi from "../../api/useApplicationApi";
+import { FaTable } from "react-icons/fa";
+import RecoverNoData from "../../components/noData/RecoverNoData";
+import NoDataFound from "../../components/NoDataFound";
 
 const RecoveredItems = () => {
   const [recoveredItems, setRecoveredItems] = useState([]);
@@ -28,23 +31,27 @@ const RecoveredItems = () => {
 
   return (
     <div className="">
-      <div className="  flex justify-center">
-        <div className="dropdown dropdown-start">
-          <div tabIndex={0} role="button" className="btn m-1">
-            Change layout format <MdKeyboardDoubleArrowDown />
+      <div className="space-y-2 w-10/12 mx-auto">
+        <h1 className="text-[#4A8F7D] text-center text-xl font-semibold mb-4">
+          Change Layout
+        </h1>
+        <div className="  flex gap-6 items-center justify-center">
+          <div className="bg-gray-100 hover:bg-gray-200 p-3 rounded-full">
+            <PiCardsFill
+              size={30}
+              className="cursor-pointer  "
+              onClick={() => setTableFormat(false)}
+            />
           </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-          >
-            <li>
-              <a onClick={() => setTableFormat(true)}>Table</a>
-            </li>
-            <li>
-              <a onClick={() => setTableFormat(false)}>Card</a>
-            </li>
-          </ul>
+          <div className="bg-gray-100 hover:bg-gray-200 cursor pointer p-3 rounded-full">
+            <FaTable
+              size={30}
+              className="cursor-pointer "
+              onClick={() => setTableFormat(true)}
+            />
+          </div>
         </div>
+        <div className="border-b border-gray-200"></div>
       </div>
 
       {tableFormat ? (
@@ -60,20 +67,33 @@ const RecoveredItems = () => {
                   <th>Recovery Location</th>
                 </tr>
               </thead>
-              <tbody className="bg-white">
-                {recoveredItems?.map((item, index) => (
-                  <RecoveredItemRow key={index} item={item}></RecoveredItemRow>
-                ))}
-              </tbody>
+              {recoveredItems.length === 0 ? (
+                <RecoverNoData></RecoverNoData>
+              ) : (
+                <tbody className="bg-white">
+                  {recoveredItems?.map((item, index) => (
+                    <RecoveredItemRow
+                      key={index}
+                      item={item}
+                    ></RecoveredItemRow>
+                  ))}
+                </tbody>
+              )}
             </table>
           </div>
         </>
       ) : (
         <div className="w-10/12 mt-4 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {recoveredItems?.map((item, index) => (
-            // <div>{item.recoverUserEmail}</div>
-            <RecoveredItemCard key={index} item={item}></RecoveredItemCard>
-          ))}
+          {recoveredItems.length === 0 ? (
+            <RecoverNoData></RecoverNoData>
+          ) : (
+            <div className="">
+              {recoveredItems?.map((item, index) => (
+                // <div>{item.recoverUserEmail}</div>
+                <RecoveredItemCard key={index} item={item}></RecoveredItemCard>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

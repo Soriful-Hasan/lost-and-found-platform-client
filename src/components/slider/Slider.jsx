@@ -6,6 +6,7 @@ import { GoArrowUpRight } from "react-icons/go";
 
 import { Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router";
+import ButtonAnimation from "../animation/ButtonAnimation";
 
 const Slider = () => {
   return (
@@ -20,13 +21,16 @@ const Slider = () => {
           something or found an item, <br /> our site makes it easy to report
           and search.
         </p>
-        <Link
+        <ButtonAnimation>
+          <Link
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/allPosts"}
           className="btn rounded-xl  bg-[#443dff] text-white"
         >
           Explore Now <GoArrowUpRight />
         </Link>
+        </ButtonAnimation>
+        
       </div>
 
       <Swiper

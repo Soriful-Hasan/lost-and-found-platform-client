@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { BiSolidCalendarCheck } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import ButtonAnimation from "../../components/animation/ButtonAnimation";
 
 const AllItemsCard = ({ post }) => {
   const {
@@ -44,13 +45,15 @@ const AllItemsCard = ({ post }) => {
             {location}
           </p>
           <div className="card-actions justify-end">
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to={`/itemDetails/${_id}`}
-              className="btn shadow-sm hover:bg-blue-500 bg-[#443dff] flex gap-2  text-white border-none btn-primary"
-            >
-              see item <HiOutlineArrowLongRight />
-            </Link>
+            <ButtonAnimation>
+              <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={`/itemDetails/${_id}`}
+                className="btn shadow-sm hover:bg-blue-500 bg-[#443dff] flex gap-2  text-white border-none btn-primary"
+              >
+                see item <HiOutlineArrowLongRight />
+              </Link>
+            </ButtonAnimation>
           </div>
         </div>
       </div>

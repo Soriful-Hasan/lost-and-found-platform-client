@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useApplicationApi from "../../api/useApplicationApi";
 import Swal from "sweetalert2";
+import ButtonAnimation from "../../components/animation/ButtonAnimation";
 
 const EditPost = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -30,7 +31,7 @@ const EditPost = () => {
     const data = Object.fromEntries(formData.entries());
     data.postType = selectPostType;
     data.category = selectCategory;
-    console.log(data);
+
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/updatePost/${_id}`, data)
       .then((res) => {
@@ -49,7 +50,6 @@ const EditPost = () => {
           draggable: true,
         })
       );
-    console.log(data);
   };
 
   const {
@@ -66,7 +66,7 @@ const EditPost = () => {
   } = item;
 
   const [selectPostType, setSelectPostType] = useState("");
-  console.log(selectPostType);
+
   useEffect(() => {
     if (postType) {
       setSelectPostType(postType);
@@ -74,7 +74,7 @@ const EditPost = () => {
   }, [postType]);
 
   const [selectCategory, setSelectCategory] = useState("");
-  console.log(selectCategory);
+
   useEffect(() => {
     if (category) {
       setSelectCategory(category);
@@ -245,12 +245,14 @@ const EditPost = () => {
           </div>
 
           <div className="">
-            <button
-              type="submit"
-              className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
-            >
-              Update Post
-            </button>
+            <ButtonAnimation>
+              <button
+                type="submit"
+                className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
+              >
+                Update Post
+              </button>
+            </ButtonAnimation>
           </div>
         </form>
       </div>

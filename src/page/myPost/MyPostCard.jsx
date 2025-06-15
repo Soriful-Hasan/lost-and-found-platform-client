@@ -34,7 +34,7 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
               });
             }
           })
-          .catch((err) => console.log(err));
+          .catch((err) =>{});
       }
     });
   };

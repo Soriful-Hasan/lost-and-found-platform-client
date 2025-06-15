@@ -7,33 +7,54 @@ import About from "../section/About";
 import { Link } from "react-router";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { LiaGripfire } from "react-icons/lia";
+import ClientsSetisfied from "../page/satisfiedClients/ClientsSetisfied";
+import AnimationSection from "../components/animation/AnimationSection";
+import Loader from "../components/Loader";
+import Process from "../section/Process";
 
 const Home = () => {
   const [items, setItems] = useState();
+  const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_apiUrl}/getItems`)
-      .then((res) => setItems(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((res) => {
+        setItems(res.data);
+        setDataLoading(false);
+      })
+      .catch((error) => {});
   }, []);
+
+  if (dataLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="">
       <div className="">
         <Slider></Slider>
       </div>
-      <div className="w-10/12 mx-auto mt-20 flex items-center gap-2">
-        <LiaGripfire size={30} color="#ff9a00" />
-        <h1 className="text-2xl font-semibold">Recent Post</h1>
+      <div className="place-items-center mt-10 w-10/12 mx-auto">
+        <div className="flex items-center gap-2">
+          <LiaGripfire size={30} color="#ff9a00" />
+          <h1 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
+            Recent Post
+          </h1>
+        </div>
+        <p className="text-gray-600 text-sm">
+          These are the latest items reported or found. <br />
+          Check them out — maybe one of them is yours!
+        </p>
       </div>
-      <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
-        {items?.map((item, index) => (
-          <ItemCards key={index} item={item}></ItemCards>
-        ))}
-      </div>
+
+      <AnimationSection>
+        <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+          {items?.map((item, index) => (
+            <ItemCards key={index} item={item}></ItemCards>
+          ))}
+        </div>
+      </AnimationSection>
       <div className=" flex justify-center mt-16">
         <Link
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -43,8 +64,12 @@ const Home = () => {
           View All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>
       </div>
-      <div className="w-10/12 mx-auto mt-20">
+      <div className="w-10/12 mx-auto mt-30">
         <About></About>
+        <AnimationSection>
+          <Process></Process>
+        </AnimationSection>
+        <ClientsSetisfied></ClientsSetisfied>
       </div>
     </div>
   );

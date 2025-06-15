@@ -12,6 +12,7 @@ import useApplicationApi from "../../api/useApplicationApi";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
+import ButtonAnimation from "../../components/animation/ButtonAnimation";
 
 const ItemDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,10 +21,11 @@ const ItemDetails = () => {
   const { id } = useParams();
   const user = useUserContext();
   const { postDetailsPromise } = useApplicationApi();
+  const [reload, setReload] = useState(false);
   const userName = user?.displayName;
   const userEmail = user?.email;
 
-  const handleDataSubmitModal = (e, _id, userName, userEmail) => {
+  const handleDataSubmitModal = async (e, _id, userName, userEmail) => {
     e.preventDefault();
     const form = e.target;
     const location = form.location.value;
@@ -56,9 +58,10 @@ const ItemDetails = () => {
             icon: "success",
             draggable: true,
           });
+          setReload(!reload);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {});
   };
 
   useEffect(() => {
@@ -67,7 +70,7 @@ const ItemDetails = () => {
       setItem(data);
     };
     postDetailsData();
-  }, [id, postDetailsPromise]);
+  }, [id, postDetailsPromise, reload]);
 
   const {
     title,
@@ -171,14 +174,16 @@ const ItemDetails = () => {
               <div className=" flex gap-4 mt-4">
                 {postType == "Lost" && (
                   <>
-                    <button
-                      className="btn hover:bg-blue-500 mt-4 bg-[#443dff] text-white"
-                      onClick={() =>
-                        document.getElementById("my_modal_1").showModal()
-                      }
-                    >
-                      Found This
-                    </button>
+                    <ButtonAnimation>
+                      <button
+                        className="btn hover:bg-blue-500 mt-4 bg-[#443dff] text-white"
+                        onClick={() =>
+                          document.getElementById("my_modal_1").showModal()
+                        }
+                      >
+                        Found This
+                      </button>
+                    </ButtonAnimation>
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <div className="">
@@ -249,15 +254,19 @@ const ItemDetails = () => {
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
-                              <button
-                                onClick={() => {
-                                  document.getElementById("my_modal_1").close();
-                                }}
-                                type="submit"
-                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
-                              >
-                                Submit recover
-                              </button>
+                              <ButtonAnimation>
+                                <button
+                                  onClick={() => {
+                                    document
+                                      .getElementById("my_modal_1")
+                                      .close();
+                                  }}
+                                  type="submit"
+                                  className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                                >
+                                  Submit recover
+                                </button>
+                              </ButtonAnimation>
                             </div>
                           </form>
                         </div>
@@ -267,14 +276,16 @@ const ItemDetails = () => {
                 )}
                 {postType == "Found" && (
                   <>
-                    <button
-                      className="btn hover:bg-blue-500  bg-[#443dff] text-white"
-                      onClick={() =>
-                        document.getElementById("my_modal_1").showModal()
-                      }
-                    >
-                      This Is Mine
-                    </button>
+                    <ButtonAnimation>
+                      <button
+                        className="btn hover:bg-blue-500  bg-[#443dff] text-white"
+                        onClick={() =>
+                          document.getElementById("my_modal_1").showModal()
+                        }
+                      >
+                        This Is Mine
+                      </button>
+                    </ButtonAnimation>
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <div className="">
@@ -343,15 +354,19 @@ const ItemDetails = () => {
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
-                              <button
-                                onClick={() => {
-                                  document.getElementById("my_modal_1").close();
-                                }}
-                                type="submit"
-                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
-                              >
-                                Submit recover
-                              </button>
+                              <ButtonAnimation>
+                                <button
+                                  onClick={() => {
+                                    document
+                                      .getElementById("my_modal_1")
+                                      .close();
+                                  }}
+                                  type="submit"
+                                  className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                                >
+                                  Submit recover
+                                </button>
+                              </ButtonAnimation>
                             </div>
                           </form>
                         </div>

@@ -10,11 +10,11 @@ const RecoveredItemCard = ({ item }) => {
       <div className="card  bg-white  w-full shadow-sm">
         <div className="card-body">
           <h2 className="font-semibold flex items-center gap-2">
-            <FaUserCircle color="#443dff" />
+            <FaUserCircle color="" />
             Recovered by {item.recoverUserName}
           </h2>
           <h2 className="font-semibold flex items-center gap-2">
-            <MdEmail color="#443dff" />
+            <MdEmail color="red" />
             {item.recoverUserEmail}
           </h2>
           <p className="flex items-center gap-2 ">
@@ -23,7 +23,7 @@ const RecoveredItemCard = ({ item }) => {
           </p>
 
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#443dff" />
+            <IoLocationSharp color="red" />
             {item.recoverLocation}
           </p>
         </div>

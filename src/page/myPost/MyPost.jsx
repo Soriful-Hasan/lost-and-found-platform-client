@@ -11,7 +11,7 @@ const MyPost = () => {
   const user = useUserContext();
   const email = user?.email;
   const [dataLoading, setDataLoading] = useState(true);
-  console.log(dataLoading);
+
   const [myPosts, setMyPosts] = useState([]);
   const { myPostPromise } = useApplicationApi();
 

@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useApplicationApi from "../../api/useApplicationApi";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import ButtonAnimation from "../../components/animation/ButtonAnimation";
 const AddItem = () => {
   const { user } = useContext(UserContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -16,7 +17,6 @@ const AddItem = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    
 
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/addItem`, data)
@@ -196,12 +196,14 @@ const AddItem = () => {
           </div>
 
           <div className="">
-            <button
-              type="submit"
-              className="btn hover:bg-blue-500 bg-[#443dff] text-white w-full lg:w-2/12 "
-            >
-              Submit Post
-            </button>
+            <ButtonAnimation>
+              <button
+                type="submit"
+                className="btn hover:bg-blue-500 bg-[#443dff] text-white w-full lg:w-2/12 "
+              >
+                Submit Post
+              </button>
+            </ButtonAnimation>
           </div>
         </form>
       </div>

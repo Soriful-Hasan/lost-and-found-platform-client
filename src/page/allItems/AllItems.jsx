@@ -2,23 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AllPostCard from "./AllItemsCard";
 import AllItemsCard from "./AllItemsCard";
+import Loader from "../../components/Loader";
 
 
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [search, setSearch] = useState("");
-
+  const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_apiUrl}/allPosts?search=${search}`)
       .then((res) => {
         setAllPosts(res.data);
+        setDataLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, [search]);
+
+  if (dataLoading) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="">
       <div className="flex justify-center mt-4 w-8/12 mx-auto">
