@@ -2,6 +2,7 @@ import React, { use, useContext } from "react";
 import UserContext from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUpUser, updateUserProfile, user, signInWithGoogle } =
@@ -23,13 +24,25 @@ const SignUp = () => {
 
     // password validation
     if (password.length < 6) {
-      return console.log("password must have 6 character");
+      return Swal.fire({
+        title: "Password must have 6 character",
+        icon: "error",
+        draggable: true,
+      });
     }
     if (!password.match(/[A-Z]/g)) {
-      return console.log("password must have 1 lower case latter");
+      return Swal.fire({
+        title: "Password must have 1 uppercase case latter",
+        icon: "error",
+        draggable: true,
+      });
     }
     if (!password.match(/[a-z]/g)) {
-      return console.log("password must have 1 up er case latter");
+      return Swal.fire({
+        title: "Password must have 1 lowercase  latter",
+        icon: "error",
+        draggable: true,
+      });
     }
 
     const userData = {
@@ -41,35 +54,53 @@ const SignUp = () => {
     signUpUser(email, password)
       .then((res) => {
         updateUserProfile(user, userData)
-          .then((res) => console.log("user profile updated", res))
-          .catch((error) => console.log(error));
+          .then((res) => {})
+          .catch((error) => {});
         navigate(goState);
-        alert("user signUp Successfully");
+        Swal.fire({
+          title: "Sign up successfully",
+          icon: "success",
+          draggable: true,
+        });
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        Swal.fire({
+          title: "Something was wrong",
+          icon: "error",
+          draggable: true,
+        })
+      );
   };
 
   // google login
   const loginWithGoogle = () => {
     signInWithGoogle()
       .then((res) => {
-        console.log("Google Login SuccessFully");
+        Swal.fire({
+          title: "Sign up successfully",
+          icon: "success",
+          draggable: true,
+        });
         navigate(goState);
       })
       .catch((error) => {
-        console.log("something was wrong");
+        Swal.fire({
+          title: "Something was wrong",
+          icon: "error",
+          draggable: true,
+        });
       });
   };
 
   return (
     <div className="hero">
-      <div className="  rounded-xl bg-[#EEEEF2]  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
+      <div className="  rounded-xl bg-white  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
         <div className="">
-          <div className="space-y-2 place-items-center text-center">
+          <div className="space-y-2 mt-5 place-items-center text-center">
             <img
-              width="100"
+              width="80"
               height="100"
-              src="https://img.icons8.com/stickers/100/smartthings-find.png"
+              src="/logo.png"
               alt="smartthings-find"
             />
             <h1 className="font-bold text-xl">Join us today</h1>
@@ -85,9 +116,10 @@ const SignUp = () => {
                   Full Name
                 </label>
                 <input
+                  required
                   type="text"
                   name="name"
-                  className="  rounded-xl bg-white border p-3 border-gray-300 focus:outline-none w-full"
+                  className="  rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"
                   placeholder="Jane Doe"
                 />
               </div>
@@ -96,9 +128,10 @@ const SignUp = () => {
                   Image
                 </label>
                 <input
+                  required
                   type="url"
                   name="photo"
-                  className="rounded-xl bg-white border p-3 border-gray-300 focus:outline-none w-full"
+                  className="rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"
                   placeholder="Photo URL"
                 />
               </div>
@@ -107,9 +140,10 @@ const SignUp = () => {
                   Email
                 </label>
                 <input
+                  required
                   type="email"
                   name="email"
-                  className="rounded-xl bg-white border p-3 border-gray-300 focus:outline-none w-full"
+                  className="rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"
                   placeholder="example@gmail.com"
                 />
               </div>
@@ -118,16 +152,17 @@ const SignUp = () => {
                   Password
                 </label>
                 <input
+                  required
                   type="password"
                   name="password"
-                  className="rounded-xl border bg-white p-3 border-gray-300 focus:outline-none w-full"
+                  className="rounded-xl border bg-gray-100 p-3 border-gray-300 focus:outline-none w-full"
                   placeholder="**********"
                 />
               </div>
 
               <button
                 type="submit"
-                className="p-3 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
+                className="p-3 font-bold cursor-pointer hover:bg-blue-500  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
               >
                 Sign up
               </button>
@@ -135,7 +170,7 @@ const SignUp = () => {
             </form>
             <button
               onClick={loginWithGoogle}
-              className="cursor-pointer p-3 flex items-center justify-center font-semibold text-sm gap-2 rounded-xl  bg-white text-black border-[#e5e5e5]"
+              className="cursor-pointer  p-3 flex items-center hover:bg-gray-300 justify-center font-semibold text-sm gap-2 rounded-xl  bg-gray-100 text-black border-[#e5e5e5]"
             >
               <FcGoogle size={20} /> Signup with Google
             </button>

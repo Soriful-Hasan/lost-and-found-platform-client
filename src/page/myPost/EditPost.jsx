@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useApplicationApi from "../../api/useApplicationApi";
+import Swal from "sweetalert2";
 
 const EditPost = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -27,15 +28,27 @@ const EditPost = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    data.postType = selectPostType;
+    data.category = selectCategory;
     console.log(data);
     axiosSecure
       .post(`${import.meta.env.VITE_apiUrl}/updatePost/${_id}`, data)
       .then((res) => {
         if (res.data.modifiedCount === 1) {
-          alert("Update Data Successfully");
+          Swal.fire({
+            title: "Update post successfully",
+            icon: "success",
+            draggable: true,
+          });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        Swal.fire({
+          title: "Something was wrong",
+          icon: "error",
+          draggable: true,
+        })
+      );
     console.log(data);
   };
 
@@ -47,11 +60,28 @@ const EditPost = () => {
     description,
     category,
     location,
+    postType,
     date,
     _id,
   } = item;
+
+  const [selectPostType, setSelectPostType] = useState("");
+  console.log(selectPostType);
+  useEffect(() => {
+    if (postType) {
+      setSelectPostType(postType);
+    }
+  }, [postType]);
+
+  const [selectCategory, setSelectCategory] = useState("");
+  console.log(selectCategory);
+  useEffect(() => {
+    if (category) {
+      setSelectCategory(category);
+    }
+  }, [category]);
   return (
-    <div className="shadow-xl bg-gray-100 rounded-sm p-8 lg:w-8/12 mx-auto">
+    <div className="shadow-sm bg-white mb-4 rounded-sm p-8 lg:w-8/12 mx-auto">
       <div className="">
         <div className="flex items-center gap-2">
           <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
@@ -68,7 +98,30 @@ const EditPost = () => {
             <div className="item-start mb-4 w-full ">
               <h2 className="font-semibold text-xl">Item Details</h2>
             </div>
+            <div className="">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="username"
+              >
+                Title
+              </label>
+              <input
+                type="text"
+                defaultValue={title}
+                name="title"
+                placeholder="Title"
+                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+              />
+            </div>
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="username"
+            >
+              Post Type
+            </label>
             <select
+              value={selectPostType}
+              onChange={(e) => setSelectPostType(e.target.value)}
               name="postType"
               className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
             >
@@ -78,55 +131,83 @@ const EditPost = () => {
               <option value="Lost">Lost</option>
               <option value="Found">Found</option>
             </select>
-            <div className="w-full ">
-              <DatePicker
-                defaultValue={date}
-                name="date"
-                className="appearance-none w-full block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-              />
-            </div>
+
+            {/* date piker */}
           </div>
 
           <div className="">
             <h1 className="mb-3 font-semibold text-xl">Item Information </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="thumbnail"
-                defaultValue={thumbnail}
-                placeholder="Item Photo URL"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-                id="grid-first-name w-full"
-              />
-              <input
-                type="text"
-                defaultValue={title}
-                name="title"
-                placeholder="Title"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-              />
-              <select
-                defaultValue={category}
-                name="category"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              >
-                <option value="" disabled selected>
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Thumbnail
+                </label>
+                <input
+                  type="text"
+                  name="thumbnail"
+                  defaultValue={thumbnail}
+                  placeholder="Item Photo URL"
+                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
+                  id="grid-first-name w-full"
+                />
+              </div>
+
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  defaultValue={location}
+                  placeholder="location"
+                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                />
+              </div>
+
+              <div className="">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
                   Category
-                </option>
-                <option value="pets">pets</option>
-                <option value="gadgets">gadgets</option>
-                <option value="documents">documents</option>
-                <option value="other">others</option>
-              </select>
-              <input
-                type="text"
-                name="location"
-                defaultValue={location}
-                placeholder="location"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              />
+                </label>
+                <select
+                  value={selectCategory}
+                  onChange={(e) => setSelectCategory(e.target.value)}
+                  name="category"
+                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                >
+                  <option value="" disabled selected>
+                    Category
+                  </option>
+                  <option value="pets">pets</option>
+                  <option value="gadgets">gadgets</option>
+                  <option value="documents">documents</option>
+                  <option value="other">others</option>
+                </select>
+              </div>
+              <div className="w-full">
+                <label
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Date
+                </label>
+                <DatePicker
+                  defaultValue={date}
+                  name="date"
+                  className="appearance-none w-full block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                />
+              </div>
             </div>
           </div>
 

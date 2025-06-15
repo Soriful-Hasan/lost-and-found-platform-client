@@ -10,6 +10,7 @@ import MyPost from "../page/myPost/MyPost";
 import AllPosts from "../page/allItems/AllItems";
 import EditPost from "../page/myPost/EditPost";
 import RecoveredItems from "../page/recoverdItem/RecoveredItems";
+import ErrorPage from "../components/error-page/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -79,6 +80,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>Error khaisos beta </h1>,
+    element: <ErrorPage></ErrorPage>,
   },
 ]);

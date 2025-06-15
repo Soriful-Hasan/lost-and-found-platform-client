@@ -5,3 +5,9 @@
 * {
   font-family: "Mona Sans", sans-serif;
 }
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  width: 100%;
+}

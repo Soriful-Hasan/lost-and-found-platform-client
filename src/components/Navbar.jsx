@@ -7,6 +7,7 @@ import { MdSelectAll } from "react-icons/md";
 import { RiStickyNoteAddFill } from "react-icons/ri";
 import { RiDeviceRecoverFill } from "react-icons/ri";
 import { BsPersonFill } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(UserContext);
@@ -14,13 +15,26 @@ const Navbar = () => {
   const userEmail = user?.email;
   const handleSignOut = () => {
     userSignOut()
-      .then((res) => alert("user sign out from navbar"))
-      .catch((error) => console.log("error"));
+      .then((res) =>
+        Swal.fire({
+          title: "Sign out successfully",
+          icon: "success",
+          draggable: true,
+        })
+      )
+      .catch((error) =>
+        Swal.fire({
+          title: "Something was wrong",
+          icon: "error",
+          draggable: true,
+        })
+      );
   };
   const link = [
     <div className="flex flex-col gap-4 lg:flex-row">
       <li>
         <NavLink
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/"}
           className={({ isActive }) =>
             ` 
@@ -36,6 +50,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/allPosts"}
           className={({ isActive }) =>
             ` 
@@ -56,6 +71,7 @@ const Navbar = () => {
     <div className="">
       <li>
         <NavLink
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             ` 
            flex items-center
@@ -71,6 +87,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             ` 
            flex items-center
@@ -86,6 +103,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             ` 
            flex items-center
@@ -105,7 +123,7 @@ const Navbar = () => {
     <div className="">
       <div
         className="navbar 
-       fixed bg-[#EEEEF2] top-0 z-50 "
+       fixed bg-white border-b border-gray-200 top-0 z-50 "
       >
         <div className="navbar-start ">
           <div className="dropdown">
@@ -136,12 +154,14 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <div className="flex items-center font-bold gap-2 ">
               <img
-                width="50"
+                width="30"
                 height="30"
-                src="https://img.icons8.com/stickers/100/smartthings-find.png"
+                src="/logo.png"
                 alt="smartthings-find"
               />
-              <h1>Here is it</h1>
+              <h1 className="">
+                <span className="text-blue-800 text-xl">FindIt</span>
+              </h1>
             </div>
           </div>
         </div>
@@ -190,7 +210,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link
-              to={"/signUp"}
+              to={"/signIn"}
               className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
             >
               Sign In

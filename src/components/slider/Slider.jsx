@@ -48,7 +48,7 @@ const Slider = () => {
       >
         <SwiperSlide>
           <img
-            src="/slider2.png"
+            src="/slider1.png"
             className=" w-full h-full object-cover"
             alt=""
           />
