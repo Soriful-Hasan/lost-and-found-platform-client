@@ -49,18 +49,18 @@ const RecoveredItems = () => {
 
       {tableFormat ? (
         <>
-          <div className="w-10/12 mx-auto mt-4 overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+          <div className="w-10/12 mx-auto mt-4 overflow-x-auto  border border-base-content/5 bg-base-100">
             <table className="table ">
               {/* head */}
               <thead className="bg-[#443dff] text-white ">
-                <tr>
-                  <th>Email</th>
+                <tr className="">
+                  <th className="">Email</th>
                   <th>Recovered By</th>
                   <th>Recovery Date</th>
                   <th>Recovery Location</th>
                 </tr>
               </thead>
-              <tbody className="bg-[#F6F6F6]">
+              <tbody className="bg-white">
                 {recoveredItems?.map((item, index) => (
                   <RecoveredItemRow key={index} item={item}></RecoveredItemRow>
                 ))}

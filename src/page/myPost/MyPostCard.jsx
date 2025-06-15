@@ -40,12 +40,12 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
   };
 
   return (
-    <tr>
-      <td>{title}</td>
-      <td>{location}</td>
-      <td>{postType}</td>
-      <td>{category}</td>
-      <td className="flex gap-4">
+    <tr className="">
+      <td className="border border-gray-200">{title}</td>
+      <td className="border border-gray-200">{location}</td>
+      <td className="border border-gray-200">{postType}</td>
+      <td className="border border-gray-200">{category}</td>
+      <td className="flex gap-4 border-r border-b border-gray-200">
         <Link
           to={`/editPost/${_id}`}
           className="bg-gray-200 p-4 cursor-pointer  rounded-full hover:bg-gray-300"
