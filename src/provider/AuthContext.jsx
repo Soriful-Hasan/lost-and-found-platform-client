@@ -3,4 +3,4 @@ import AuthProvider from "./AuthProvider";
 
 const UserContext = createContext(null);
 
-export default UserContext
+export default UserContext;

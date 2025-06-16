@@ -32,10 +32,7 @@ const AllItemsCard = ({ post }) => {
 
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
-          <p className="text-gray-700 text-sm line-clamp-2">
-            hello i am soriful hasana this product i found in our gardern and
-            this is my name best obption and this{description}
-          </p>
+          <p className="text-gray-700 text-sm line-clamp-2">{description}</p>
           <p className="flex items-center gap-2 ">
             <BiSolidCalendarCheck color="#443dff" />
             {date}
