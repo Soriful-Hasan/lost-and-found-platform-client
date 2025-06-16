@@ -102,7 +102,7 @@ const RecoveredItems = () => {
             <RecoverNoData></RecoverNoData>
           ) : (
             <div className="w-10/12 mt-4 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <div className="">
+             
                 {recoveredItems?.map((item, index) => (
                   // <div>{item.recoverUserEmail}</div>
                   <RecoveredItemCard
@@ -110,7 +110,7 @@ const RecoveredItems = () => {
                     item={item}
                   ></RecoveredItemCard>
                 ))}
-              </div>
+            
             </div>
           )}
         </div>

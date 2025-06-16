@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
 import ItemCards from "../page/items/ItemCards";
-import Slider from "../components/slider/Slider";
+
 import About from "../section/About";
 import { Link } from "react-router";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
@@ -12,6 +12,7 @@ import AnimationSection from "../components/animation/AnimationSection";
 import Loader from "../components/Loader";
 import Process from "../section/Process";
 import NoDataFound from "../components/NoDataFound";
+import Slider from "../components/slider/Slider";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -35,7 +36,7 @@ const Home = () => {
     <div className="">
       <title>Home</title>
       <div className="">
-        <Slider></Slider>
+      <Slider></Slider>
       </div>
       <div className="place-items-center mt-10 w-10/12 mx-auto">
         <div className="flex items-center gap-2">
