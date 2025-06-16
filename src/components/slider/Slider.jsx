@@ -11,12 +11,13 @@ import TypeWriter from "../typewriter/TypeWriter";
 
 const Slider = () => {
   return (
-    <div className="flex  flex-col flex-col-reverse xl:flex-row p-5  md:p-20 gap-4  mx-auto bg-white  ">
+    <div className="flex   flex-col flex-col-reverse xl:flex-row p-5  md:p-20 gap-4  mx-auto bg-white  ">
       <div className="pb-5 mb-4 flex-1 items-start flex flex-col gap-4 p-2 ">
-        <TypeWriter></TypeWriter>
+        <div className=""></div>
         <div className="mt-5">
-          <img className="w-100" src="/lost.svg" alt="" />
+          <img className="w-100 " src="/lost.svg" alt="" />
         </div>
+        <TypeWriter></TypeWriter>
         <p className="text-gray-600 text-sm">
           Welcome to our Lost and Found platform — your trusted place to reunite
           people <br /> with their lost belongings. Whether you've misplaced
@@ -67,7 +68,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://images.unsplash.com/photo-1698352709078-7dde09852142?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1528384541731-6606de53ddaf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             className="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] object-cover"
             alt=""
           />

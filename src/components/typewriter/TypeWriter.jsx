@@ -8,15 +8,15 @@ const TypeWriter = () => {
         style={{ paddingTop: "5rem", margin: "auto 0", fontWeight: "normal" }}
       >
         <span
-          className="text-3xl"
-          style={{ color: "#4A8F7D", fontWeight: "bold" }}
+          className="text-4xl "
+          style={{ color: "#4A8F7D", fontWeight: "bolder" }}
         >
           <Typewriter
             words={[
-              "Here is it is best lost and found item platform",
-              "Your Trusted Partner in Finding Lost Item",
+              " best lost and found item platform",
+              "Partner in Finding Lost Item",
               "Lost Something? We Help You Get It Back Fast!",
-              "Connecting People with Their Lost Belongings Safely",
+              "People with Their Lost Belongings Safely",
             ]}
             loop={true}
             cursor
