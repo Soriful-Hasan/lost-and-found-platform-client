@@ -13,6 +13,7 @@ import useAxiosSecure from "../../hook/useAxiosSecure";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import ButtonAnimation from "../../components/animation/ButtonAnimation";
+import Loader from "../../components/Loader";
 
 const ItemDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,6 +23,7 @@ const ItemDetails = () => {
   const user = useUserContext();
   const { postDetailsPromise } = useApplicationApi();
   const [reload, setReload] = useState(false);
+  const [dataLoading, setDataLoading] = useState(true);
   const userName = user?.displayName;
   const userEmail = user?.email;
 
@@ -70,6 +72,7 @@ const ItemDetails = () => {
     const postDetailsData = async () => {
       const data = await postDetailsPromise(id);
       setItem(data);
+      setDataLoading(false);
     };
     postDetailsData();
   }, [id, postDetailsPromise, reload]);
@@ -87,7 +90,9 @@ const ItemDetails = () => {
     _id,
     status,
   } = item;
-
+  if (dataLoading) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="xl:w-8/12  lg:w-10/12 mx-auto  flex flex-col">
       <title>Item details</title>
