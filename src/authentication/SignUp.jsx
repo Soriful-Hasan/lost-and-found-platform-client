@@ -94,9 +94,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className="hero mb-4 ">
+    <div className="hero  ">
       <title>Sign up</title>
-      <div className="  rounded-xl bg-white  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
+      <div className="mb-8  rounded-xl bg-white  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
         <div className="">
           <div className="space-y-2 mt-5 place-items-center text-center">
             <img

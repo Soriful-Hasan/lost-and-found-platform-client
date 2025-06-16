@@ -181,50 +181,59 @@ const Navbar = () => {
               {dropDownLink}
             </ul>
           </div>
-          {user ? (
-            <div>
-              {loading ? (
-                <span className="loading loading-ring loading-lg"></span>
-              ) : (
-                <div className="flex gap-4 ">
-                  <div
-                    className="tooltip tooltip-bottom"
-                    data-tip={user?.displayName}
-                  >
-                    <div className="avatar cursor-pointer">
-                      <div className="w-12 rounded-full">
-                        <button
-                          className="cursor-pointer"
-                          popoverTarget="popover-1"
-                          style={
-                            {
-                              anchorName: "--anchor-1",
-                            } /* as React.CSSProperties */
-                          }
-                        >
-                          <img src={`${user?.photoURL}`} />
-                        </button>
+
+          {loading ? (
+            <>
+              <span className="loading loading-ring loading-lg"></span>
+            </>
+          ) : (
+            <>
+              {user ? (
+                <div>
+                  <div>
+                    <div className="flex gap-4 ">
+                      <div
+                        className="tooltip tooltip-bottom"
+                        data-tip={user?.displayName}
+                      >
+                        <div className="avatar cursor-pointer">
+                          <div className="w-12 rounded-full">
+                            <button
+                              className="cursor-pointer"
+                              popoverTarget="popover-1"
+                              style={
+                                {
+                                  anchorName: "--anchor-1",
+                                } /* as React.CSSProperties */
+                              }
+                            >
+                              <img src={`${user?.photoURL}`} />
+                            </button>
+                          </div>
+                        </div>
                       </div>
+
+                      <Link
+                        onClick={handleSignOut}
+                        className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
+                      >
+                        Sign out <RxExit />
+                      </Link>
                     </div>
                   </div>
-
-                  <Link
-                    onClick={handleSignOut}
-                    className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
-                  >
-                    Sign out <RxExit />
-                  </Link>
                 </div>
+              ) : (
+                <Link
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                  to={"/signIn"}
+                  className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
+                >
+                  Sign In
+                </Link>
               )}
-            </div>
-          ) : (
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to={"/signIn"}
-              className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
-            >
-              Sign In
-            </Link>
+            </>
           )}
         </div>
       </div>
