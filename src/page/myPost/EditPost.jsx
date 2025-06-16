@@ -116,12 +116,13 @@ const EditPost = () => {
               />
             </div>
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700 text-sm font-bold mb-2"
               for="username"
             >
               Post Type
             </label>
             <select
+              required
               value={selectPostType}
               onChange={(e) => setSelectPostType(e.target.value)}
               name="postType"
@@ -177,12 +178,13 @@ const EditPost = () => {
 
               <div className="">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold mb-2"
                   for="username"
                 >
                   Category
                 </label>
                 <select
+                  required
                   value={selectCategory}
                   onChange={(e) => setSelectCategory(e.target.value)}
                   name="category"

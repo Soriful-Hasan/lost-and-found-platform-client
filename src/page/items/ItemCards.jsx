@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { BiSolidCalendarCheck } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
 import ButtonAnimation from "../../components/animation/ButtonAnimation";
 
 const ItemCards = ({ item }) => {
@@ -40,9 +40,7 @@ const ItemCards = ({ item }) => {
         </div>
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
-          <p className="text-gray-800 text-sm line-clamp-2">
-           {description}
-          </p>
+          <p className="text-gray-800 text-sm line-clamp-2">{description}</p>
           <p className="flex items-center gap-2 ">
             <BiSolidCalendarCheck color="#443dff" />
             {date}
@@ -58,7 +56,7 @@ const ItemCards = ({ item }) => {
                 to={`itemDetails/${_id}`}
                 className="btn hover:bg-blue-500 shadow-sm bg-[#443dff] flex gap-2  text-white border-none btn-primary"
               >
-                see item <HiOutlineArrowLongRight />
+                See item <FaArrowRightLong />
               </Link>
             </ButtonAnimation>
           </div>

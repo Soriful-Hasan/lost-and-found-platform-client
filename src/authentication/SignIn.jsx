@@ -73,6 +73,7 @@ const SignIn = () => {
                 Your Email
               </label>
               <input
+                required
                 type="email"
                 name="email"
                 className="rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"
@@ -84,6 +85,7 @@ const SignIn = () => {
                 Your Password
               </label>
               <input
+                required
                 type="password"
                 name="password"
                 className="rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"

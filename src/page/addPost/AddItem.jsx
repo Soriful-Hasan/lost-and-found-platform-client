@@ -68,6 +68,7 @@ const AddItem = () => {
                 Title
               </label>
               <input
+                required
                 type="text"
                 name="title"
                 placeholder="Title"
@@ -76,12 +77,13 @@ const AddItem = () => {
             </div>
             <div className="">
               <label
-                class="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-bold mb-2"
                 for="username"
               >
                 Post type
               </label>
               <select
+                required
                 name="postType"
                 className=" appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
               >
@@ -105,6 +107,7 @@ const AddItem = () => {
                   Item Image
                 </label>
                 <input
+                  required
                   type="text"
                   name="thumbnail"
                   placeholder="Item Photo URL"
@@ -120,6 +123,7 @@ const AddItem = () => {
                   location
                 </label>
                 <input
+                  required
                   type="text"
                   name="location"
                   placeholder="location"
@@ -155,6 +159,7 @@ const AddItem = () => {
                   Date
                 </label>
                 <DatePicker
+                  required
                   name="date"
                   className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                   selected={selectedDate}
@@ -168,12 +173,14 @@ const AddItem = () => {
             <h1 className="mb-2 font-semibold text-xl">Contact Information</h1>
             <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
               <input
+                required
                 type="text"
                 name="name"
                 value={user?.displayName}
                 className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
               />
               <input
+                required
                 type="text"
                 name="email"
                 value={user?.email}
@@ -190,6 +197,7 @@ const AddItem = () => {
               Description
             </label>
             <textarea
+              required
               type="text"
               name="description"
               className=" text-start h-40 appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
