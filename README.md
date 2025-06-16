@@ -1,12 +1,69 @@
-# React + Vite
+# 🔍 FindIt - Lost and Found Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**FindIt** is a full-stack web application that helps users report lost items and recover found items. Designed to connect people quickly and efficiently, it supports secure authentication, user-friendly interfaces, protected routes, and powerful search and CRUD functionalities.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo & Repositories
 
-## Expanding the ESLint configuration
+- 🚀 **Live Site:** [https://assignment-eleven-8c528.web.app/]
+- 🖥️ **Client Repository:** [https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-soriful300/tree/main]
+- 🛠️ **Server Repository:** [https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-soriful300]
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Key Features
+
+- 🔎 Search & filter lost/found items by title or location
+- ➕ Add items with image, category, date, and location
+- 🔐 Firebase Authentication (Email/Password + Google)
+- 🛡️ JWT Protected Routes (secured APIs)
+- 🎨 Light/Dark theme using DaisyUI
+- 🧑 User dashboard for managing posts
+- ✅ Mark items as recovered with recovery info
+- 📅 Date selection with React Date Picker
+- 💬 Notifications using SweetAlert2 & Toastify
+- 🌀 Framer Motion animations
+- 📱 Fully responsive for all devices
+- 🚫 404 Error page & loading spinners
+- 🔁 Dynamic route-based title updates
+
+---
+
+## 🧱 Technologies Used
+
+### 💻 Frontend
+
+- React.js
+- React Router DOM
+- Tailwind CSS + DaisyUI
+- Axios
+- Framer Motion
+- React DatePicker
+- SweetAlert2
+
+### 🖥 Backend
+
+- Express.js
+- MongoDB 
+- Firebase Admin SDK
+- JWT Authentication
+- Dotenv
+- CORS
+
+---
+
+
+
+## 🛠 Setup Instructions
+
+### 🔄 Clone Repositories
+
+#### Client
+
+```bash
+git clone https://github.com/your-username/findit-client.git
+cd findit-client
+npm install
+npm run dev
+```
