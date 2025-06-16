@@ -158,7 +158,7 @@ const SignUp = () => {
                   type="password"
                   name="password"
                   className="rounded-xl border bg-gray-100 p-3 border-gray-300 focus:outline-none w-full"
-                  placeholder="**********"
+                  placeholder="•••••••••"
                 />
               </div>
 

@@ -7,7 +7,7 @@ const Process = () => {
       <section className="mt-20 ">
         <div className="flex flex-col place-items-center  gap-2">
           <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
-            Step by step process
+            Frequently Asked Question
           </h1>
           <p className="text-gray-600 text-sm text-center">
             Our platform provides a place where lost things find their way back

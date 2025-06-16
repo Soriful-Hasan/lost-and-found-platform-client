@@ -87,7 +87,7 @@ const SignIn = () => {
                 type="password"
                 name="password"
                 className="rounded-xl bg-gray-100 border p-3 border-gray-300 focus:outline-none w-full"
-                placeholder="* * * * * * * * * "
+                placeholder="•••••••••"
               />
             </div>
 

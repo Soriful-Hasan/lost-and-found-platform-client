@@ -238,6 +238,7 @@ const ItemDetails = () => {
                                 <input
                                   type="text"
                                   name="location"
+                                  required
                                   className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                   placeholder="location"
                                 ></input>
@@ -252,6 +253,7 @@ const ItemDetails = () => {
                                 </label>
                                 <DatePicker
                                   name="date"
+                                  required
                                   className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                   selected={selectedDate}
                                   onChange={(date) => setSelectedDate(date)}
@@ -364,6 +366,7 @@ const ItemDetails = () => {
                                 <input
                                   type="text"
                                   name="location"
+                                  required
                                   className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                   placeholder="location"
                                 ></input>
@@ -378,6 +381,7 @@ const ItemDetails = () => {
                                 </label>
                                 <DatePicker
                                   name="date"
+                                  required
                                   className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
                                   selected={selectedDate}
                                   onChange={(date) => setSelectedDate(date)}

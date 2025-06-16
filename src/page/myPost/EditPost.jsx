@@ -108,6 +108,7 @@ const EditPost = () => {
               </label>
               <input
                 type="text"
+                required
                 defaultValue={title}
                 name="title"
                 placeholder="Title"
@@ -147,6 +148,7 @@ const EditPost = () => {
                   Thumbnail
                 </label>
                 <input
+                  required
                   type="text"
                   name="thumbnail"
                   defaultValue={thumbnail}
@@ -164,6 +166,7 @@ const EditPost = () => {
                   location
                 </label>
                 <input
+                  required
                   type="text"
                   name="location"
                   defaultValue={location}
@@ -202,6 +205,7 @@ const EditPost = () => {
                   Date
                 </label>
                 <DatePicker
+                  required
                   defaultValue={date}
                   name="date"
                   className="appearance-none w-full block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
@@ -216,12 +220,14 @@ const EditPost = () => {
             <h1 className="mb-3 font-semibold text-xl">Contact Information</h1>
             <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
               <input
+                required
                 type="text"
                 name="name"
                 value={name}
                 className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
               />
               <input
+                required
                 type="text"
                 name="email"
                 value={email}
@@ -238,6 +244,7 @@ const EditPost = () => {
               Description
             </label>
             <textarea
+              required
               type="text"
               defaultValue={description}
               name="description"

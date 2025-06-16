@@ -8,10 +8,9 @@ const TypeWriter = () => {
         style={{ paddingTop: "5rem", margin: "auto 0", fontWeight: "normal" }}
       >
         <span
-          className=" text-3xl"
+          className="text-3xl"
           style={{ color: "#4A8F7D", fontWeight: "bold" }}
         >
-          {/* Style will be inherited from the parent element */}
           <Typewriter
             words={[
               "Here is it is best lost and found item platform",

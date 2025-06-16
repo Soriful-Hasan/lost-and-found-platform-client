@@ -11,7 +11,7 @@ import TypeWriter from "../typewriter/TypeWriter";
 
 const Slider = () => {
   return (
-    <div className="flex  flex-col flex-col-reverse xl:flex-row p-5  md:p-20 gap-4  mx-auto bg-white dark:bg-black ">
+    <div className="flex  flex-col flex-col-reverse xl:flex-row p-5  md:p-20 gap-4  mx-auto bg-white  ">
       <div className="pb-5 mb-4 flex-1 items-start flex flex-col gap-4 p-2 ">
         <TypeWriter></TypeWriter>
         <div className="mt-5">
@@ -41,7 +41,6 @@ const Slider = () => {
           delay: 3000,
           disableOnInteraction: false,
         }}
-       
         pagination={{
           clickable: true,
         }}

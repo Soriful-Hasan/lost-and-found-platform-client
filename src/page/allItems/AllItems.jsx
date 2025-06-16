@@ -27,7 +27,7 @@ const AllItems = () => {
     <div className="">
       <title>Lost and found items</title>
       <div className="flex justify-center mt-4 w-8/12 mx-auto">
-        <label className="input w-xl rounded-2xl focus-within:outline-none focus-within:ring-0 border border-gray-300">
+        <label className="input w-xl  focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
