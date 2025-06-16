@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 
 const RootLayout = () => {
   const { state } = useNavigate();
-  console.log(state);
+ 
   return (
     <div className="bg-[#FBFBFE]">
       <div className="">

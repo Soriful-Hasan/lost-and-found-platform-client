@@ -1,4 +1,4 @@
-import React, { use, useContext, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import UserContext from "../provider/AuthContext";
 import { RxExit } from "react-icons/rx";
@@ -12,7 +12,6 @@ import ButtonAnimation from "./animation/ButtonAnimation";
 
 const Navbar = () => {
   const { user, userSignOut, loading } = useContext(UserContext);
-  const [dropDown, setDropDown] = useState(false);
 
   const handleSignOut = () => {
     userSignOut()

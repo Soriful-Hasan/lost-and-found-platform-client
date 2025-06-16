@@ -22,30 +22,28 @@ const About = () => {
         <div className="mb-4 mt-10 text-gray-600 flex flex-col lg:flex-row items-center p-4">
           <div className="flex-1  ">
             <p className="mt-8 ">
-              Lostings Online Lost and Found is a unique platform that
-              incorporates a dynamic lost and found matching system for
-              individual users, accompanied by a Lost and Found Inventory
-              Management Software for businesses. Our approach is unique
-              compared to traditional lost and found methods, however, the
-              intention is still to reunite items lost or found with their
-              respective owners.
+              FindIt is an innovative online lost and found platform that
+              connects individuals and communities by helping them easily
+              report, search, and recover lost or found items. Our system is
+              designed to make item recovery simpler and more effective than
+              traditional lost and found methods. The platform allows individual
+              users to post detailed reports of lost or found items, including
+              item name, category, description, location, and images. Users can
+              also print flyers for offline awareness and receive instant email
+              notifications when matching items are found.
             </p>
             <p className="mt-8 ">
-              The multi-level lost and found platform for individual users
-              allows them to easily view, report, describe, and categorize lost
-              or found items. Additionally users can add location information,
-              upload photos, provide more in-depth details, and print fliers for
-              local awareness. The matching system gives users the ability to
-              receive up-to-date email notifications and system alerts of
-              matching or similar lost or found items. The system works with
-              individuals reporting lost or found items, along with businesses
-              registered to use the lost and found inventory management
-              software.
+              In addition to personal use, FindIt is scalable for businesses or
+              organizations that require a digital inventory system for managing
+              lost and found items on their premises. Whether you're an
+              individual or an institution, FindIt offers a reliable and
+              organized system to ensure every item has a chance to be returned
+              to its rightful owner.
             </p>
             <p className="mt-8">
-              "Our goal is to provide individual users and businesses with the
-              tools necessary for an effective and efficient online lost and
-              found."
+              Our mission is simple — to provide individuals and organizations
+              with powerful tools to reconnect lost items with their owners,
+              quickly and efficiently.
             </p>
 
             <ButtonAnimation>

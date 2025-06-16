@@ -51,9 +51,9 @@ const ClientsSetisfied = () => {
   return (
     <AnimationSection>
       <div className="">
-        <div className="place-items-center mb-10">
+        <div className="place-items-center  mb-10">
           <div className="flex  gap-2">
-            <RiEmotionHappyFill className="mt-1" color="#4A8F7D" size={25} />
+            <RiEmotionHappyFill className="" color="#4A8F7D" size={25} />
             <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
               Check our Satisfied User
             </h1>
