@@ -30,12 +30,14 @@ const ItemDetails = () => {
     const form = e.target;
     const location = form.location.value;
     const date = form.date.value;
+    const recoverUserEmail = form.recoverUserEmail.value;
+    const recoverUserName = form.recoverUserName.value;
     const recoverData = {
       recoverLocation: location,
       recoverDate: date,
       recoverId: _id,
-      recoverUserName: userName,
-      recoverUserEmail: userEmail,
+      recoverUserName: recoverUserName,
+      recoverUserEmail: recoverUserEmail,
     };
     // post recover item data on recoverItemCollection
     axiosSecure
@@ -209,8 +211,6 @@ const ItemDetails = () => {
                                 <img src={user?.photoURL} />
                               </div>
                             </div>
-                            <p>{user?.displayName}</p>
-                            <p>{user?.email}</p>
                           </div>
                         </div>
 
@@ -251,6 +251,34 @@ const ItemDetails = () => {
                                   selected={selectedDate}
                                   onChange={(date) => setSelectedDate(date)}
                                 />
+                              </div>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Name
+                                </label>
+                                <input
+                                  type="text"
+                                  name="recoverUserName"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  value={user?.displayName}
+                                ></input>
+                              </div>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Email
+                                </label>
+                                <input
+                                  type="text"
+                                  name="recoverUserEmail"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  value={user?.email}
+                                ></input>
                               </div>
                             </div>
                             {/* if there is a button in form, it will close the modal */}
@@ -309,8 +337,6 @@ const ItemDetails = () => {
                                 <img src={user?.photoURL} />
                               </div>
                             </div>
-                            <p>{user?.displayName}</p>
-                            <p>{user?.email}</p>
                           </div>
                         </div>
 
@@ -351,6 +377,34 @@ const ItemDetails = () => {
                                   selected={selectedDate}
                                   onChange={(date) => setSelectedDate(date)}
                                 />
+                              </div>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Name
+                                </label>
+                                <input
+                                  type="text"
+                                  name="recoverUserName"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  value={user?.displayName}
+                                ></input>
+                              </div>
+                              <div className="">
+                                <label
+                                  class="block text-gray-700 text-sm font-bold mb-2"
+                                  for="username"
+                                >
+                                  Email
+                                </label>
+                                <input
+                                  type="text"
+                                  name="recoverUserEmail"
+                                  className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                                  value={user?.email}
+                                ></input>
                               </div>
                             </div>
                             {/* if there is a button in form, it will close the modal */}
