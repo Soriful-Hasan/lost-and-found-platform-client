@@ -122,6 +122,7 @@ const Navbar = () => {
   ];
   return (
     <div className="">
+     
       <div
         className="navbar 
        fixed bg-white border-b border-gray-200 top-0 z-50 "

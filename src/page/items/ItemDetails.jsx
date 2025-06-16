@@ -88,6 +88,7 @@ const ItemDetails = () => {
 
   return (
     <div className="xl:w-8/12  lg:w-10/12 mx-auto  flex flex-col">
+      <title>Item details</title>
       <div className="p-4 space-y-2">
         <h1 className="lg:text-2xl text-xl font-semibold">
           Lost and Found Item Details

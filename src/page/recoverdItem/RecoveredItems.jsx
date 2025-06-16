@@ -11,6 +11,7 @@ import useApplicationApi from "../../api/useApplicationApi";
 import { FaTable } from "react-icons/fa";
 import RecoverNoData from "../../components/noData/RecoverNoData";
 import NoDataFound from "../../components/NoDataFound";
+import Loader from "../../components/Loader";
 
 const RecoveredItems = () => {
   const [recoveredItems, setRecoveredItems] = useState([]);
@@ -20,17 +21,23 @@ const RecoveredItems = () => {
   const toggleValue = localStorage.getItem("toggle");
   const user = useUserContext();
   const email = user?.email;
-
+  const [dataLoading, setDataLoading] = useState(true);
   useEffect(() => {
     const recoverItemsData = async () => {
       const data = await recoverItemsPromise(email);
       setRecoveredItems(data);
+      setDataLoading(false);
     };
     recoverItemsData();
   }, [email, recoverItemsPromise]);
 
+  if (dataLoading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <div className="">
+      <title>Recovery items</title>
       <div className="space-y-2 w-10/12 mx-auto">
         <h1 className="text-[#4A8F7D] text-center text-xl font-semibold mb-4">
           Change Layout
@@ -56,7 +63,7 @@ const RecoveredItems = () => {
 
       {tableFormat ? (
         <>
-          <div className="w-10/12 mx-auto mt-4 overflow-x-auto  border border-base-content/5 bg-base-100">
+          <div className="w-10/12 mx-auto mt-4 mb-10 overflow-x-auto  border border-base-content/5 bg-base-100">
             <table className="table ">
               {/* head */}
               <thead className="bg-[#443dff] text-white ">
@@ -67,31 +74,43 @@ const RecoveredItems = () => {
                   <th>Recovery Location</th>
                 </tr>
               </thead>
-              {recoveredItems.length === 0 ? (
-                <RecoverNoData></RecoverNoData>
-              ) : (
-                <tbody className="bg-white">
-                  {recoveredItems?.map((item, index) => (
-                    <RecoveredItemRow
-                      key={index}
-                      item={item}
-                    ></RecoveredItemRow>
-                  ))}
-                </tbody>
-              )}
+
+              <tbody className="bg-white ">
+                {recoveredItems.length === 0 ? (
+                  <tr>
+                    <td colSpan="100%">
+                      <RecoverNoData></RecoverNoData>
+                    </td>
+                  </tr>
+                ) : (
+                  <>
+                    {recoveredItems?.map((item, index) => (
+                      <RecoveredItemRow
+                        key={index}
+                        item={item}
+                      ></RecoveredItemRow>
+                    ))}
+                  </>
+                )}
+              </tbody>
             </table>
           </div>
         </>
       ) : (
-        <div className="w-10/12 mt-4 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="">
           {recoveredItems.length === 0 ? (
             <RecoverNoData></RecoverNoData>
           ) : (
-            <div className="">
-              {recoveredItems?.map((item, index) => (
-                // <div>{item.recoverUserEmail}</div>
-                <RecoveredItemCard key={index} item={item}></RecoveredItemCard>
-              ))}
+            <div className="w-10/12 mt-4 mx-auto  grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="">
+                {recoveredItems?.map((item, index) => (
+                  // <div>{item.recoverUserEmail}</div>
+                  <RecoveredItemCard
+                    key={index}
+                    item={item}
+                  ></RecoveredItemCard>
+                ))}
+              </div>
             </div>
           )}
         </div>

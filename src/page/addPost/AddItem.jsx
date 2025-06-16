@@ -39,6 +39,7 @@ const AddItem = () => {
   };
   return (
     <div className="shadow-sm mb-4  bg-white rounded-sm p-8 lg:w-8/12 mx-auto">
+      <title>Add post</title>
       <div className="">
         <div className="flex items-center gap-2">
           <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
@@ -196,14 +197,12 @@ const AddItem = () => {
           </div>
 
           <div className="">
-            <ButtonAnimation>
-              <button
-                type="submit"
-                className="btn hover:bg-blue-500 bg-[#443dff] text-white w-full lg:w-2/12 "
-              >
-                Submit Post
-              </button>
-            </ButtonAnimation>
+            <button
+              type="submit"
+              className="btn hover:bg-blue-500 bg-[#443dff] text-white w-full lg:w-2/12 "
+            >
+              Submit Post
+            </button>
           </div>
         </form>
       </div>

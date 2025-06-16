@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AllPostCard from "./AllItemsCard";
 import AllItemsCard from "./AllItemsCard";
 import Loader from "../../components/Loader";
-
+import NoDataFound from "../../components/NoDataFound";
 
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -25,6 +25,7 @@ const AllItems = () => {
   }
   return (
     <div className="">
+      <title>Lost and found items</title>
       <div className="flex justify-center mt-4 w-8/12 mx-auto">
         <label className="input w-xl rounded-2xl focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <svg
@@ -52,11 +53,19 @@ const AllItems = () => {
           />
         </label>
       </div>
-      <div className="w-10/12 mx-auto grid gap-6 mb-8 grid-cols-1 md-grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-10">
-        {allPosts?.map((post) => (
-          <AllItemsCard post={post}></AllItemsCard>
-        ))}
-      </div>
+      {allPosts.length === 0 ? (
+        <>
+          <NoDataFound></NoDataFound>
+        </>
+      ) : (
+        <>
+          <div className="w-10/12 mx-auto grid gap-6 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+            {allPosts?.map((post) => (
+              <AllItemsCard post={post}></AllItemsCard>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -6,6 +6,9 @@ import NoDataFound from "../../components/NoDataFound";
 import MyPostCard from "./MyPostCard";
 import Loader from "../../components/Loader";
 import useApplicationApi from "../../api/useApplicationApi";
+import { tr } from "date-fns/locale";
+import RecoverNoData from "../../components/noData/RecoverNoData";
+import MyPostNoFound from "../../components/noData/MyPostNoFound";
 
 const MyPost = () => {
   const user = useUserContext();
@@ -27,11 +30,10 @@ const MyPost = () => {
   if (dataLoading) {
     return <Loader />;
   }
-  if (myPosts?.length < 1) {
-    return <NoDataFound />;
-  }
+  
   return (
     <div className="w-10/12 mx-auto">
+      <title>My Post</title>
       <div className="overflow-x-auto mt-10  border-base-content/5 bg-base-100">
         <table className="table">
           <thead className="bg-[#443dff] text-white">
@@ -44,13 +46,23 @@ const MyPost = () => {
             </tr>
           </thead>
           <tbody className="bg-white">
-            {myPosts?.map((post) => (
-              <MyPostCard
-                myPosts={myPosts}
-                setMyPosts={setMyPosts}
-                post={post}
-              />
-            ))}
+            {myPosts.length === 0 ? (
+              <tr>
+                <td colSpan="100%">
+                  <MyPostNoFound></MyPostNoFound>
+                </td>
+              </tr>
+            ) : (
+              <>
+                {myPosts?.map((post) => (
+                  <MyPostCard
+                    myPosts={myPosts}
+                    setMyPosts={setMyPosts}
+                    post={post}
+                  />
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </div>

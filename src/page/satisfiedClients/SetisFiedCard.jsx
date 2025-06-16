@@ -3,7 +3,7 @@ import { IoMdStar } from "react-icons/io";
 
 const SetisFiedCard = ({ review }) => {
   return (
-    <div className="border rounded-sm p-4 border-gray-100">
+    <div className="border rounded-sm p-4 bg-white border-gray-100">
       <div className=" p-4 ">
         <p className="text-gray-600 text-sm">{review.review}</p>
       </div>

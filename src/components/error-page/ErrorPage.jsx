@@ -4,6 +4,7 @@ import { Link } from "react-router";
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex justify-center">
+      <title>Error</title>
       <section className="flex items-center h-full p-16 bg-white">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <div className="max-w-md text-center">

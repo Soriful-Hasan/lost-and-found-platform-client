@@ -45,17 +45,17 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
       <td className="border border-gray-200">{location}</td>
       <td className="border border-gray-200">{postType}</td>
       <td className="border border-gray-200">{category}</td>
-      <td className="flex gap-4 border-r border-b border-gray-200">
+      <td className="flex gap-4 border border-gray-200">
         <Link
           to={`/editPost/${_id}`}
-          className="bg-gray-200 p-4 cursor-pointer  rounded-full hover:bg-gray-300"
+          className="bg-gray-200 p-3  cursor-pointer  rounded-full hover:bg-gray-300"
         >
           <FaEdit />
         </Link>
         <button
           onClick={() => handleDeletePost(_id)}
           to="/editPost"
-          className="bg-gray-200 p-4 cursor-pointer  rounded-full hover:bg-gray-300"
+          className="bg-gray-200 p-3 cursor-pointer  rounded-full hover:bg-gray-300"
         >
           <FaTrash color="red" />
         </button>

@@ -4,14 +4,17 @@ import { Link } from "react-router";
 const RecoverNoData = () => {
   return (
     <div>
-      <section className="flex items-center  w-8/12 sm:p-16   ">
+      <section className="flex items-center   mx-auto  w-8/12 sm:p-16   ">
         <div className="container place-items-center   flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
-          <p className="text-3xl">No Recover items found</p>
+          <div className="">
+            <img src="/emty.svg" alt="" />
+          </div>
+          <p className="text-3xl font-bold">No recovery data</p>
           <Link
             to={"/"}
             rel="noopener noreferrer"
             href="#"
-            className="px-8 py-3 font-semibold rounded dark:bg-violet-600 dark:text-gray-50"
+            className="px-8 py-3 font-semibold rounded bg-[#443dff] text-white"
           >
             Back to homepage
           </Link>

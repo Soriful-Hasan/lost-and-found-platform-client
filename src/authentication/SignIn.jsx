@@ -31,7 +31,7 @@ const SignIn = () => {
       })
       .catch((error) =>
         Swal.fire({
-          title: "Something was wrong",
+          title: "Email or password not valid",
           icon: "error",
           draggable: true,
         })
@@ -59,8 +59,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center items-center m-4">
-      <div className="p-8 shadow-md md:w-8/12 xl:w-4/12  lg:w-6/12  bg-white w-full  mx-auto justify-center">
+    <div className="flex justify-center  items-center m-4">
+      <title>Sign in</title>
+      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12  bg-white w-full  mx-auto justify-center">
         <div className="text-center p-4 space-y-4">
           <h1 className="text-2xl font-bold">Login your account</h1>
           <div className="border-b border-gray-300"></div>
@@ -90,14 +91,12 @@ const SignIn = () => {
               />
             </div>
 
-           
-              <button
-                type="submit"
-                className="p-3 hover:bg-blue-500 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
-              >
-                Sign in
-              </button>
-            
+            <button
+              type="submit"
+              className="p-3 hover:bg-blue-500 font-bold cursor-pointer  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-x rounded-xl"
+            >
+              Sign in
+            </button>
           </form>
           <div className="divider">OR</div>
           <button

@@ -95,6 +95,7 @@ const SignUp = () => {
 
   return (
     <div className="hero mb-4 ">
+      <title>Sign up</title>
       <div className="  rounded-xl bg-white  shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 ">
         <div className="">
           <div className="space-y-2 mt-5 place-items-center text-center">
@@ -161,14 +162,13 @@ const SignUp = () => {
                 />
               </div>
 
-              <ButtonAnimation>
-                <button
-                  type="submit"
-                  className="p-3 font-bold cursor-pointer hover:bg-blue-500  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
-                >
-                  Sign up
-                </button>
-              </ButtonAnimation>
+              <button
+                type="submit"
+                className="p-3 font-bold cursor-pointer hover:bg-blue-500  bg-[#443dff] text-white border-none btn-neutral mt-4 rounded-xl"
+              >
+                Sign up
+              </button>
+
               <div className="divider">OR</div>
             </form>
             <button

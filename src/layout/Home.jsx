@@ -11,6 +11,7 @@ import ClientsSetisfied from "../page/satisfiedClients/ClientsSetisfied";
 import AnimationSection from "../components/animation/AnimationSection";
 import Loader from "../components/Loader";
 import Process from "../section/Process";
+import NoDataFound from "../components/NoDataFound";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -32,6 +33,7 @@ const Home = () => {
 
   return (
     <div className="">
+      <title>Home</title>
       <div className="">
         <Slider></Slider>
       </div>
@@ -49,11 +51,19 @@ const Home = () => {
       </div>
 
       <AnimationSection>
-        <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
-          {items?.map((item, index) => (
-            <ItemCards key={index} item={item}></ItemCards>
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <>
+            <NoDataFound></NoDataFound>
+          </>
+        ) : (
+          <>
+            <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+              {items?.map((item, index) => (
+                <ItemCards key={index} item={item}></ItemCards>
+              ))}
+            </div>{" "}
+          </>
+        )}
       </AnimationSection>
       <div className=" flex justify-center mt-16">
         <Link

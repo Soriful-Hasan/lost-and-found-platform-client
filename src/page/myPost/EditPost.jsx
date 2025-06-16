@@ -82,6 +82,7 @@ const EditPost = () => {
   }, [category]);
   return (
     <div className="shadow-sm bg-white mb-4 rounded-sm p-8 lg:w-8/12 mx-auto">
+      <title>Update Post</title>
       <div className="">
         <div className="flex items-center gap-2">
           <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
@@ -245,14 +246,12 @@ const EditPost = () => {
           </div>
 
           <div className="">
-            <ButtonAnimation>
-              <button
-                type="submit"
-                className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
-              >
-                Update Post
-              </button>
-            </ButtonAnimation>
+            <button
+              type="submit"
+              className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
+            >
+              Update Post
+            </button>
           </div>
         </form>
       </div>
