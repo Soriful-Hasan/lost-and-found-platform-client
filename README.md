@@ -10,7 +10,7 @@
 
 - 🔗 [Visit the Live Site](https://assignment-eleven-8c528.web.app/)
 - 💻 [Client-side Repo:](https://github.com/Soriful-Hasan/find-it-project)
-- 🔧 [Server-side Repo:](https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-soriful300)
+- 🔧 [Server-side Repo:](https://github.com/Soriful-Hasan/find-it-server-project)
 
 ---
 
