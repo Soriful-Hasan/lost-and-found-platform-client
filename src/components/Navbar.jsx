@@ -8,7 +8,7 @@ import { RiStickyNoteAddFill } from "react-icons/ri";
 import { RiDeviceRecoverFill } from "react-icons/ri";
 import { BsPersonFill } from "react-icons/bs";
 import Swal from "sweetalert2";
-import ButtonAnimation from "./animation/ButtonAnimation";
+import DropDown from "./dropdown/DropDown";
 
 const Navbar = () => {
   const { user, userSignOut, loading } = useContext(UserContext);
@@ -30,18 +30,26 @@ const Navbar = () => {
         })
       );
   };
+
+  const handleNavClick = () => {
+    const drawerCheckbox = document.getElementById("drawer-toggle");
+    if (drawerCheckbox) {
+      drawerCheckbox.checked = false;
+    }
+  };
   const link = [
-    <div className="flex flex-col gap-4 lg:flex-row">
+    <div className="flex  flex-col gap-4 lg:flex-row">
       <li>
         <NavLink
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={
+            (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+            handleNavClick)
+          }
           to={"/"}
           className={({ isActive }) =>
             ` 
            flex items-center
-          ${
-            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
-          }`
+          ${isActive ? " text-[#443dff] font-semibold" : ""}`
           }
         >
           <GoHomeFill />
@@ -50,190 +58,164 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={
+            (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+            handleNavClick)
+          }
           to={"/allPosts"}
           className={({ isActive }) =>
             ` 
            flex items-center
-          ${
-            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
-          }`
+          ${isActive ? " text-[#443dff] font-semibold" : ""}`
           }
         >
           {" "}
-          <MdSelectAll /> Lost & Found Items
+          <MdSelectAll /> All Posts
         </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              onClick={
+                (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+                handleNavClick)
+              }
+              className={({ isActive }) =>
+                ` 
+           flex items-center
+          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+              }
+              to={"/addItem"}
+            >
+              <RiStickyNoteAddFill />
+              Add Post
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={
+                (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+                handleNavClick)
+              }
+              className={({ isActive }) =>
+                ` 
+           flex items-center
+          ${isActive ? " text-[#443dff] font-semi-bold font-semibold" : ""}`
+              }
+              to={"/recoveredItems"}
+            >
+              <RiDeviceRecoverFill />
+              Recovered Items
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={
+                (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+                handleNavClick)
+              }
+              className={({ isActive }) =>
+                ` 
+           flex items-center
+          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+              }
+              to={"/myPost"}
+            >
+              <BsPersonFill />
+              My Posts
+            </NavLink>
+          </li>
+        </>
+      )}
     </div>,
   ];
 
-  const dropDownLink = [
-    <div className="">
-      <li>
-        <NavLink
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={({ isActive }) =>
-            ` 
-           flex items-center
-          ${
-            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
-          }`
-          }
-          to={"/addItem"}
-        >
-          <RiStickyNoteAddFill />
-          Add Post
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={({ isActive }) =>
-            ` 
-           flex items-center
-          ${
-            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
-          }`
-          }
-          to={"/recoveredItems"}
-        >
-          <RiDeviceRecoverFill />
-          Recovered Items
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={({ isActive }) =>
-            ` 
-           flex items-center
-          ${
-            isActive ? "bg-[#D8D8DC] text-[#443dff] font-bold" : "font-semibold"
-          }`
-          }
-          to={"/myPost"}
-        >
-          <BsPersonFill />
-          My Posts
-        </NavLink>
-      </li>
-    </div>,
-  ];
   return (
     <div className="">
-      <div
-        className="navbar 
-       fixed bg-white border-b border-gray-200 top-0 z-50 "
-      >
-        <div className="navbar-start ">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+      <div className="navbar fixed bg-white border-b border-gray-200 top-0 z-50">
+        <div className="w-full xl:w-10/12 mx-auto flex justify-between items-center">
+          {/* Navbar Start */}
+          <div className="navbar-start">
+            <Link
+              to={"/"}
+              onClick={window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="cursor-pointer hidden lg:flex items-center font-bold gap-2"
             >
-              {link}
-            </ul>
-          </div>
-          <div className="hidden lg:block">
-            <div className="flex items-center font-bold gap-2 ">
               <img width="30" height="30" src="/logo.png" alt="logo" />
-              <h1 className="">
-                <span className="text-blue-800 text-xl">FindIt</span>
+              <h1>
+                <span className="text-blue-800 text-xl uppercase">
+                  Find <span className="">It</span>
+                </span>
               </h1>
+            </Link>
+            <div className="drawer drawer-start lg:hidden">
+              <input
+                id="drawer-toggle"
+                type="checkbox"
+                className="drawer-toggle"
+              />
+              <div className="drawer-content">
+                <label htmlFor="drawer-toggle" className="btn btn-ghost">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </label>
+              </div>
+              <div className="drawer-side z-50">
+                <label
+                  htmlFor="drawer-toggle"
+                  className="drawer-overlay"
+                ></label>
+                <ul className="menu  pt-8 w-72 min-h-full bg-base-200 text-base-content">
+                  {/* Sidebar Links */}
+                  {link}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="navbar-center hidden lg:flex  ">
-          <ul className="menu menu-horizontal px-1">{link}</ul>
-        </div>
 
-        <div className="navbar-end ">
-          <div className="relative mr-4 ">
-            <ul
-              className="dropdown menu mt-3  rounded-box bg-base-100 shadow-sm"
-              popover="auto"
-              id="popover-1"
-              style={
-                { positionAnchor: "--anchor-1" } /* as React.CSSProperties */
-              }
-            >
-              <div className="ml-2 p-2 border-b border-gray-200">
-                <p className="font-semibold">{user?.displayName}</p>
-              </div>
-              {dropDownLink}
-            </ul>
+          {/* Navbar Center */}
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">{link}</ul>
           </div>
 
-          {loading ? (
-            <>
+          {/* Navbar End */}
+          <div className="navbar-end">
+            {loading ? (
               <span className="loading loading-ring loading-lg"></span>
-            </>
-          ) : (
-            <>
-              {user ? (
-                <div>
-                  <div>
-                    <div className="flex gap-4 ">
-                      <div
-                        className="tooltip tooltip-bottom"
-                        data-tip={user?.displayName}
-                      >
-                        <div className="avatar cursor-pointer">
-                          <div className="w-12 rounded-full">
-                            <button
-                              className="cursor-pointer"
-                              popoverTarget="popover-1"
-                              style={
-                                {
-                                  anchorName: "--anchor-1",
-                                } /* as React.CSSProperties */
-                              }
-                            >
-                              <img src={`${user?.photoURL}`} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+            ) : user ? (
+              <div className="flex gap-4 items-center">
+                <DropDown user={user} handleSignOut={handleSignOut} />
 
-                      <Link
-                        onClick={handleSignOut}
-                        className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
-                      >
-                        Sign out <RxExit />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                  to={"/signIn"}
-                  className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
+                {/* <Link
+                  onClick={handleSignOut}
+                  className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
                 >
-                  Sign In
-                </Link>
-              )}
-            </>
-          )}
+                  Sign out <RxExit />
+                </Link> */}
+              </div>
+            ) : (
+              <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={"/signIn"}
+                className="btn rounded-sm hover:bg-blue-500 bg-[#443dff] text-white mt-1"
+              >
+                Sign In
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

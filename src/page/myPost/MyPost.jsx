@@ -35,14 +35,15 @@ const MyPost = () => {
     <div className="w-10/12 mx-auto">
       <title>My Post</title>
       <div className="overflow-x-auto mt-10  border-base-content/5 bg-base-100">
-        <table className="table">
-          <thead className="bg-[#443dff] text-white">
+        <table className="table border">
+          <thead className=" ">
             <tr className="">
               <th>Title</th>
               <th>Location</th>
               <th>Post type</th>
               <th>Category</th>
-              <th>Action</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody className="bg-white">

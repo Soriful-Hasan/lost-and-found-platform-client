@@ -8,8 +8,15 @@ import NoDataFound from "../../components/NoDataFound";
 const AllItems = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
   const [dataLoading, setDataLoading] = useState(true);
-
+  console.log(sort);
+  const handleSort = (e) => {
+    const selected = e.target.value;
+    if (selected === "asc" || selected === "desc") {
+      setSort(selected);
+    }
+  };
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_apiUrl}/allPosts?search=${search}`)
@@ -18,7 +25,7 @@ const AllItems = () => {
         setDataLoading(false);
       })
       .catch((error) => {});
-  }, [search]);
+  }, [search, sort]);
 
   if (dataLoading) {
     return <Loader></Loader>;
@@ -26,8 +33,8 @@ const AllItems = () => {
   return (
     <div className="">
       <title>Lost and found items</title>
-      <div className="flex justify-center mt-4 w-8/12 mx-auto">
-        <label className="input w-xl  focus-within:outline-none focus-within:ring-0 border border-gray-300">
+      <div className="flex justify-center gap-4 mt-4 w-10/12 mx-auto ">
+        <label className="input w-xl  rounded-full focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +59,15 @@ const AllItems = () => {
             className="w-full focus:outline-none  focus:ring-0"
           />
         </label>
+        {/* <select
+          onChange={handleSort}
+          defaultValue=""
+          className="select focus-within:outline-none focus-within:ring-0 border border-gray-300  rounded-full"
+        >
+          <option disabled={true}>Sort by Location</option>
+          <option value="asc">A → Z</option>
+          <option value="desc">Z → A</option>
+        </select> */}
       </div>
       {allPosts.length === 0 ? (
         <>

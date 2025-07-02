@@ -3,7 +3,6 @@ import UserContext from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
-import ButtonAnimation from "../components/animation/ButtonAnimation";
 const SignIn = () => {
   const { signInUser, user, setUser, signInWithGoogle } =
     useContext(UserContext);

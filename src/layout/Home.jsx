@@ -10,9 +10,11 @@ import { LiaGripfire } from "react-icons/lia";
 import ClientsSetisfied from "../page/satisfiedClients/ClientsSetisfied";
 import AnimationSection from "../components/animation/AnimationSection";
 import Loader from "../components/Loader";
-import Process from "../section/Process";
+import Process from "../section/FAQ";
 import NoDataFound from "../components/NoDataFound";
 import Slider from "../components/slider/Slider";
+import Hero from "../components/Hero/Hero";
+import ContactUs from "../page/ContactUs";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -35,9 +37,10 @@ const Home = () => {
   return (
     <div className="">
       <title>Home</title>
-      <div className="">
+      {/* <div className="">
       <Slider></Slider>
-      </div>
+      </div> */}
+      <Hero />
       <div className="place-items-center mt-10 w-10/12 mx-auto">
         <div className="flex items-center gap-2">
           <LiaGripfire size={30} color="#ff9a00" />
@@ -51,21 +54,20 @@ const Home = () => {
         </p>
       </div>
 
-      <AnimationSection>
-        {items.length === 0 ? (
-          <>
-            <NoDataFound></NoDataFound>
-          </>
-        ) : (
-          <>
-            <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
-              {items?.map((item, index) => (
-                <ItemCards key={index} item={item}></ItemCards>
-              ))}
-            </div>{" "}
-          </>
-        )}
-      </AnimationSection>
+      {items.length === 0 ? (
+        <>
+          <NoDataFound></NoDataFound>
+        </>
+      ) : (
+        <>
+          <div className="w-10/12 mx-auto grid gap-8 xl:gap-16 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+            {items?.map((item, index) => (
+              <ItemCards key={index} item={item}></ItemCards>
+            ))}
+          </div>{" "}
+        </>
+      )}
+
       <div className=" flex justify-center mt-16">
         <Link
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -77,10 +79,12 @@ const Home = () => {
       </div>
       <div className="w-10/12 mx-auto mt-30">
         <About></About>
-        <AnimationSection>
-          <Process></Process>
-        </AnimationSection>
+
+        <Process></Process>
+
         <ClientsSetisfied></ClientsSetisfied>
+
+        <ContactUs />
       </div>
     </div>
   );

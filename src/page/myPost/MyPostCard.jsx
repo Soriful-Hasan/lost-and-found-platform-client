@@ -34,24 +34,26 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
               });
             }
           })
-          .catch((err) =>{});
+          .catch((err) => {});
       }
     });
   };
 
   return (
     <tr className="">
-      <td className="border border-gray-200">{title}</td>
-      <td className="border border-gray-200">{location}</td>
-      <td className="border border-gray-200">{postType}</td>
-      <td className="border border-gray-200">{category}</td>
-      <td className="flex gap-4 border border-gray-200">
+      <td className="">{title}</td>
+      <td className="">{location}</td>
+      <td className="">{postType}</td>
+      <td className="">{category}</td>
+      <td className="flex gap-4 ">
         <Link
           to={`/editPost/${_id}`}
           className="bg-gray-200 p-3  cursor-pointer  rounded-full hover:bg-gray-300"
         >
           <FaEdit />
         </Link>
+      </td>
+      <td>
         <button
           onClick={() => handleDeletePost(_id)}
           to="/editPost"

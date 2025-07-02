@@ -9,9 +9,12 @@ const ErrorPage = () => {
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <div className="max-w-md text-center">
             <img src="/page-not-found.jpg" alt="" />
-            <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-400">
+            {/* <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-400">
               <span className="sr-only">Error</span>404
-            </h2>
+            </h2> */}
+            <div className="">
+              <img src="/errorlogo.svg" alt="" />
+            </div>
             <p className="text-2xl font-semibold md:text-3xl">
               Sorry, we couldn't find this page.
             </p>

@@ -6,7 +6,6 @@ import { GoArrowUpRight } from "react-icons/go";
 
 import { Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router";
-import ButtonAnimation from "../animation/ButtonAnimation";
 import TypeWriter from "../typewriter/TypeWriter";
 
 const Slider = () => {
@@ -24,7 +23,7 @@ const Slider = () => {
           something or found an item, <br /> our site makes it easy to report
           and search.
         </p>
-        <ButtonAnimation>
+       
           <Link
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             to={"/allPosts"}
@@ -32,7 +31,7 @@ const Slider = () => {
           >
             Explore Now <GoArrowUpRight />
           </Link>
-        </ButtonAnimation>
+      
       </div>
 
       <Swiper

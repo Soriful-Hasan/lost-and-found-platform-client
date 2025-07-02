@@ -4,7 +4,7 @@ import { BiSolidCalendarCheck } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { FaArrowRightLong } from "react-icons/fa6";
-import ButtonAnimation from "../../components/animation/ButtonAnimation";
+
 
 const ItemCards = ({ item }) => {
   const {
@@ -50,7 +50,7 @@ const ItemCards = ({ item }) => {
             {location}
           </p>
           <div className="card-actions justify-end">
-            <ButtonAnimation>
+            
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 to={`itemDetails/${_id}`}
@@ -58,7 +58,7 @@ const ItemCards = ({ item }) => {
               >
                 See item <FaArrowRightLong />
               </Link>
-            </ButtonAnimation>
+           
           </div>
         </div>
       </div>

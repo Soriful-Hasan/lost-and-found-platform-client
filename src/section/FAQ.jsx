@@ -5,7 +5,7 @@ const Process = () => {
   return (
     <div>
       <section className="mt-20 ">
-        <div className="flex flex-col place-items-center  gap-2">
+        <div className="flex flex-col  place-items-center  ">
           <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
             Frequently Asked Question
           </h1>
@@ -18,7 +18,7 @@ const Process = () => {
         </div>
 
         <div className=" mb-30">
-          <div className="flex flex-col lg:flex-row mb-10 mt-10">
+          <div className="gap-8 flex flex-col xl:flex-row mb-10 mt-10">
             <div className="flex-1">
               <img src="/ask-question.svg" alt="" />
             </div>
@@ -92,6 +92,20 @@ const Process = () => {
                     shown to others. For direct communication, we recommend
                     using the secure contact options provided inside the website
                     after signing in.
+                  </div>
+                </div>
+                <div
+                  tabIndex={0}
+                  className="collapse collapse-plus bg-base-100 border-base-300 border"
+                >
+                  <div className="collapse-title font-semibold">
+                    How do I share a lost or found item on FindIt?
+                  </div>
+                  <div className="collapse-content text-sm">
+                    Simply sign in and click the “Post Item” button on the top
+                    menu. Fill in the item details such as name, category, where
+                    it was lost or found, description, and upload a photo. After
+                    submitting, your item will be visible to all users.
                   </div>
                 </div>
               </div>

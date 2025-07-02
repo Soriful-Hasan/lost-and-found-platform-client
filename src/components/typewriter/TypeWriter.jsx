@@ -4,18 +4,15 @@ import { Typewriter } from "react-simple-typewriter";
 const TypeWriter = () => {
   return (
     <div>
-      <h1
-        style={{ paddingTop: "5rem", margin: "auto 0", fontWeight: "normal" }}
-      >
+      <h1 style={{ paddingTop: "", margin: "auto 0", fontWeight: "normal" }}>
         <span
-          className="text-4xl "
-          style={{ color: "#4A8F7D", fontWeight: "bolder" }}
+          className="text-5xl "
+          style={{ color: "#5F6877",  }}
         >
           <Typewriter
             words={[
-              " best lost and found item platform",
+              "best lost and found item platform",
               "Partner in Finding Lost Item",
-              "Lost Something? We Help You Get It Back Fast!",
               "People with Their Lost Belongings Safely",
             ]}
             loop={true}
@@ -24,7 +21,7 @@ const TypeWriter = () => {
             typeSpeed={70}
             deleteSpeed={50}
             delaySpeed={1000}
-            className="text-black text-3xl md:text-5xl"
+            className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed"
           />
         </span>
       </h1>

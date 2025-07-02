@@ -1,5 +1,4 @@
 import { useStatStyles } from "@chakra-ui/react";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import useUserContext from "../../hook/ContextHook";
@@ -12,7 +11,6 @@ import useApplicationApi from "../../api/useApplicationApi";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
-import ButtonAnimation from "../../components/animation/ButtonAnimation";
 import Loader from "../../components/Loader";
 
 const ItemDetails = () => {
@@ -94,28 +92,24 @@ const ItemDetails = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="xl:w-8/12  lg:w-10/12 mx-auto  flex flex-col">
+    <div className="xl:w-10/12  lg:w-10/12 mx-auto  flex flex-col">
       <title>Item details</title>
       <div className="p-4 space-y-2">
-        <h1 className="lg:text-2xl text-xl font-semibold">
-          Lost and Found Item Details
-        </h1>
         {status == "recovered" && (
           <p className="flex items-center gap-2">
             <FaCheckCircle color="green" />
             Recovered
           </p>
         )}
-        <div className="border-b border-gray-100 mt-2"></div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4">
-        <div className="bg-gray-100 lg:h-150 p-10 rounded">
-          <div className=" p-4 flex-1 ">
+        <div className="flex-1 bg-gray-100 lg:h-150 p-10 rounded">
+          <div className="  p-4 flex justify-center">
             <img
               width={300}
-              height={200}
-              className=" rounded-xl"
+              height={300}
+              className="rounded-xl"
               src={thumbnail}
               alt=""
             />
@@ -124,28 +118,28 @@ const ItemDetails = () => {
         <div className="flex-1 p-4">
           <div className="space-y-4">
             <h1 className="text-2xl font-bold">{title}</h1>
-            <p className="font-semibold text-gray-600">Item {postType}</p>
+            <p className=" font-semibold text-black">Item {postType}</p>
             <div className="border-b border-gray-200"></div>
           </div>
           <div className="">
-            <p className="mt-4 font-semibold text-gray-600">{category}</p>
+            <p className="mt-4 font-semibold text-black">{category}</p>
             <div className="border-b mt-4 border-gray-200"></div>
           </div>
           <div className="mt-4 text-gray-600">
             <p className="text-sm">
-              <span className="font-semibold text-black">Description:</span>{" "}
+              <span className="font-semibold text-black">Description </span>{" "}
               {description}
             </p>
             <div className="border-b mt-4 border-gray-200"></div>
           </div>
           <div className="mt-4 space-y-4 text-sm">
             <div className="flex gap-6">
-              <p className="text-gray-600"> {postType} Date:</p>
-              <p className="font-semibold">{date}</p>
+              <p className="font-semibold text-black"> {postType} Date</p>
+              <p className="">{date}</p>
             </div>
             <div className="flex gap-6 ">
-              <p className="text-gray-600">{postType} Location:</p>
-              <p className="font-semibold">{location}</p>
+              <p className=" font-semibold text-black">{postType} Location</p>
+              <p className="">{location}</p>
             </div>
           </div>
 
@@ -173,7 +167,7 @@ const ItemDetails = () => {
                   onClick={() =>
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
-                  className="btn mt-4 disabled bg-[#443dff] text-white"
+                  className="btn mt-4  disabled  bg-[#443dff] text-white"
                 >
                   Back to All Items
                 </Link>
@@ -182,16 +176,15 @@ const ItemDetails = () => {
               <div className=" flex gap-4 mt-4">
                 {postType == "Lost" && (
                   <>
-                    <ButtonAnimation>
-                      <button
-                        className="btn hover:bg-blue-500 mt-4 bg-[#443dff] text-white"
-                        onClick={() =>
-                          document.getElementById("my_modal_1").showModal()
-                        }
-                      >
-                        Found This
-                      </button>
-                    </ButtonAnimation>
+                    <button
+                      className="btn hover:bg-blue-500 mt-4 bg-[#443dff] text-white"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").showModal()
+                      }
+                    >
+                      Found This
+                    </button>
+
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <div className="">
@@ -290,19 +283,15 @@ const ItemDetails = () => {
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
-                              <ButtonAnimation>
-                                <button
-                                  onClick={() => {
-                                    document
-                                      .getElementById("my_modal_1")
-                                      .close();
-                                  }}
-                                  type="submit"
-                                  className="btn hover:bg-blue-500 bg-[#443dff] text-white"
-                                >
-                                  Submit recover
-                                </button>
-                              </ButtonAnimation>
+                              <button
+                                onClick={() => {
+                                  document.getElementById("my_modal_1").close();
+                                }}
+                                type="submit"
+                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                              >
+                                Submit recover
+                              </button>
                             </div>
                           </form>
                         </div>
@@ -312,16 +301,15 @@ const ItemDetails = () => {
                 )}
                 {postType == "Found" && (
                   <>
-                    <ButtonAnimation>
-                      <button
-                        className="btn hover:bg-blue-500  bg-[#443dff] text-white"
-                        onClick={() =>
-                          document.getElementById("my_modal_1").showModal()
-                        }
-                      >
-                        This Is Mine
-                      </button>
-                    </ButtonAnimation>
+                    <button
+                      className="btn hover:bg-blue-500  bg-[#443dff] text-white"
+                      onClick={() =>
+                        document.getElementById("my_modal_1").showModal()
+                      }
+                    >
+                      This Is Mine
+                    </button>
+
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <div className="">
@@ -418,19 +406,15 @@ const ItemDetails = () => {
                             </div>
                             {/* if there is a button in form, it will close the modal */}
                             <div className="flex justify-end mt-10">
-                              <ButtonAnimation>
-                                <button
-                                  onClick={() => {
-                                    document
-                                      .getElementById("my_modal_1")
-                                      .close();
-                                  }}
-                                  type="submit"
-                                  className="btn hover:bg-blue-500 bg-[#443dff] text-white"
-                                >
-                                  Submit recover
-                                </button>
-                              </ButtonAnimation>
+                              <button
+                                onClick={() => {
+                                  document.getElementById("my_modal_1").close();
+                                }}
+                                type="submit"
+                                className="btn hover:bg-blue-500 bg-[#443dff] text-white"
+                              >
+                                Submit recover
+                              </button>
                             </div>
                           </form>
                         </div>

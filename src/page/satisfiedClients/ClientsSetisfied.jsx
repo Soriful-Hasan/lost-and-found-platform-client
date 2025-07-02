@@ -49,29 +49,27 @@ const ClientsSetisfied = () => {
     },
   ];
   return (
-    <AnimationSection>
-      <div className="">
-        <div className="place-items-center  mb-10">
-          <div className="flex  gap-2">
-            <RiEmotionHappyFill className="" color="#4A8F7D" size={25} />
-            <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
-              Check our Satisfied User
-            </h1>
-          </div>
-          <p className="text-gray-600 text-sm">
-            People who found what they had lost <br />
-            Their smiles tell our success story.
-          </p>
+    <div className="">
+      <div className="place-items-center  mb-10">
+        <div className="flex  gap-2">
+          <RiEmotionHappyFill className="" color="#4A8F7D" size={25} />
+          <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
+            Check our Satisfied User
+          </h1>
         </div>
-        <div className="mb-10 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {data?.map((review) => (
-            <div className="div">
-              <SetisFiedCard review={review}></SetisFiedCard>
-            </div>
-          ))}
-        </div>
+        <p className="text-gray-600 text-sm">
+          People who found what they had lost <br />
+          Their smiles tell our success story.
+        </p>
       </div>
-    </AnimationSection>
+      <div className="mb-10 p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {data?.map((review) => (
+          <div className="div">
+            <SetisFiedCard review={review}></SetisFiedCard>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

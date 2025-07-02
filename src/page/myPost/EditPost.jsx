@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useUserContext from "../../hook/ContextHook";
 import { useParams } from "react-router";
-import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useApplicationApi from "../../api/useApplicationApi";
 import Swal from "sweetalert2";
-import ButtonAnimation from "../../components/animation/ButtonAnimation";
 
 const EditPost = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
