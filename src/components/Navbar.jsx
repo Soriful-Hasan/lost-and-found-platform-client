@@ -10,6 +10,7 @@ import { BsPersonFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import DropDown from "./dropdown/DropDown";
 
+
 const Navbar = () => {
   const { user, userSignOut, loading } = useContext(UserContext);
 
@@ -133,7 +134,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar fixed bg-white border-b border-gray-200 top-0 z-50">
+      <div className="navbar fixed  bg-white border-b border-gray-200 top-0 z-50">
         <div className="w-full xl:w-10/12 mx-auto flex justify-between items-center">
           {/* Navbar Start */}
           <div className="navbar-start">
@@ -198,13 +199,7 @@ const Navbar = () => {
             ) : user ? (
               <div className="flex gap-4 items-center">
                 <DropDown user={user} handleSignOut={handleSignOut} />
-
-                {/* <Link
-                  onClick={handleSignOut}
-                  className="flex items-center hover:bg-blue-500 btn rounded-sm bg-[#443dff] text-white mt-1"
-                >
-                  Sign out <RxExit />
-                </Link> */}
+                {/* <ToggleDarkMode /> */}
               </div>
             ) : (
               <Link

@@ -5,7 +5,7 @@ import TypeWriter from "../typewriter/TypeWriter";
 const Hero = () => {
   return (
     <section className="border-b border-gray-200 bg-[#FBFBFE] lg:grid lg:h-80vh  lg:place-content-center">
-      <div className="  px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
+      <div className="   px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
         <div className=" max-w-prose  text-left space-y-10">
           <h1 className=" text-4xl space-y-4 font-bold text-gray-900 sm:text-5xl">
             Connecting Communities Through{" "}
