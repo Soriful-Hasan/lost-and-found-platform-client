@@ -2,7 +2,7 @@
 
 **FindIt** is a full-stack web application that helps users report lost items and recover found items. Designed to connect people quickly and efficiently, it supports secure authentication, user-friendly interfaces, protected routes, and powerful search and CRUD functionalities.
 
-![FindIt Screenshot](blob:https://imgur.com/f802508f-0de2-4450-b5f4-1f7743582636)
+![FindIt Screenshot](https://i.imgur.com/GMocamo.png)
 
 
 ---
