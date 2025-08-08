@@ -2,6 +2,9 @@
 
 **FindIt** is a full-stack web application that helps users report lost items and recover found items. Designed to connect people quickly and efficiently, it supports secure authentication, user-friendly interfaces, protected routes, and powerful search and CRUD functionalities.
 
+![FindIt Screenshot](https://i.imgur.com/GMocamo.png)
+
+
 ---
 
 ## 🌐 Live Demo & Repositories
@@ -64,7 +67,7 @@
 #### Client
 
 ```bash
-git clone https://github.com/your-username/findit-client.git
+git clone https://github.com/Soriful-Hasan/lost-and-found-platform-client.git
 cd findit-client
 npm install
 npm run dev
