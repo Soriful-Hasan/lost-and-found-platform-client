@@ -1,15 +1,14 @@
-import React, { use, useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import UserContext from "../provider/AuthContext";
-import { RxExit } from "react-icons/rx";
 import { GoHomeFill } from "react-icons/go";
 import { MdSelectAll } from "react-icons/md";
 import { RiStickyNoteAddFill } from "react-icons/ri";
 import { RiDeviceRecoverFill } from "react-icons/ri";
 import { BsPersonFill } from "react-icons/bs";
+import { SiMinutemailer } from "react-icons/si";
 import Swal from "sweetalert2";
 import DropDown from "./dropdown/DropDown";
-
 
 const Navbar = () => {
   const { user, userSignOut, loading } = useContext(UserContext);
@@ -57,6 +56,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           onClick={
@@ -72,6 +72,23 @@ const Navbar = () => {
         >
           {" "}
           <MdSelectAll /> All Posts
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          onClick={
+            (() => window.scrollTo({ top: 0, behavior: "smooth" }),
+            handleNavClick)
+          }
+          to={"/contact-us"}
+          className={({ isActive }) =>
+            ` 
+           flex items-center
+          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          }
+        >
+          <SiMinutemailer />
+          Contact Us
         </NavLink>
       </li>
       {user && (

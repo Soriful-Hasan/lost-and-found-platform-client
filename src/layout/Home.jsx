@@ -74,7 +74,7 @@ const Home = () => {
           to={"/allPosts"}
           className="btn hover:bg-blue-500 shadow-sm flex items-center bg-[#443dff] text-white"
         >
-          View All Post <MdOutlineKeyboardDoubleArrowRight />
+          See All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>
       </div>
       <div className="w-10/12 mx-auto mt-30">

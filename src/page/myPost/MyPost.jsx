@@ -30,14 +30,14 @@ const MyPost = () => {
   if (dataLoading) {
     return <Loader />;
   }
-  
+
   return (
     <div className="w-10/12 mx-auto">
       <title>My Post</title>
       <div className="overflow-x-auto mt-10  border-base-content/5 bg-base-100">
-        <table className="table border">
+        <table className="table border bg-blue-600 ">
           <thead className=" ">
-            <tr className="">
+            <tr className="text-white">
               <th>Title</th>
               <th>Location</th>
               <th>Post type</th>

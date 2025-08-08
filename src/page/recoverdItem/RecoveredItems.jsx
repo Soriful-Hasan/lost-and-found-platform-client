@@ -40,8 +40,8 @@ const RecoveredItems = () => {
         <div className="w-10/12 mx-auto mt-4 mb-10 overflow-x-auto  border border-base-content/5 bg-base-100">
           <table className="table ">
             {/* head */}
-            <thead className="">
-              <tr className="">
+            <thead className="bg-blue-600 ">
+              <tr className="text-white">
                 <th className="">Email</th>
                 <th>Recovered By</th>
                 <th>Recovery Date</th>

@@ -56,7 +56,7 @@ const ItemCards = ({ item }) => {
                 to={`itemDetails/${_id}`}
                 className="btn hover:bg-blue-500 shadow-sm bg-[#443dff] flex gap-2  text-white border-none btn-primary"
               >
-                See item <FaArrowRightLong />
+                Details <FaArrowRightLong />
               </Link>
            
           </div>

@@ -38,7 +38,7 @@ const AllItems = () => {
   return (
     <div className="">
       <title>Lost and found items</title>
-      <div className="flex-col md:flex-row flex justify-center gap-4 mt-4 w-10/12 mx-auto ">
+      <div className="flex-col md:flex-row flex justify-between gap-4 mt-4 w-10/12 mx-auto ">
         <label className="input  lg:w-xl  rounded-full focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <input
             type="search "
@@ -53,9 +53,9 @@ const AllItems = () => {
           defaultValue=""
           className="select focus-within:outline-none focus-within:ring-0 border border-gray-300  rounded-full"
         >
-          <option disabled={true}>Sort by Location</option>
-          <option value="asc">A → Z</option>
-          <option value="desc">Z → A</option>
+          <option disabled={true}>Sort by Title</option>
+          <option value="asc">Ascending by title</option>
+          <option value="desc">Descending by title</option>
         </select>
       </div>
       {allPosts.length === 0 ? (

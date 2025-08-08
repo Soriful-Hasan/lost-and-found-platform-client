@@ -11,6 +11,7 @@ import AllPosts from "../page/allItems/AllItems";
 import EditPost from "../page/myPost/EditPost";
 import RecoveredItems from "../page/recoverdItem/RecoveredItems";
 import ErrorPage from "../components/error-page/ErrorPage";
+import ContactUs from "../page/contact-us/ContactUs";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/signIn",
         Component: SignIn,
+      },
+      {
+        path: "/contact-us",
+        Component: ContactUs,
       },
       {
         path: "/addItem",
