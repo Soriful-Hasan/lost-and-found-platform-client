@@ -38,14 +38,14 @@ const Home = () => {
     <div className="">
       <title>Home</title>
       <Hero />
-      <div className="place-items-center mt-10 w-10/12 mx-auto">
+      <div className="place-items-center  mt-10 w-10/12 mx-auto">
         <div className="flex items-center gap-2">
           <LiaGripfire size={30} color="#ff9a00" />
           <h1 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
             Recent Post
           </h1>
         </div>
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-600 dark:text-white text-sm">
           These are the latest items reported or found. <br />
           Check them out — maybe one of them is yours!
         </p>

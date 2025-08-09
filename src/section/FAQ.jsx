@@ -2,6 +2,39 @@ import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
 const Process = () => {
+  const faqData = [
+    {
+      name: "How do I report a lost or found item?",
+      content:
+        "To report a lost or found item, click on the “Post Item” button after signing in. Fill out the form with all the details like item name, category, location, description, and image. Once submitted, your item will be listed on the website.",
+    },
+    {
+      name: "Do I need an account to use the website?",
+      content:
+        "Yes, you need to sign in using your email to submit or manage lost or found items. Once logged in, you’ll have access to your dashboard where you can track your posts and receive notifications.",
+    },
+    {
+      name: "How will I know if someone finds my lost item?",
+      content:
+        "If someone submits a found item that matches the details of your lost item, you'll automatically receive an email notification. You can then contact them directly through the platform.",
+    },
+    {
+      name: "Can I edit or delete my item after posting?",
+      content:
+        "Yes. After logging in, go to your dashboard. From there, you can edit any details of your posted item or delete it if it has been recovered or no longer needed.",
+    },
+    {
+      name: "Is it safe to share contact information on the site?",
+      content:
+        "Your privacy is our priority. Only necessary information is shown to others. For direct communication, we recommend using the secure contact options provided inside the website after signing in.",
+    },
+    {
+      name: "How do I share a lost or found item on FindIt?",
+      content:
+        "Simply sign in and click the “Post Item” button on the top menu. Fill in the item details such as name, category, where it was lost or found, description, and upload a photo. After submitting, your item will be visible to all users.",
+    },
+  ];
+
   return (
     <div>
       <section className="mt-20 ">
@@ -9,7 +42,7 @@ const Process = () => {
           <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
             Frequently Asked Question
           </h1>
-          <p className="text-gray-600 text-sm text-center">
+          <p className="text-gray-600 dark:text-white text-sm text-center">
             Our platform provides a place where lost things find their way back
             —
             <br />
@@ -24,90 +57,19 @@ const Process = () => {
             </div>
             <div className=" flex-1 flex items-center">
               <div className=" flex flex-col gap-5 ">
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    How do I report a lost or found item?
+                {faqData?.map((faq) => (
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-plus dark:border-gray-700  border"
+                  >
+                    <div className="collapse-title font-semibold">
+                      {faq.name}
+                    </div>
+                    <div className="collapse-content text-sm">
+                      {faq.content}
+                    </div>
                   </div>
-                  <div className="collapse-content text-sm">
-                    To report a lost or found item, click on the “Post Item”
-                    button after signing in. Fill out the form with all the
-                    details like item name, category, location, description, and
-                    image. Once submitted, your item will be listed on the
-                    website.
-                  </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    Do I need an account to use the website?
-                  </div>
-                  <div className="collapse-content text-sm">
-                    Yes, you need to sign in using your email to submit or
-                    manage lost or found items. Once logged in, you’ll have
-                    access to your dashboard where you can track your posts and
-                    receive notifications.
-                  </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    How will I know if someone finds my lost item?
-                  </div>
-                  <div className="collapse-content text-sm">
-                    If someone submits a found item that matches the details of
-                    your lost item, you'll automatically receive an email
-                    notification. You can then contact them directly through the
-                    platform.
-                  </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    Can I edit or delete my item after posting?
-                  </div>
-                  <div className="collapse-content text-sm">
-                    Yes. After logging in, go to your dashboard. From there, you
-                    can edit any details of your posted item or delete it if it
-                    has been recovered or no longer needed.
-                  </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    Is it safe to share contact information on the site?
-                  </div>
-                  <div className="collapse-content text-sm">
-                    Your privacy is our priority. Only necessary information is
-                    shown to others. For direct communication, we recommend
-                    using the secure contact options provided inside the website
-                    after signing in.
-                  </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="collapse collapse-plus bg-base-100 border-base-300 border"
-                >
-                  <div className="collapse-title font-semibold">
-                    How do I share a lost or found item on FindIt?
-                  </div>
-                  <div className="collapse-content text-sm">
-                    Simply sign in and click the “Post Item” button on the top
-                    menu. Fill in the item details such as name, category, where
-                    it was lost or found, description, and upload a photo. After
-                    submitting, your item will be visible to all users.
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
