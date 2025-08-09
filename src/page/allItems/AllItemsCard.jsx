@@ -4,7 +4,6 @@ import { BiSolidCalendarCheck } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-
 const AllItemsCard = ({ post }) => {
   const {
     title,
@@ -18,10 +17,17 @@ const AllItemsCard = ({ post }) => {
     _id,
   } = post;
   return (
-    <div>
-      <div className="card border-gray-200  bg-white w-full border ">
+    <div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.4,
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+      }}
+    >
+      <div className="card border-gray-200 rounded dark:border-gray-700 dark:bg-dark-card-bg bg-white w-full border ">
         <div className="p-2">
-          <div className="w-full h-60 bg-gray-100  rounded-md ">
+          <div className="w-full h-60 bg-gray-100  rounded-md">
             <img
               className="w-full rounded-sm h-full object-cover"
               src={thumbnail}
@@ -29,29 +35,27 @@ const AllItemsCard = ({ post }) => {
             />
           </div>
         </div>
-
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
-          <p className="  text-gray-700 text-sm line-clamp-2">{description}</p>
-
+          <p className="text-gray-800 text-sm line-clamp-2 dark:text-white">
+            {description}
+          </p>
           <p className="flex items-center gap-2 ">
-            <BiSolidCalendarCheck color="#443dff" />
+            <BiSolidCalendarCheck className="text-primary-text dark:text-white" />
             {date}
           </p>
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#443dff" />
+            <IoLocationSharp className="text-primary-text dark:text-white" />
             {location}
           </p>
           <div className="card-actions justify-end">
-            
-              <Link
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                to={`/itemDetails/${_id}`}
-                className="btn shadow-sm hover:bg-blue-500 bg-[#443dff] flex gap-2  text-white border-none btn-primary"
-              >
-                See item <FaArrowRightLong />
-              </Link>
-           
+            <Link
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              to={`itemDetails/${_id}`}
+              className="btn hover:bg-blue-500 shadow-sm bg-[#443dff] flex gap-2  text-white border-none btn-primary"
+            >
+              Details <FaArrowRightLong />
+            </Link>
           </div>
         </div>
       </div>

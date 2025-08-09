@@ -38,13 +38,15 @@ const ItemCards = ({ item }) => {
         </div>
         <div className="card-body">
           <h2 className="card-title line-clamp-1 ">{title}</h2>
-          <p className="text-gray-800 text-sm line-clamp-2 dark:text-white">{description}</p>
+          <p className="text-gray-800 text-sm line-clamp-2 dark:text-white">
+            {description}
+          </p>
           <p className="flex items-center gap-2 ">
-            <BiSolidCalendarCheck color="#443dff" />
+            <BiSolidCalendarCheck className="text-primary-text dark:text-white" />
             {date}
           </p>
           <p className="flex items-center gap-2 ">
-            <IoLocationSharp color="#443dff" />
+            <IoLocationSharp className="text-primary-text dark:text-white" />
             {location}
           </p>
           <div className="card-actions justify-end">

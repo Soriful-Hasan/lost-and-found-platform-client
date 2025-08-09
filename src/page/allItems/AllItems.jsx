@@ -36,24 +36,26 @@ const AllItems = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="">
+    <div className="pt-20">
       <title>Lost and found items</title>
       <div className="flex-col md:flex-row flex justify-between gap-4 mt-4 w-10/12 mx-auto ">
-        <label className="input  lg:w-xl  rounded-full focus-within:outline-none focus-within:ring-0 border border-gray-300">
+        <label className="input dark:border-gray-700  lg:w-xl  rounded-full focus-within:outline-none focus-within:ring-0 border border-gray-300">
           <input
             type="search "
             onChange={(e) => setSearch(e.target.value)}
             required
-            placeholder="🔍 Search by title or location"
-            className="w-full focus:outline-none  focus:ring-0"
+            placeholder="🔍 Search by Title or Location"
+            className="w-full dark:text-white focus:outline-none  focus:ring-0"
           />
         </label>
         <select
           onChange={handleSort}
           defaultValue=""
-          className="select focus-within:outline-none focus-within:ring-0 border border-gray-300  rounded-full"
+          className="select dark:text-white focus-within:outline-none focus-within:ring-0 border border-gray-300  rounded-full"
         >
-          <option disabled={true}>Sort by Title</option>
+          <option className="dark:text-white" disabled={true}>
+            Sort by Title
+          </option>
           <option value="asc">Ascending by title</option>
           <option value="desc">Descending by title</option>
         </select>

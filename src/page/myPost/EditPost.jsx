@@ -1,52 +1,102 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useApplicationApi from "../../api/useApplicationApi";
 import Swal from "sweetalert2";
+import Loader from "../../components/Loader";
 
 const EditPost = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const [item, setItem] = useState({});
   const { id } = useParams();
   const { updateDataPromise } = useApplicationApi();
+  const [selectPostType, setSelectPostType] = useState("");
+  const [selectCategory, setSelectCategory] = useState("");
 
   useEffect(() => {
     const updateGetData = async () => {
-      const data = await updateDataPromise(id);
-      setItem(data);
+      try {
+        setLoading(true);
+        const data = await updateDataPromise(id);
+        setItem(data);
+
+        // Set initial values
+        if (data.postType) {
+          setSelectPostType(data.postType);
+        }
+        if (data.category) {
+          setSelectCategory(data.category);
+        }
+        if (data.date) {
+          setSelectedDate(new Date(data.date));
+        }
+      } catch (error) {
+        console.error("Error fetching post data:", error);
+        Swal.fire({
+          title: "Error loading post",
+          text: "Failed to load post data",
+          icon: "error",
+          draggable: true,
+        });
+      } finally {
+        setLoading(false);
+      }
     };
-    updateGetData();
+
+    if (id) {
+      updateGetData();
+    }
   }, [id, updateDataPromise]);
 
-  const handleEditPost = (e) => {
+  const handleEditPost = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
+    // Add selected values
     data.postType = selectPostType;
     data.category = selectCategory;
+    data.date = selectedDate.toISOString();
 
-    axiosSecure
-      .post(`${import.meta.env.VITE_apiUrl}/updatePost/${_id}`, data)
-      .then((res) => {
-        if (res.data.modifiedCount === 1) {
-          Swal.fire({
-            title: "Update post successfully",
-            icon: "success",
-            draggable: true,
-          });
-        }
-      })
-      .catch((err) =>
-        Swal.fire({
-          title: "Something was wrong",
-          icon: "error",
-          draggable: true,
-        })
+    try {
+      const res = await axiosSecure.put(
+        `${import.meta.env.VITE_apiUrl}/updatePost/${item._id}`,
+        data
       );
+
+      if (res.data.modifiedCount === 1) {
+        await Swal.fire({
+          title: "Success!",
+          text: "Post updated successfully",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(-1);
+      } else {
+        throw new Error("No changes were made");
+      }
+    } catch (err) {
+      console.error("Update error:", err);
+      Swal.fire({
+        title: "Update Failed",
+        text: "Something went wrong while updating the post",
+        icon: "error",
+        draggable: true,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const {
@@ -62,201 +112,326 @@ const EditPost = () => {
     _id,
   } = item;
 
-  const [selectPostType, setSelectPostType] = useState("");
+  if (loading) {
+    return <Loader />;
+  }
 
-  useEffect(() => {
-    if (postType) {
-      setSelectPostType(postType);
-    }
-  }, [postType]);
-
-  const [selectCategory, setSelectCategory] = useState("");
-
-  useEffect(() => {
-    if (category) {
-      setSelectCategory(category);
-    }
-  }, [category]);
   return (
-    <div className="shadow-sm bg-white mb-4 rounded-sm p-8 lg:w-8/12 mx-auto">
-      <title>Update Post</title>
-      <div className="">
-        <div className="flex items-center gap-2">
-          <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
-          <h1 className="text-xl font-bold">Update Your Post</h1>
-        </div>
-        <div className="border-b border-1 border-gray-200 mt-2"></div>
-      </div>
-      <div className="place-items-center mt-6">
-        <form
-          onSubmit={handleEditPost}
-          className="flex flex-col gap-8 mt-4   w-full"
-        >
-          <div className="">
-            <div className="item-start mb-4 w-full ">
-              <h2 className="font-semibold text-xl">Item Details</h2>
+    <div className="min-h-screen dark:bg-gray-900 py-20 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header Card */}
+        <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    />
+                  </svg>
+                </div>
+                <h1 className="text-2xl font-bold text-black dark:text-white">
+                  Edit Lost & Found Item
+                </h1>
+              </div>
+              <p className="text-gray-400">
+                Update the details for your lost or found item
+              </p>
             </div>
-            <div className="">
-              <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="username"
+            <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center">
+              <svg
+                className="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Title
-              </label>
-              <input
-                type="text"
-                required
-                defaultValue={title}
-                name="title"
-                placeholder="Title"
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-              />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
             </div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
-            >
-              Post Type
-            </label>
-            <select
-              required
-              value={selectPostType}
-              onChange={(e) => setSelectPostType(e.target.value)}
-              name="postType"
-              className=" appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
-            >
-              <option value="" disabled selected>
-                Post type
-              </option>
-              <option value="Lost">Lost</option>
-              <option value="Found">Found</option>
-            </select>
-
-            {/* date piker */}
           </div>
+        </div>
 
-          <div className="">
-            <h1 className="mb-3 font-semibold text-xl">Item Information </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Thumbnail
-                </label>
-                <input
-                  required
-                  type="text"
-                  name="thumbnail"
-                  defaultValue={thumbnail}
-                  placeholder="Item Photo URL"
-                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-                  id="grid-first-name w-full"
-                />
+        <form onSubmit={handleEditPost} className="space-y-6">
+          {/* Item Details Card */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200  rounded-lg border dark:border-slate-700">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">T</span>
+                </div>
+                <h2 className="text-xl  font-semibold dark:text-white">
+                  Item Details
+                </h2>
               </div>
 
-              <div className="">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  location
-                </label>
-                <input
-                  required
-                  type="text"
-                  name="location"
-                  defaultValue={location}
-                  placeholder="location"
-                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                />
-              </div>
+              <div className="space-y-6">
+                {/* Item Title */}
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    <span className="text-blue-400 ">T</span>
+                    Item Title
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    defaultValue={title}
+                    name="title"
+                    placeholder="Enter a descriptive title for the item"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  />
+                </div>
 
-              <div className="">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Category
-                </label>
-                <select
-                  required
-                  value={selectCategory}
-                  onChange={(e) => setSelectCategory(e.target.value)}
-                  name="category"
-                  className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                >
-                  <option value="" disabled selected>
-                    Category
-                  </option>
-                  <option value="pets">pets</option>
-                  <option value="gadgets">gadgets</option>
-                  <option value="documents">documents</option>
-                  <option value="other">others</option>
-                </select>
-              </div>
-              <div className="w-full">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Date
-                </label>
-                <DatePicker
-                  required
-                  defaultValue={date}
-                  name="date"
-                  className="appearance-none w-full block  focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                  selected={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                />
+                {/* Post Type and Category */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div>
+                    <label className="flex text-gray-600 items-center gap-2 text-sm font-medium dark:text-gray-300 mb-3">
+                      <span className="text-blue-400 ">📋</span>
+                      Post Type
+                    </label>
+                    <select
+                      required
+                      value={selectPostType}
+                      onChange={(e) => setSelectPostType(e.target.value)}
+                      name="postType"
+                      className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    >
+                      <option value="" disabled className="text-gray-400">
+                        Lost Item
+                      </option>
+                      <option value="Lost">Lost Item</option>
+                      <option value="Found">Found Item</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="flex  items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                      <span className="text-purple-400">⭐</span>
+                      Category
+                    </label>
+                    <select
+                      required
+                      value={selectCategory}
+                      onChange={(e) => setSelectCategory(e.target.value)}
+                      name="category"
+                      className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    >
+                      <option value="" disabled className="text-gray-400">
+                        Pets
+                      </option>
+                      <option value="pets">Pets</option>
+                      <option value="gadgets">Gadgets</option>
+                      <option value="documents">Documents</option>
+                      <option value="other">Others</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="">
-            <h1 className="mb-3 font-semibold text-xl">Contact Information</h1>
-            <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
-              <input
+          {/* Item Information Card */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200  rounded-lg border dark:border-slate-700">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-semibold dark:text-white">
+                  Item Information
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Item Image */}
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    <span className="text-purple-400">📷</span>
+                    Item Image
+                  </label>
+                  <input
+                    required
+                    type="url"
+                    name="thumbnail"
+                    defaultValue={thumbnail}
+                    placeholder="Enter image URL"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  />
+                </div>
+
+                {/* Location */}
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    <span className="text-red-400">📍</span>
+                    Location
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    name="location"
+                    defaultValue={location}
+                    placeholder="Where was it lost/found?"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  />
+                </div>
+
+                {/* Date */}
+                <div className="lg:col-span-2">
+                  <label className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    <span className="text-blue-400">📅</span>
+                    Date
+                  </label>
+                  <DatePicker
+                    required
+                    name="date"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    selected={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="08/09/2025"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Information Card */}
+          <div className="dark:bg-gray-800  bg-white border-gray-200  rounded-lg border dark:border-slate-700">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-semibold dark:text-white">
+                  Contact Information
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    Full Name
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    name="name"
+                    defaultValue={name}
+                    placeholder="Your full name"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                    Email Address
+                  </label>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    defaultValue={email}
+                    placeholder="your.email@example.com"
+                    className="w-full text-gray-600 border-gray-200 dark:bg-gray-800 border dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description Card */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200  rounded-lg border dark:border-slate-700">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h7"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-semibold dark:text-white">
+                  Description
+                </h2>
+              </div>
+
+              <textarea
                 required
-                type="text"
-                name="name"
-                value={name}
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              />
-              <input
-                required
-                type="text"
-                name="email"
-                value={email}
-                className="appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                name="description"
+                defaultValue={description}
+                placeholder="Provide detailed description of the item..."
+                rows="6"
+                className="w-full text-gray-600 dark:bg-gray-800 border border-gray-200 dark:border-slate-600 rounded-lg px-4 py-3 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 resize-vertical"
               />
             </div>
           </div>
 
-          <div className="">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-end pt-6">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="px-6 cursor-pointer py-3 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900 border border-slate-600"
             >
-              Description
-            </label>
-            <textarea
-              required
-              type="text"
-              defaultValue={description}
-              name="description"
-              className=" text-start h-40 appearance-none block w-full focus:-border-blue-500 bg-white text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-            />
-          </div>
+              Cancel
+            </button>
 
-          <div className="">
             <button
               type="submit"
-              className="btn bg-[#443dff] text-white w-full lg:w-2/12 "
+              disabled={isSubmitting}
+              className={`px-8 py-3 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+                isSubmitting ? "cursor-not-allowed" : ""
+              }`}
             >
-              Update Post
+              {isSubmitting && (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              )}
+              {isSubmitting ? "Updating..." : "Update Post"}
             </button>
           </div>
         </form>

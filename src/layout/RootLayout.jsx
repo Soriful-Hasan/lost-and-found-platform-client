@@ -8,11 +8,11 @@ const RootLayout = () => {
   const { state } = useNavigate();
  
   return (
-    <div className="bg-[#FBFBFE] dark:bg-dark-primary-bg">
+    <div className="bg-[#FBFBFE] dark:bg-gray-900">
       <div className="">
         <Navbar></Navbar>
       </div>
-      <div className=" mx-auto min-h-screen pt-20">
+      <div className=" mx-auto min-h-screen ">
         {state == "loading" ? <Loader></Loader> : <Outlet></Outlet>}
       </div>
       <Footer></Footer>

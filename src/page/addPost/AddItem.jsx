@@ -6,6 +6,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import useApplicationApi from "../../api/useApplicationApi";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import {
+  MdTitle,
+  MdCategory,
+  MdLocationOn,
+  MdImage,
+  MdCalendarToday,
+  MdPerson,
+  MdEmail,
+  MdDescription,
+  MdPostAdd,
+} from "react-icons/md";
 
 const AddItem = () => {
   const { user } = useContext(UserContext);
@@ -37,180 +48,245 @@ const AddItem = () => {
         });
       });
   };
-  return (
-    <div className="shadow-sm mb-4  bg-white rounded-sm p-8 lg:w-8/12 mx-auto">
-      <title>Add post</title>
-      <div className="">
-        <div className="flex items-center gap-2">
-          <span className="bg-[#443dff] w-4 h-10 rounded-r-sm"></span>
-          <h1 className="text-xl font-bold">Add Lost & Found Item</h1>
-        </div>
-        <div className="border-b border-1 border-gray-200 mt-2"></div>
-        <h2 className="mt-2 text-sm font-semibold">
-          Lost or Found Something? Fill Out the Form
-        </h2>
-      </div>
-      <div className="place-items-center mt-4">
-        <form
-          onSubmit={handlePostSubmit}
-          className="flex flex-col gap-8 mt-4   w-full"
-        >
-          <div className="">
-            <div className="item-start mb-2 w-full ">
-              <h2 className="font-semibold text-xl">Item Details</h2>
-            </div>
 
-            <div className="">
-              <label
-                class="block text-gray-700 text-sm font-bold mb-2"
-                for="username"
-              >
-                Title
-              </label>
-              <input
-                required
-                type="text"
-                name="title"
-                placeholder="Title"
-                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-              />
+  return (
+    <div className="min-h-screen bg-gray-50 py-20 dark:bg-gray-900 ">
+      <title>Add post</title>
+
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Header Section */}
+        <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-1 h-12 bg-[#443dff] rounded-full"></div>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Add Lost & Found Item
+                </h1>
+                <p className="text-gray-600 dark:text-gray-400 mt-1">
+                  Lost or Found Something? Fill Out the Form Below
+                </p>
+              </div>
             </div>
-            <div className="">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                for="username"
-              >
-                Post type
-              </label>
-              <select
-                required
-                name="postType"
-                className=" appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight "
-              >
-                <option value="" disabled selected>
-                  Post type
-                </option>
-                <option value="Lost">Lost</option>
-                <option value="Found">Found</option>
-              </select>
+            <div className="ml-auto">
+              <MdPostAdd className="text-[#443dff] text-4xl" />
             </div>
           </div>
+        </div>
 
-          <div className="">
-            <h1 className="mb-2 font-semibold text-xl">Item Information </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="Item image">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Item Image
+        <form onSubmit={handlePostSubmit} className="space-y-8">
+          {/* Item Details Section */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                <MdTitle className="text-[#443dff] text-xl" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                Item Details
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="lg:col-span-2">
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdTitle className="text-[#443dff]" />
+                  <span>Item Title</span>
                 </label>
                 <input
                   required
                   type="text"
-                  name="thumbnail"
-                  placeholder="Item Photo URL"
-                  className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight  "
-                  id="grid-first-name w-full"
+                  name="title"
+                  placeholder="Enter a descriptive title for the item"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
                 />
               </div>
-              <div className="">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
+
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdPostAdd className="text-[#443dff]" />
+                  <span>Post Type</span>
+                </label>
+                <select
+                  required
+                  name="postType"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
                 >
-                  location
+                  <option value="" disabled>
+                    Select post type
+                  </option>
+                  <option value="Lost">🔍 Lost Item</option>
+                  <option value="Found">✅ Found Item</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdCategory className="text-[#443dff]" />
+                  <span>Category</span>
+                </label>
+                <select
+                  required
+                  name="category"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
+                >
+                  <option value="" disabled>
+                    Select category
+                  </option>
+                  <option value="pets">🐾 Pets</option>
+                  <option value="gadgets">📱 Gadgets</option>
+                  <option value="documents">📄 Documents</option>
+                  <option value="other">🔍 Others</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Item Information Section */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
+                <MdImage className="text-[#443dff] text-xl" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                Item Information
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdImage className="text-[#443dff]" />
+                  <span>Item Image</span>
+                </label>
+                <input
+                  required
+                  type="url"
+                  name="thumbnail"
+                  placeholder="Enter image URL"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
+                />
+              </div>
+
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdLocationOn className="text-[#443dff]" />
+                  <span>Location</span>
                 </label>
                 <input
                   required
                   type="text"
                   name="location"
-                  placeholder="location"
-                  className="appearance-none block w-full focus:-border-blue-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                  placeholder="Where was it lost/found?"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
                 />
               </div>
-              <div className="">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Category
-                </label>
-                <select
-                  name="category"
-                  className="appearance-none block w-full focus:-border-blue-500 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-                >
-                  <option value="" disabled selected>
-                    Category
-                  </option>
-                  <option value="pets">pets</option>
-                  <option value="gadgets">gadgets</option>
-                  <option value="documents">documents</option>
-                  <option value="other">others</option>
-                </select>
-              </div>
 
-              <div className="">
-                <label
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Date
+              <div className="lg:col-span-2">
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdCalendarToday className="text-[#443dff]" />
+                  <span>Date</span>
                 </label>
                 <DatePicker
                   required
                   name="date"
-                  className="w-full  appearance-none block  focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
+                  placeholderText="Select date"
                 />
               </div>
             </div>
           </div>
 
-          <div className="">
-            <h1 className="mb-2 font-semibold text-xl">Contact Information</h1>
-            <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
-              <input
+          {/* Contact Information Section */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
+                <MdPerson className="text-[#443dff] text-xl" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                Contact Information
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdPerson className="text-[#443dff]" />
+                  <span>Your Name</span>
+                </label>
+                <input
+                  required
+                  type="text"
+                  name="name"
+                  value={user?.displayName}
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white"
+                  readOnly
+                />
+              </div>
+
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                  <MdEmail className="text-[#443dff]" />
+                  <span>Your Email</span>
+                </label>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  value={user?.email}
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white"
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Description Section */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
+                <MdDescription className="text-[#443dff] text-xl" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                Description
+              </h2>
+            </div>
+
+            <div>
+              <label className="flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                <MdDescription className="text-[#443dff]" />
+                <span>Detailed Description</span>
+              </label>
+              <textarea
                 required
-                type="text"
-                name="name"
-                value={user?.displayName}
-                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-              />
-              <input
-                required
-                type="text"
-                name="email"
-                value={user?.email}
-                className="appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
+                name="description"
+                rows="6"
+                placeholder="Provide detailed description of the item, including color, size, distinguishing features, etc."
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#443dff] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none transition-all duration-200"
               />
             </div>
           </div>
 
-          <div className="">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
-            >
-              Description
-            </label>
-            <textarea
-              required
-              type="text"
-              name="description"
-              className=" text-start h-40 appearance-none block w-full focus:-border-blue-50 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight"
-            />
-          </div>
-
-          <div className="">
-            <button
-              type="submit"
-              className="btn hover:bg-blue-500 bg-[#443dff] text-white w-full lg:w-2/12 "
-            >
-              Submit Post
-            </button>
+          {/* Submit Section */}
+          <div className="dark:bg-gray-800 bg-white border-gray-200 rounded-lg p-6 mb-6 border dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+              <div className="text-center sm:text-left">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  Ready to Submit?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Double-check your information before posting
+                </p>
+              </div>
+              <button
+                type="submit"
+                className="px-8 cursor-pointer py-4 bg-[#443dff] text-white font-semibold rounded-lg hover:bg-blue-600 transition-all duration-200 -lg hover:-xl transform hover:-translate-y-0.5 flex items-center space-x-2"
+              >
+                <MdPostAdd className="text-xl" />
+                <span>Submit Post</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>

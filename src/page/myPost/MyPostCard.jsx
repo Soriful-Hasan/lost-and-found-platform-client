@@ -40,11 +40,7 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
   };
 
   return (
-    <tr className="">
-      <td className="">{title}</td>
-      <td className="">{location}</td>
-      <td className="">{postType}</td>
-      <td className="">{category}</td>
+    <tr className="flex gap-4">
       <td className="flex gap-4 ">
         <Link
           to={`/editPost/${_id}`}
