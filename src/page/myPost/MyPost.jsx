@@ -53,7 +53,7 @@ const MyPost = () => {
           </Link>
         </div>
       </div>
-      <div className="overflow-x-auto mt-10  border-base-content/5 bg-base-100">
+      <div className="overflow-x-auto mt-10 dark:bg-gray-800 border-base-content/5 bg-base-100">
         <table className="table border bg-blue-600 ">
           <thead className=" ">
             <tr className="text-white">

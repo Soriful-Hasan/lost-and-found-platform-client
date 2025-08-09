@@ -9,6 +9,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { SiMinutemailer } from "react-icons/si";
 import Swal from "sweetalert2";
 import DropDown from "./dropdown/DropDown";
+import ToggleDarkMode from "./darkMode/ToggleDarkMode";
 
 const Navbar = () => {
   const { user, userSignOut, loading } = useContext(UserContext);
@@ -49,7 +50,11 @@ const Navbar = () => {
           className={({ isActive }) =>
             ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
           }
         >
           <GoHomeFill />
@@ -67,7 +72,11 @@ const Navbar = () => {
           className={({ isActive }) =>
             ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text  dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
           }
         >
           {" "}
@@ -84,7 +93,11 @@ const Navbar = () => {
           className={({ isActive }) =>
             ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
           }
         >
           <SiMinutemailer />
@@ -102,7 +115,11 @@ const Navbar = () => {
               className={({ isActive }) =>
                 ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
               }
               to={"/addItem"}
             >
@@ -119,7 +136,11 @@ const Navbar = () => {
               className={({ isActive }) =>
                 ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semi-bold font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
               }
               to={"/recoveredItems"}
             >
@@ -136,7 +157,11 @@ const Navbar = () => {
               className={({ isActive }) =>
                 ` 
            flex items-center
-          ${isActive ? " text-[#443dff] font-semibold" : ""}`
+          ${
+            isActive
+              ? "bg-gray-200 dark:text-dark-primary-text dark:bg-gray-600 text-[#443dff] font-semibold"
+              : ""
+          }`
               }
               to={"/myPost"}
             >
@@ -151,7 +176,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar fixed  bg-white border-b border-gray-200 top-0 z-50">
+      <div className="navbar dark:border-gray-700 fixed dark:bg-dark-primary-bg bg-white border-b border-gray-200 top-0 z-50">
         <div className="w-full xl:w-10/12 mx-auto flex justify-between items-center">
           {/* Navbar Start */}
           <div className="navbar-start">
@@ -160,9 +185,9 @@ const Navbar = () => {
               onClick={window.scrollTo({ top: 0, behavior: "smooth" })}
               className="cursor-pointer hidden lg:flex items-center font-bold gap-2"
             >
-              <img width="30" height="30" src="/logo.png" alt="logo" />
+              <img width="30" className="dark:bg-white rounded-full " height="30" src="/logo.png" alt="logo" />
               <h1>
-                <span className="text-blue-800 text-xl uppercase">
+                <span className="text-primary-text dark:text-white text-xl uppercase">
                   Find <span className="">It</span>
                 </span>
               </h1>
@@ -211,12 +236,12 @@ const Navbar = () => {
 
           {/* Navbar End */}
           <div className="navbar-end">
+            <ToggleDarkMode />
             {loading ? (
               <span className="loading loading-ring loading-lg"></span>
             ) : user ? (
               <div className="flex gap-4 items-center">
                 <DropDown user={user} handleSignOut={handleSignOut} />
-                {/* <ToggleDarkMode /> */}
               </div>
             ) : (
               <Link

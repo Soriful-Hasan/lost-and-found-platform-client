@@ -37,9 +37,6 @@ const Home = () => {
   return (
     <div className="">
       <title>Home</title>
-      {/* <div className="">
-      <Slider></Slider>
-      </div> */}
       <Hero />
       <div className="place-items-center mt-10 w-10/12 mx-auto">
         <div className="flex items-center gap-2">

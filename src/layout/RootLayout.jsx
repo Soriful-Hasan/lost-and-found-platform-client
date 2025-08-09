@@ -8,7 +8,7 @@ const RootLayout = () => {
   const { state } = useNavigate();
  
   return (
-    <div className="bg-[#FBFBFE]">
+    <div className="bg-[#FBFBFE] dark:bg-dark-primary-bg">
       <div className="">
         <Navbar></Navbar>
       </div>

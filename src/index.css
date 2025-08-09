@@ -1,14 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 @plugin "daisyui";
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 * {
   font-family: "Mona Sans", sans-serif;
 }
 
+@theme {
+  /* Background colors */
+  --color-primary-bg: #01a6e7;
+  --color-dark-card-bg: #1e2939;
+  --color-secondary-bg: #f3f4f6;
+  --color-dark-primary-bg: #1f2937;
+  --color-dark-secondary-bg: #374151;
+
+  /* Text colors */
+  --color-primary-text: #443dff;
+  --color-secondary-text: #4b5563;
+  --color-dark-primary-text: #ffffff;
+  --color-dark-secondary-text: #d1d5db;
+}
+
 :root {
-  --p: #FFFF;
+  --p: #ffff;
 }
 
 .react-datepicker-wrapper,

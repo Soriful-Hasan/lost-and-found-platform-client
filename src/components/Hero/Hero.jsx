@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
-import TypeWriter from "../typewriter/TypeWriter";
+
 
 const Hero = () => {
   return (
-    <section className="border-b border-gray-200 bg-[#FBFBFE] lg:grid lg:h-80vh  lg:place-content-center">
-      <div className="   px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
+    <section className="border-b dark:border-0 border-gray-200 dark:bg-dark-primary-bg bg-[#FBFBFE] lg:grid lg:h-80vh  lg:place-content-center">
+      <div className="px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
         <div className=" max-w-prose  text-left space-y-10">
-          <h1 className=" text-4xl space-y-4 font-bold text-gray-900 sm:text-5xl">
+          <h1 className="dark:text-white text-4xl space-y-4 font-bold text-gray-900 sm:text-5xl">
             Connecting Communities Through{" "}
             <span className="text-[#443dff]">Lost & Found</span>
           </h1>
 
-          <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
+          <p className="mt-4 dark:text-white text-base text-pretty text-gray-700 sm:text-lg/relaxed">
             Report your lost or found item in just a few clicks. Safe, simple,
             and secure.” “Lost an item? Post now and let the community help
             recover it
@@ -29,7 +29,7 @@ const Hero = () => {
 
             <a
               href="#learn"
-              className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
+              className="dark:text-white inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
             >
               Learn More
             </a>
