@@ -19,7 +19,7 @@ const ItemCards = ({ item }) => {
   } = item;
   return (
     <div>
-      <div className="group card border-gray-200 rounded-2xl dark:border-gray-700 dark:bg-gray-800 bg-white w-full border shadow-lg hover:shadow-2xl transform  duration-300 overflow-hidden">
+      <div className="group card border-gray-200 rounded-2xl dark:border-gray-700 dark:bg-gray-800 bg-white w-full border   transform  duration-300 overflow-hidden">
 
         <div className="relative p-3">
           <div className="relative w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-xl overflow-hidden">

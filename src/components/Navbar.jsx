@@ -185,7 +185,13 @@ const Navbar = () => {
               onClick={window.scrollTo({ top: 0, behavior: "smooth" })}
               className="cursor-pointer hidden lg:flex items-center font-bold gap-2"
             >
-              <img width="30" className="dark:bg-white rounded-full " height="30" src="/logo.png" alt="logo" />
+              <img
+                width="30"
+                className="dark:bg-white rounded-full "
+                height="30"
+                src="/logo.png"
+                alt="logo"
+              />
               <h1>
                 <span className="text-primary-text dark:text-white text-xl uppercase">
                   Find <span className="">It</span>
@@ -235,8 +241,10 @@ const Navbar = () => {
           </div>
 
           {/* Navbar End */}
-          <div className="navbar-end">
-            <ToggleDarkMode />
+          <div className="navbar-end gap-4">
+            <div className="mt-1">
+              <ToggleDarkMode />
+            </div>
             {loading ? (
               <span className="loading loading-ring loading-lg"></span>
             ) : user ? (

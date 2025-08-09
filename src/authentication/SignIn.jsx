@@ -79,10 +79,10 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center  items-center m-4">
+    <div className="flex justify-center py-30 items-center m-4">
       <title>Sign in</title>
 
-      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12  bg-white w-full  mx-auto justify-center">
+      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 dark:bg-dark-card-bg bg-white w-full  mx-auto justify-center">
         {/* Header Section */}
         <div className="text-center">
           <div
@@ -91,17 +91,19 @@ const SignIn = () => {
           >
             <Lock className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl font-bold dark:text-white text-gray-900 mb-2">
             Welcome back
           </h2>
-          <p className="text-gray-600">Sign in to your account to continue</p>
+          <p className="text-gray-600 dark:text-gray-200">
+            Sign in to your account to continue
+          </p>
         </div>
         <div className="card-body ">
           <form onSubmit={handleSignIn} className="fieldset space-y-4">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700 mb-2"
+                className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
               >
                 Email Address
               </label>
@@ -114,7 +116,7 @@ const SignIn = () => {
                   name="email"
                   type="email"
                   required
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                   style={{ "--tw-ring-color": "#443dff" }}
                   placeholder="example@gmail.com"
                 />
@@ -125,7 +127,7 @@ const SignIn = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-700 mb-2"
+                className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
               >
                 Password
               </label>
@@ -138,7 +140,7 @@ const SignIn = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   required
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-12 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                   style={{ "--tw-ring-color": "#443dff" }}
                   placeholder="Enter your password"
                 />
@@ -172,7 +174,7 @@ const SignIn = () => {
                   Signing in...
                 </div>
               ) : (
-                <div className="flex items-center">
+                <div className="flex items-center ">
                   Sign in
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -185,7 +187,7 @@ const SignIn = () => {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500 font-medium">
+                <span className="px-4 dark:bg-gray-800 dark:text-gray-200 bg-white text-gray-500 font-medium">
                   OR
                 </span>
               </div>
@@ -195,7 +197,7 @@ const SignIn = () => {
             <button
               type="button"
               onClick={loginWithGoogle}
-              className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-xl bg-white text-gray-700 font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md"
+              className="w-full flex cursor-pointer justify-center items-center py-3 px-4 border border-gray-300 rounded-xl bg-white text-gray-700 font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md"
             >
               <GoogleIcon />
               <span className="ml-3">Continue with Google</span>
@@ -204,21 +206,19 @@ const SignIn = () => {
         </div>
         {/* Sign Up Link */}
         <div className="text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-200">
             Don't have an account?{" "}
             <a
               href="/signUp"
-              className="font-semibold hover:underline transition-colors"
-              style={{ color: "#443dff" }}
+              className="font-semibold text-blue-600 dark:text-blue-600 hover:underline transition-colors"
+             
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               Sign up here
             </a>
           </p>
         </div>
-        
       </div>
-      
     </div>
   );
 };

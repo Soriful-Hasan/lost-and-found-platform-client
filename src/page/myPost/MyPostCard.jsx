@@ -44,7 +44,7 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
       <td className="flex gap-4 ">
         <Link
           to={`/editPost/${_id}`}
-          className="bg-gray-200 p-3  cursor-pointer  rounded-full hover:bg-gray-300"
+          className="bg-gray-200 dark:bg-gray-500  p-3  cursor-pointer  rounded-full hover:bg-gray-300"
         >
           <FaEdit />
         </Link>
@@ -53,7 +53,7 @@ const MyPostCard = ({ post, myPosts, setMyPosts }) => {
         <button
           onClick={() => handleDeletePost(_id)}
           to="/editPost"
-          className="bg-gray-200 p-3 cursor-pointer  rounded-full hover:bg-gray-300"
+          className="bg-gray-200 dark:bg-gray-500 p-3 cursor-pointer  rounded-full hover:bg-gray-300"
         >
           <FaTrash color="red" />
         </button>

@@ -70,14 +70,13 @@ const Home = () => {
         <Link
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           to={"/allPosts"}
-          className="btn hover:bg-blue-500 shadow-sm flex items-center bg-[#443dff] text-white"
+          className="btn hover:bg-blue-500  shadow-sm flex items-center bg-[#443dff] text-white"
         >
           See All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>
       </div>
       <div className="w-10/12 mx-auto mt-30">
         <About></About>
-
         <Process></Process>
         <ClientsSatisfied />
         <ContactUs />

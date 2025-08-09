@@ -125,8 +125,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center mb-10 px-4 sm:px-6 lg:px-8">
-      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12  bg-white w-full  mx-auto justify-center">
+    <div className="min-h-screen py-20 flex items-center justify-center mb-10 px-4 sm:px-6 lg:px-8">
+      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12   lg:w-6/12  bg-white w-full  mx-auto justify-center">
         {/* Header Section with Logo */}
         <div className="text-center mt-6 ">
           <div className="mx-auto mb-6">
