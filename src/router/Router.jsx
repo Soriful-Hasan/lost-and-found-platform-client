@@ -11,7 +11,7 @@ import AllPosts from "../page/allItems/AllItems";
 import EditPost from "../page/myPost/EditPost";
 import RecoveredItems from "../page/recoverdItem/RecoveredItems";
 import ErrorPage from "../components/error-page/ErrorPage";
-import ContactUs from "../page/contact-us/ContactUs";
+import ContactUs from "../page/OurVision/OurVision";
 export const router = createBrowserRouter([
   {
     path: "/",

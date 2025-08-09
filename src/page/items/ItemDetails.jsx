@@ -207,9 +207,9 @@ const ItemDetails = () => {
             {/* Action Buttons */}
             {status === "recovered" ? (
               <div className="space-y-4">
-                <div className="flex items-center space-x-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center space-x-3 p-4 bg-red-50 border   border-red-200 rounded-lg">
                   <HiExclamationCircle className="text-red-500 text-xl flex-shrink-0" />
-                  <span className="text-red-800 font-medium">
+                  <span className="text-red-800  font-medium">
                     This item has already been recovered
                   </span>
                 </div>

@@ -4,8 +4,8 @@ import { Link } from "react-router";
 
 const Hero = () => {
   return (
-    <section className="border-b dark:border-0 border-gray-200 dark:bg-dark-primary-bg bg-[#FBFBFE] lg:grid lg:h-80vh  lg:place-content-center">
-      <div className="px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32">
+    <section className="border-b  dark:border-0 border-gray-200 dark:bg-dark-primary-bg bg-[#FBFBFE] lg:grid lg:h-80vh  lg:place-content-center">
+      <div className="px-4 py-16  sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-40">
         <div className=" max-w-prose  text-left space-y-10">
           <h1 className="dark:text-white text-4xl space-y-4 font-bold text-gray-900 sm:text-5xl">
             Connecting Communities Through{" "}

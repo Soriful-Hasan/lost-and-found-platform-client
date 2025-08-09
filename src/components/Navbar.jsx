@@ -101,7 +101,7 @@ const Navbar = () => {
           }
         >
           <SiMinutemailer />
-          Contact Us
+         Our Vision
         </NavLink>
       </li>
       {user && (

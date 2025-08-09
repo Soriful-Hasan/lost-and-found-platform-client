@@ -60,7 +60,7 @@ const Process = () => {
                 {faqData?.map((faq) => (
                   <div
                     tabIndex={0}
-                    className="collapse collapse-plus dark:border-gray-700  border"
+                    className="collapse collapse-plus border-gray-200 dark:border-gray-700  border"
                   >
                     <div className="collapse-title font-semibold">
                       {faq.name}

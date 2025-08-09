@@ -45,7 +45,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section>
+    <section className="">
       <div className="">
         <div className="text-center pt-10 mb-10">
           <h2 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
