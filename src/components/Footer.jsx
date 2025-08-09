@@ -5,25 +5,25 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-white">
+    <footer className="bg-white dark:bg-dark-primary-bg border-t dark:border-gray-700">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center font-bold gap-2">
-          <img width="30" height="30" src="/logo.png" alt="logo" />
+          <img width="30" className="dark:bg-white rounded-full" height="30" src="/logo.png" alt="logo" />
           <h1 className="">
-            <span className="text-blue-800  text-xl uppercase">
+            <span className="text-blue-800 dark:text-white text-xl uppercase">
               Find <span className="">It</span>
             </span>
           </h1>
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
+        <p className="mx-auto dark:text-white mt-6 max-w-md text-center leading-relaxed text-gray-500">
           Find and reconnect with your lost items or help others do the same.
           Together, we make lost things found again.
         </p>
 
-        <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+        <ul className="mt-12 text-gray-700 dark:text-white flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
           <Link
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className=" transition hover:text-gray-700/75"
             to={"/"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
@@ -31,14 +31,14 @@ const Footer = () => {
           </Link>
 
           <Link
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className=""
             to={"/allPosts"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             All Posts
           </Link>
           <Link
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className=""
             to={"/addItem"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
@@ -46,7 +46,7 @@ const Footer = () => {
           </Link>
 
           <Link
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className=""
             to={"/recoveredItems"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
@@ -54,7 +54,7 @@ const Footer = () => {
           </Link>
 
           <Link
-            className="text-gray-700 transition hover:text-gray-700/75"
+            className=""
             to={"/myPost"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
@@ -62,13 +62,13 @@ const Footer = () => {
           </Link>
         </ul>
 
-        <ul className="mt-12 flex justify-center gap-6 md:gap-8">
+        <ul className="mt-12 text-gray-700 dark:text-white flex justify-center gap-6 md:gap-8">
           <li>
             <a
               href="https://www.facebook.com/sorifulhasan300"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className=" "
             >
               <span className="sr-only">Facebook</span>
               <svg
@@ -91,7 +91,7 @@ const Footer = () => {
               href="https://x.com/hasan_soriful"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className=""
             >
               <span className="sr-only">Twitter</span>
               <svg
@@ -110,7 +110,7 @@ const Footer = () => {
               href="https://github.com/Soriful-Hasan"
               rel="noreferrer"
               target="_blank"
-              className="text-gray-700 transition hover:text-gray-700/75"
+              className=""
             >
               <span className="sr-only">GitHub</span>
               <svg

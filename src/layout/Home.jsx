@@ -7,7 +7,7 @@ import About from "../section/About";
 import { Link } from "react-router";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { LiaGripfire } from "react-icons/lia";
-import ClientsSetisfied from "../page/satisfiedClients/ClientsSetisfied";
+import ClientsSetisfied from "../page/satisfiedClients/ClientsSatisfied";
 import AnimationSection from "../components/animation/AnimationSection";
 import Loader from "../components/Loader";
 import Process from "../section/FAQ";
@@ -15,6 +15,7 @@ import NoDataFound from "../components/NoDataFound";
 import Slider from "../components/slider/Slider";
 import Hero from "../components/Hero/Hero";
 import ContactUs from "../page/ContactUs";
+import ClientsSatisfied from "../page/satisfiedClients/ClientsSatisfied";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -78,9 +79,7 @@ const Home = () => {
         <About></About>
 
         <Process></Process>
-
-        <ClientsSetisfied></ClientsSetisfied>
-
+        <ClientsSatisfied />
         <ContactUs />
       </div>
     </div>

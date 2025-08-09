@@ -1,9 +1,8 @@
 import React from "react";
-import SetisFiedCard from "./SetisFiedCard";
+import SatisFiedCard from "./SatisFiedCard";
 import { RiEmotionHappyFill } from "react-icons/ri";
-import AnimationSection from "../../components/animation/AnimationSection";
 
-const ClientsSetisfied = () => {
+const ClientsSatisfied = () => {
   const data = [
     {
       review:
@@ -57,15 +56,15 @@ const ClientsSetisfied = () => {
             Check our Satisfied User
           </h1>
         </div>
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-600 text-sm dark:text-white">
           People who found what they had lost <br />
           Their smiles tell our success story.
         </p>
       </div>
       <div className="mb-10 p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {data?.map((review) => (
-          <div className="div">
-            <SetisFiedCard review={review}></SetisFiedCard>
+          <div className="div ">
+            <SatisFiedCard review={review} />
           </div>
         ))}
       </div>
@@ -73,4 +72,4 @@ const ClientsSetisfied = () => {
   );
 };
 
-export default ClientsSetisfied;
+export default ClientsSatisfied;

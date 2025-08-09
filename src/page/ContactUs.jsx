@@ -51,12 +51,12 @@ const ContactUs = () => {
           <h2 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
             Send Me A Message
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-white">
             Your email address will not be published. All fields are required
           </p>
         </div>
       </div>
-      <div className="flex mb-20 gap-10 flex-col xl:flex-row justify-between items-center ">
+      <div className="flex mb-20  gap-10 flex-col xl:flex-row justify-between items-center ">
         <div className="flex-1 ">
           <img src="/contact-us.svg" alt="" />
         </div>
@@ -129,7 +129,7 @@ const ContactUs = () => {
                 <div className=" rounded-full p-1 bg-[#443dff]">
                   <MdOutlineEmail size={15} color="white" />
                 </div>
-                <p className="text-sm  text-gray-600">
+                <p className="text-sm dark:text-white text-gray-600">
                   sorifullhasan300@gmail.com
                 </p>
               </div>
@@ -137,7 +137,9 @@ const ContactUs = () => {
                 <div className="rounded-full p-1 bg-[#443dff]">
                   <FiPhone size={15} color="white" />
                 </div>
-                <p className="text-sm  text-gray-600">+8801835458727</p>
+                <p className="text-sm dark:text-white  text-gray-600">
+                  +8801835458727
+                </p>
               </div>
             </div>
           </div>
