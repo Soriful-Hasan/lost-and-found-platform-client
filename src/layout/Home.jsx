@@ -16,6 +16,7 @@ import Slider from "../components/slider/Slider";
 import Hero from "../components/Hero/Hero";
 import ContactUs from "../page/ContactUs";
 import ClientsSatisfied from "../page/satisfiedClients/ClientsSatisfied";
+import { Clock, Eye } from "lucide-react";
 
 const Home = () => {
   const [items, setItems] = useState();
@@ -40,16 +41,15 @@ const Home = () => {
       <title>Home</title>
       <Hero />
       <div className="place-items-center  mt-10 w-10/12 mx-auto">
-        <div className="flex items-center gap-2">
-          <LiaGripfire size={30} color="#ff9a00" />
-          <h1 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
-            Recent Post
+       
+        <div className="flex items-center  justify-center gap-3 mt-30 mb-10">
+          <div className="w-12 h-12  bg-blue-600 rounded-xl flex items-center justify-center">
+            <Clock className="w-6 h-6 text-white" />
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">
+            Recent Posts
           </h1>
         </div>
-        <p className="text-gray-600 dark:text-white text-sm">
-          These are the latest items reported or found. <br />
-          Check them out — maybe one of them is yours!
-        </p>
       </div>
 
       {items.length === 0 ? (
@@ -75,8 +75,10 @@ const Home = () => {
           See All Post <MdOutlineKeyboardDoubleArrowRight />
         </Link>
       </div>
-      <div className="w-10/12 mx-auto mt-30">
+      <section className="bg-blue-500/6   mt-30 ">
         <About></About>
+      </section>
+      <div className="w-10/12 mx-auto ">
         <Process></Process>
         <ClientsSatisfied />
         <ContactUs />

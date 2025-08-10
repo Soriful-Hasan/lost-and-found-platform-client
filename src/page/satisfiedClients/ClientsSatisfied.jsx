@@ -1,6 +1,7 @@
 import React from "react";
 import SatisFiedCard from "./SatisFiedCard";
 import { RiEmotionHappyFill } from "react-icons/ri";
+import { Smile } from "lucide-react";
 
 const ClientsSatisfied = () => {
   const data = [
@@ -48,18 +49,14 @@ const ClientsSatisfied = () => {
     },
   ];
   return (
-    <div className="">
-      <div className="place-items-center  mb-10">
-        <div className="flex  gap-2">
-          <RiEmotionHappyFill className="" color="#4A8F7D" size={25} />
-          <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
-            Check our Satisfied User
-          </h1>
+    <div className=" mt-40">
+      <div className="flex items-center justify-center gap-3  mt-10 mb-10">
+        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+          <Smile className="w-6 h-6 text-white" />
         </div>
-        <p className="text-gray-600 text-sm dark:text-white">
-          People who found what they had lost <br />
-          Their smiles tell our success story.
-        </p>
+        <h1 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          Check our Satisfied User
+        </h1>
       </div>
       <div className="mb-10 p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {data?.map((review) => (

@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Mail } from "lucide-react";
 
 const ContactUs = () => {
   const {
@@ -45,16 +46,14 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="">
-      <div className="">
-        <div className="text-center pt-10 mb-10">
-          <h2 className="text-2xl font-bold mb-2 text-[#4A8F7D]">
-            Send Me A Message
-          </h2>
-          <p className="text-sm text-gray-600 dark:text-white">
-            Your email address will not be published. All fields are required
-          </p>
+    <section className="mt-30">
+      <div className="flex items-center pt-10 mb-10 justify-center gap-3 ">
+        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+          <Mail className="w-6 h-6 text-white" />
         </div>
+        <h1 className=" text-2xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          Send Me A Message
+        </h1>
       </div>
       <div className="flex mb-20  gap-10 flex-col xl:flex-row justify-between items-center ">
         <div className="flex-1 ">

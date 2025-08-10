@@ -126,7 +126,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen py-20 flex items-center justify-center mb-10 px-4 sm:px-6 lg:px-8">
-      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12   lg:w-6/12  bg-white w-full  mx-auto justify-center">
+      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12 lg:w-6/12  dark:bg-dark-card-bg   bg-white w-full  mx-auto justify-center">
         {/* Header Section with Logo */}
         <div className="text-center mt-6 ">
           <div className="mx-auto mb-6">
@@ -138,24 +138,24 @@ const SignUp = () => {
               className="mx-auto rounded-xl "
             />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl dark:text-white font-bold text-gray-900 mb-2">
             Join us today
           </h2>
-          <p className="text-gray-600 max-w-sm mx-auto">
+          <p className="text-gray-600 dark:text-gray-200 max-w-sm mx-auto">
             Sign up today and unlock a world of possibilities. Your adventure
             begins here.
           </p>
         </div>
 
         {/* Main Form Card */}
-        <div className="bg-white py-8 px-6 ">
+        <div className="bg-white dark:bg-dark-card-bg py-8 px-6 ">
           <div className="space-y-6">
             <form onSubmit={handleSignUp} className="space-y-6">
               {/* Full Name Field */}
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-semibold text-gray-700 mb-2"
+                  className="block text-sm dark:text-gray-200 font-semibold text-gray-700 mb-2"
                 >
                   Full Name
                 </label>
@@ -168,7 +168,7 @@ const SignUp = () => {
                     name="name"
                     type="text"
                     required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                     style={{ "--tw-ring-color": "#443dff" }}
                     placeholder="Jane Doe"
                   />
@@ -179,7 +179,7 @@ const SignUp = () => {
               <div>
                 <label
                   htmlFor="photo"
-                  className="block text-sm font-semibold text-gray-700 mb-2"
+                  className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
                 >
                   Profile Image
                 </label>
@@ -192,7 +192,7 @@ const SignUp = () => {
                     name="photo"
                     type="url"
                     required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                     style={{ "--tw-ring-color": "#443dff" }}
                     placeholder="https://example.com/your-photo.jpg"
                   />
@@ -206,7 +206,7 @@ const SignUp = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-semibold text-gray-700 mb-2"
+                  className="block text-sm dark:text-gray-200 font-semibold text-gray-700 mb-2"
                 >
                   Email Address
                 </label>
@@ -219,7 +219,7 @@ const SignUp = () => {
                     name="email"
                     type="email"
                     required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                     style={{ "--tw-ring-color": "#443dff" }}
                     placeholder="example@gmail.com"
                   />
@@ -230,7 +230,7 @@ const SignUp = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-semibold text-gray-700 mb-2"
+                  className="block text-sm dark:text-gray-200 font-semibold text-gray-700 mb-2"
                 >
                   Password
                 </label>
@@ -243,7 +243,7 @@ const SignUp = () => {
                     name="password"
                     type={showPassword ? "text" : "password"}
                     required
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
                     style={{ "--tw-ring-color": "#443dff" }}
                     placeholder="Create a strong password"
                   />
@@ -276,19 +276,17 @@ const SignUp = () => {
                 />
                 <label
                   htmlFor="terms"
-                  className="ml-2 block text-sm text-gray-700"
+                  className="ml-2 dark:text-gray-200 block text-sm text-gray-700"
                 >
-                  I agree to the{" "}
+                  I agree to the
                   <a
-                    href="#"
                     className="font-medium hover:underline"
                     style={{ color: "#443dff" }}
                   >
                     Terms of Service
-                  </a>{" "}
-                  and{" "}
+                  </a>
+                  and
                   <a
-                    href="#"
                     className="font-medium hover:underline"
                     style={{ color: "#443dff" }}
                   >
@@ -314,7 +312,7 @@ const SignUp = () => {
                     Creating account...
                   </div>
                 ) : (
-                  <div className="flex cursor-pointer items-center">
+                  <div className="flex  cursor-pointer items-center">
                     <UserPlus className="mr-2 h-4 w-4" />
                     Create Account
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -329,7 +327,7 @@ const SignUp = () => {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-gray-500 font-medium">
+                <span className="px-4 dark:bg-gray-800 dark:text-gray-200 bg-white text-gray-500 font-medium">
                   OR
                 </span>
               </div>
@@ -349,7 +347,7 @@ const SignUp = () => {
 
         {/* Sign In Link */}
         <div className="text-center mb-6">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm dark:text-gray-200 text-gray-600">
             Already have an account?{" "}
             <a
               href="/signIn"

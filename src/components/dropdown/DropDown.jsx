@@ -22,10 +22,10 @@ const DropDown = ({ user, handleSignOut }) => {
       </MenuButton>
 
       {/* Dropdown Items */}
-      <MenuItems className="absolute right-0 mt-3 w-56 origin-top-right rounded-xl bg-white  shadow-2xl ring-1 ring-black/5 focus:outline-none z-50 text-sm text-gray-700 border-0 backdrop-blur-sm transform transition-all duration-200 ease-out">
+      <MenuItems className="absolute right-0 mt-3 w-56 origin-top-right rounded-xl bg-white  dark:bg-dark-card-bg shadow-2xl ring-1 ring-black/5 focus:outline-none z-50 text-sm text-gray-700 border-0 backdrop-blur-sm transform transition-all duration-200 ease-out">
         <div className="py-2">
           {/* User Info Section */}
-          <div className="px-4 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-xl border-b border-gray-100">
+          <div className="px-4 py-3 bg-gradient-to-r  from-blue-50 to-indigo-50 rounded-t-xl ">
             <div className="flex items-center space-x-3">
              
               <div>
@@ -45,7 +45,7 @@ const DropDown = ({ user, handleSignOut }) => {
                   onClick={handleSignOut}
                   className={`${
                     active
-                      ? "bg-gradient-to-r from-red-50 to-pink-50 text-red-700 border-l-3 border-red-400"
+                      ? "bg-gradient-to-r cursor-pointer from-red-50 to-pink-50 text-red-700 border-l-3 border-red-400"
                       : "text-gray-700 hover:text-red-600"
                   } group flex items-center w-full px-4 py-3 text-sm font-medium transition-all duration-200 ease-out transform hover:translate-x-1`}
                 >
@@ -53,12 +53,12 @@ const DropDown = ({ user, handleSignOut }) => {
                     className={`${
                       active
                         ? "bg-red-100 text-red-600"
-                        : "bg-gray-100 text-gray-500 group-hover:bg-red-100 group-hover:text-red-600"
+                        : "bg-gray-100 text-gray-500 group-hover:bg-red-100  group-hover:text-red-600"
                     } p-1.5 rounded-lg mr-3 transition-colors duration-200`}
                   >
                     <ArrowRightOnRectangleIcon className="w-4 h-4" />
                   </div>
-                  <span className="flex-1 text-left">Logout</span>
+                  <span className="flex-1  dark:text-white text-left">Logout</span>
                   <div
                     className={`${
                       active

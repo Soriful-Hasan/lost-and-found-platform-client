@@ -79,144 +79,146 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center py-30 items-center m-4">
+    <div className="flex justify-center py-10 items-center ">
       <title>Sign in</title>
+      <div className="flex w-full justify-center items-center  h-screen">
+        {/* login form section */}
 
-      <div className="p-8 rounded-xl shadow-md  md:w-8/12 xl:w-4/12  lg:w-6/12 dark:bg-dark-card-bg bg-white w-full  mx-auto justify-center">
-        {/* Header Section */}
-        <div className="text-center">
-          <div
-            className="mx-auto h-16 w-16 rounded-full flex items-center justify-center mb-6"
-            style={{ backgroundColor: "#443dff" }}
-          >
-            <Lock className="h-8 w-8 text-white" />
+        <div className="p-8  md:w-8/12 xl:w-4/12 lg:w-6/12  rounded-xl shadow-md   dark:bg-dark-card-bg bg-white w-full   ">
+          {/* Header Section */}
+          <div className="text-center">
+            <div
+              className="mx-auto h-16 w-16 rounded-full flex items-center justify-center mb-6"
+              style={{ backgroundColor: "#443dff" }}
+            >
+              <Lock className="h-8 w-8 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold dark:text-white text-gray-900 mb-2">
+              Welcome back
+            </h2>
+            <p className="text-gray-600 dark:text-gray-200">
+              Sign in to your account to continue
+            </p>
           </div>
-          <h2 className="text-3xl font-bold dark:text-white text-gray-900 mb-2">
-            Welcome back
-          </h2>
-          <p className="text-gray-600 dark:text-gray-200">
-            Sign in to your account to continue
-          </p>
-        </div>
-        <div className="card-body ">
-          <form onSubmit={handleSignIn} className="fieldset space-y-4">
-            <div>
-              <label
-                htmlFor="email"
-                className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
-              >
-                Email Address
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
-                  style={{ "--tw-ring-color": "#443dff" }}
-                  placeholder="example@gmail.com"
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
-              >
-                Password
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  required
-                  className="block w-full pl-10 pr-12 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
-                  style={{ "--tw-ring-color": "#443dff" }}
-                  placeholder="Enter your password"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
+          <div className="card-body ">
+            <form onSubmit={handleSignIn} className="fieldset space-y-4">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
                 >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
-                  ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Sign In Button */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
-              style={{
-                backgroundColor: "#443dff",
-                "--tw-ring-color": "#443dff",
-              }}
-            >
-              {isLoading ? (
-                <div className="flex items-center">
-                  <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"></div>
-                  Signing in...
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Mail className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    className="block w-full pl-10 pr-3 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    style={{ "--tw-ring-color": "#443dff" }}
+                    placeholder="example@gmail.com"
+                  />
                 </div>
-              ) : (
-                <div className="flex items-center ">
-                  Sign in
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+
+              {/* Password Field */}
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block dark:text-gray-200 text-sm font-semibold text-gray-700 mb-2"
+                >
+                  Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Lock className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    className="block w-full pl-10 pr-12 py-3 border dark:bg-gray-700 dark:border-gray-600 border-gray-300 rounded-xl bg-gray-50  focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200"
+                    style={{ "--tw-ring-color": "#443dff" }}
+                    placeholder="Enter your password"
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    ) : (
+                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                    )}
+                  </button>
                 </div>
-              )}
-            </button>
-
-            {/* Divider */}
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
               </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-4 dark:bg-gray-800 dark:text-gray-200 bg-white text-gray-500 font-medium">
-                  OR
-                </span>
-              </div>
-            </div>
 
-            {/* Google Sign In */}
-            <button
-              type="button"
-              onClick={loginWithGoogle}
-              className="w-full flex cursor-pointer justify-center items-center py-3 px-4 border border-gray-300 rounded-xl bg-white text-gray-700 font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md"
-            >
-              <GoogleIcon />
-              <span className="ml-3">Continue with Google</span>
-            </button>
-          </form>
-        </div>
-        {/* Sign Up Link */}
-        <div className="text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-200">
-            Don't have an account?{" "}
-            <a
-              href="/signUp"
-              className="font-semibold text-blue-600 dark:text-blue-600 hover:underline transition-colors"
-             
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              Sign up here
-            </a>
-          </p>
+              {/* Sign In Button */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                style={{
+                  backgroundColor: "#443dff",
+                  "--tw-ring-color": "#443dff",
+                }}
+              >
+                {isLoading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"></div>
+                    Signing in...
+                  </div>
+                ) : (
+                  <div className="flex items-center ">
+                    Sign in
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                )}
+              </button>
+
+              {/* Divider */}
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-4 dark:bg-gray-800 dark:text-gray-200 bg-white text-gray-500 font-medium">
+                    OR
+                  </span>
+                </div>
+              </div>
+
+              {/* Google Sign In */}
+              <button
+                type="button"
+                onClick={loginWithGoogle}
+                className="w-full flex cursor-pointer justify-center items-center py-3 px-4 border border-gray-300 rounded-xl bg-white text-gray-700 font-semibold hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <GoogleIcon />
+                <span className="ml-3">Continue with Google</span>
+              </button>
+            </form>
+          </div>
+          {/* Sign Up Link */}
+          <div className="text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-200">
+              Don't have an account?{" "}
+              <a
+                href="/signUp"
+                className="font-semibold text-blue-600 dark:text-blue-600 hover:underline transition-colors"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              >
+                Sign up here
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

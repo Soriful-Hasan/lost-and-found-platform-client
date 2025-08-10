@@ -1,3 +1,4 @@
+import { HelpCircle } from "lucide-react";
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -37,17 +38,14 @@ const Process = () => {
 
   return (
     <div>
-      <section className="mt-20 ">
-        <div className="flex flex-col  place-items-center  ">
-          <h1 className=" text-2xl font-bold mb-2 text-[#4A8F7D]">
+      <section className="mt-30 ">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+            <HelpCircle className="w-6 h-6 text-white" />
+          </div>
+          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white">
             Frequently Asked Question
           </h1>
-          <p className="text-gray-600 dark:text-white text-sm text-center">
-            Our platform provides a place where lost things find their way back
-            —
-            <br />
-            connecting people with honesty and hope.
-          </p>
         </div>
 
         <div className=" mb-30">

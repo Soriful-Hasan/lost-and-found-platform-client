@@ -1,19 +1,18 @@
+import { Eye, Users } from "lucide-react";
 import React from "react";
 const About = () => {
   return (
-    <section id="learn" className="">
-      <div className="flex flex-col place-items-center  gap-2">
-        <h1 className=" text-2xl  font-bold mb-2 text-[#4A8F7D]">
+    <section id="learn" className=" pt-10 w-10/12 mx-auto">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+          <Users className="w-6 h-6 text-white" />
+        </div>
+        <h1 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white">
           Our platform provide
         </h1>
-        <p className="text-gray-600 dark:text-white text-sm text-center">
-          Our platform provides a place where lost things find their way back —
-          <br />
-          connecting people with honesty and hope.
-        </p>
       </div>
 
-      <div className="mb-4 mt-10 text-gray-600 flex flex-col xl:flex-row items-center p-4">
+      <div className="mb-4 md:mt-10 text-gray-800 font-semibold flex flex-col xl:flex-row items-center p-4">
         <div className="flex-1  ">
           <p className="mt-8 dark:text-white">
             FindIt is an innovative online lost and found platform that connects
@@ -26,7 +25,7 @@ const About = () => {
             offline awareness and receive instant email notifications when
             matching items are found.
           </p>
-          <p className="mt-8 dark:text-white">
+          <p className="mt-8  dark:text-white">
             In addition to personal use, FindIt is scalable for businesses or
             organizations that require a digital inventory system for managing
             lost and found items on their premises. Whether you're an individual
@@ -39,7 +38,7 @@ const About = () => {
             quickly and efficiently.
           </p>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 mt-10 md:mt-0">
           <img src="/our-service1.svg" alt="" />
         </div>
       </div>
